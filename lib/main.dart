@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/widgets/BottomBar.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:reminder/model/data_model.dart';
+import 'package:reminder/widgets/bottomBar.dart';
 
 
 
-void main() {
+void main() async{
+  await  Hive.initFlutter();
+  Hive.registerAdapter(EventModelAdapter());
+  await Hive.openBox<EventModel>("data"); 
   runApp(const MyApp());
 }
 

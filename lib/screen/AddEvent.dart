@@ -1,16 +1,18 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 class AddEvent extends StatefulWidget {
-  const AddEvent({super.key});
+  const AddEvent( {super.key});
 
   @override
   State<AddEvent> createState() => _AddEventState();
 }
 
 class _AddEventState extends State<AddEvent> {
-  
+  final box= Hive.box<EventModel>("data");
+
   DateTime date = DateTime.now();
 
   //for catogory selection//
@@ -56,6 +58,7 @@ class _AddEventState extends State<AddEvent> {
 
   //time picker
   TimeOfDay _selectedTime = TimeOfDay.now();
+  
 
   Future<void> _selectTime(BuildContext context) async {
     final TimeOfDay? pickedTime = await showTimePicker(
@@ -75,7 +78,7 @@ class _AddEventState extends State<AddEvent> {
 
   final _categoryController = TextEditingController();
 
-  final _datetimeController = TextEditingController();
+  //final _datetimeController = TextEditingController();
 
   final _timeController = TextEditingController();
 
@@ -178,40 +181,37 @@ class _AddEventState extends State<AddEvent> {
           Padding(
             padding: const EdgeInsets.only(top: 20, left: 10),
             child: Container(
-              alignment: Alignment.bottomLeft,
-              decoration: BoxDecoration(
-                color: Colors.purple,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  width: 2,
-                  color: Colors.purple,
-                ),
-              ),
+              height: 57,
               width: 350,
-              height: 55,
-              child: TextButton(
-                onPressed: () async {
-                  DateTime? newDate = await showDatePicker(
-                      context: context,
-                      initialDate: date,
-                      firstDate: DateTime(2020),
-                      lastDate: DateTime(2100));
-                  if (newDate == null) return;
-                  setState(
-                    () {
-                      date = newDate;
-                    },
-                  );
-                },
-                child: Text(
-                  'Date : ${date.year}/${date.day}/${date.month}',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.purple,
+                border: Border.all(width: 1, color: Colors.purple),
               ),
-            ),
+        child: TextButton(
+          onPressed: () async {
+            DateTime? newDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2020),
+                lastDate: DateTime(2100));
+            // ignore: unrelated_type_equality_checks
+            if (newDate == null) {
+              return;
+            } else {
+              setState(() {
+                date = newDate;
+              });
+            }
+          },
+          child: Text(
+            'Date : ${date.year}/${date.month}/${date.day}',
+            style: const TextStyle(
+                fontSize: 16,
+                //fontWeight: FontWeight.normal,
+                color: Colors.white),
+          ),
+        )),
           ),
           //time picker
           Center(
@@ -247,7 +247,7 @@ class _AddEventState extends State<AddEvent> {
                 child: InkWell(
                   onTap: () {
                     Navigator.of(context).pop(
-                        MaterialPageRoute(builder: (context) => const ListScreen(),),);
+                        MaterialPageRoute(builder: (context) =>  ListScreen(),),);
                   },
                   child: Container(
                     width: 120,
@@ -265,10 +265,11 @@ class _AddEventState extends State<AddEvent> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 30, left: 70),
-                child: InkWell(
+                child: GestureDetector(
                   onTap: () {
+                    onAddEventButton(context);
                     Navigator.of(context).pop(
-                        MaterialPageRoute(builder: (context) => const ListScreen()));
+                        MaterialPageRoute(builder: (context) =>  ListScreen()));
                   },
                   child: Container(
                     width: 120,
@@ -288,6 +289,24 @@ class _AddEventState extends State<AddEvent> {
           ),
         ],
       ),
-    );
+    ); 
   }
+
+  Future <void>onAddEventButton(BuildContext context) async{
+    final _title = _titleController.text.trim();
+    final _category = _categoryController.text.trim();
+    //final _datetime = _datetimeController.text.trim();
+    final _timeofday = _timeController.text.trim();
+
+    final listScreenn = EventModel(title: _title, catogory: _category,  timeOfDay: _timeofday,  dateTime: date);
+
+    //AddEvent(listScreenn);
+
+    // Navigation.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> ListScreen(
+    //   Title:_title,
+    //   TimeOfDay: _timeofday,
+    //   datetime: _dateTime, 
+    // )));
+
+  }   
 }

@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:one_clock/one_clock.dart';
+import 'package:reminder/functions/db_functions.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,6 +9,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getAllEvent();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -69,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const ListScreen(),
+                        builder: (context) =>  ListScreen(),
                       ),
                     );
                   },
@@ -85,21 +87,21 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: ListView(
               children: const [
-                EventCard(
-                  title: "Birthday",
-                  subtitle: "8:00 AM",
-                  trailing: "Aug 23",
-                ),
-                EventCard(
-                  title: "Meeting",
-                  subtitle: "2:30 PM",
-                  trailing: "Aug 24",
-                ),
-                EventCard(
-                  title: "Appointment",
-                  subtitle: "10:00 AM",
-                  trailing: "Aug 25",
-                ),
+                // EventCard(
+                //   title: "Birthday",
+                //   subtitle: "8:00 AM",
+                //   trailing: "Aug 23",
+                // ),
+                // EventCard(
+                //   title: "Meeting",
+                //   subtitle: "2:30 PM",
+                //   trailing: "Aug 24",
+                // ),
+                // EventCard(
+                //   title: "Appointment",
+                //   subtitle: "10:00 AM",
+                //   trailing: "Aug 25",
+                // ),
               ],
             ),
           ),
@@ -109,40 +111,40 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-class EventCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String trailing;
+// class EventCard extends StatelessWidget {
+//   final String title;
+//   final String subtitle;
+//   final String trailing;
 
-  const EventCard({super.key, 
-    required this.title,
-    required this.subtitle,
-    required this.trailing,
-  });
+//   const EventCard({super.key, 
+//     required this.title,
+//     required this.subtitle,
+//     required this.trailing,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: ListTile(
-        title: Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 15,
-          ),
-        ),
-        trailing: Text(
-          trailing,
-          style: const TextStyle(
-            fontSize: 17,
-          ),
-        ),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Card(
+//       elevation: 2,
+//       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+//       child: ListTile(
+//         title: Text(
+//           title,
+//           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//         ),
+//         subtitle: Text(
+//           subtitle,
+//           style: const TextStyle(
+//             fontSize: 15,
+//           ),
+//         ),
+//         trailing: Text(
+//           trailing,
+//           style: const TextStyle(
+//             fontSize: 17,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/screen/Chart.dart';
-import 'package:reminder/screen/HomeScreen.dart';
+import 'package:reminder/screen/chart.dart';
+import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/screen/ListScreen.dart';
-import 'package:reminder/screen/Settings.dart';
+import 'package:reminder/screen/settings.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -16,7 +16,7 @@ class _BottomBarState extends State<BottomBar> {
   int _currentIndex = 0; 
   final tabs =[
      const HomeScreen(),
-     const ListScreen(),
+      ListScreen(),
      const Chart(),
      const Settings(),
   ];
