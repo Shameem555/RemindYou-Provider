@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/AddEvent.dart';
 import 'package:reminder/screen/ListScreen.dart';
-import 'package:reminder/widgets/searchfield.dart';
 
 //list screen search vere
 class EventScreen extends StatefulWidget {

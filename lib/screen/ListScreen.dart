@@ -4,11 +4,13 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/subscreen/editscreen.dart';
 
 class ListScreen extends StatefulWidget {
+  const ListScreen({super.key});
+
   @override
-  _ListScreenState createState() => _ListScreenState();
+  ListScreenState createState() => ListScreenState();
 }
 
-class _ListScreenState extends State<ListScreen> {
+class ListScreenState extends State<ListScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   List<EventModel> filteredLists = [];
@@ -17,7 +19,6 @@ class _ListScreenState extends State<ListScreen> {
   @override
   Widget build(BuildContext context) {
     getAllEvent(); // You may need to load your events initially.
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -128,9 +129,7 @@ class _ListScreenState extends State<ListScreen> {
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSearch;
-  //for search  function
-  //final TextEditingController _searchController = TextEditingController();
-
+  
   const SearchField({super.key, required this.controller, required this.onSearch});
 
   @override

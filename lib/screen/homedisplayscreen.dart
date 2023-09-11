@@ -4,6 +4,8 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/subscreen/editscreen.dart';
 
 class DisplayScreen extends StatelessWidget {
+  const DisplayScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     getAllEvent(); // You may need to load your events initially.
@@ -41,7 +43,7 @@ class DisplayScreen extends StatelessWidget {
 class EventListView extends StatelessWidget {
   final List<EventModel> eventList;
 
-  EventListView({required this.eventList});
+  const EventListView({super.key, required this.eventList});
 
   @override
   Widget build(BuildContext context) {

@@ -4,31 +4,28 @@ import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
-import 'package:reminder/widgets/bottomBar.dart';
 
 class AddEvent extends StatefulWidget {
-  const AddEvent( {super.key});
+  const AddEvent({super.key});
 
   @override
   State<AddEvent> createState() => _AddEventState();
 }
 
 class _AddEventState extends State<AddEvent> {
-  final box= Hive.box<EventModel>("data");
+  final box = Hive.box<EventModel>("data");
 
   DateTime date = DateTime.now();
 
   //for catogory selection//
   String? _option;
 
-  //for the validation 
-    final formKey = GlobalKey<FormState>();
+  //for the validation
+  final formKey = GlobalKey<FormState>();
 
-    void submitform(){
-    if (formKey.currentState!.validate()) {
-          
-    }
-    }
+  void submitform() {
+    if (formKey.currentState!.validate()) {}
+  }
 
   final List<Map> _myOption = [
     {
@@ -71,7 +68,6 @@ class _AddEventState extends State<AddEvent> {
 
   //time picker
   //TimeOfDay _selectedTime = TimeOfDay.now();
-  
 
   // Future<void> _selectTime(BuildContext context) async {
   //   final TimeOfDay? pickedTime = await showTimePicker(
@@ -94,7 +90,6 @@ class _AddEventState extends State<AddEvent> {
   //final _datetimeController = TextEditingController();
 
   //final _timeController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +128,7 @@ class _AddEventState extends State<AddEvent> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.purple),
-                      width: 350,
+                  width: 350,
                   height: 55,
                   child: TextFormField(
                     controller: _titleController,
@@ -141,10 +136,11 @@ class _AddEventState extends State<AddEvent> {
                       hintText: "Title",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      hintStyle: const TextStyle(color: Colors.white, fontSize: 20),
+                      hintStyle:
+                          const TextStyle(color: Colors.white, fontSize: 20),
                     ),
                     //title validation if it is empty.
-                    validator: (value){
+                    validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter the title';
                       }
@@ -205,37 +201,37 @@ class _AddEventState extends State<AddEvent> {
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 10),
               child: Container(
-                alignment: Alignment.bottomLeft,
-                height: 57,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.purple,
-                  border: Border.all(width: 1, color: Colors.purple),
-                ),
-          child: TextButton(
-            onPressed: () async {
-              DateTime? newDate = await showDatePicker(
-                  context: context,
-                  initialDate: DateTime.now(),
-                  firstDate: DateTime(2020),
-                  lastDate: DateTime(2100));
-              if (newDate == null) {
-                return;
-              } else {
-                setState(() {
-                  date = newDate;
-                });
-              }
-            },
-            child: Text(
-              'Date : ${date.year}/${date.month}/${date.day}',
-              style: const TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-          )),
+                  alignment: Alignment.bottomLeft,
+                  height: 57,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.purple,
+                    border: Border.all(width: 1, color: Colors.purple),
+                  ),
+                  child: TextButton(
+                    onPressed: () async {
+                      DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2100));
+                      if (newDate == null) {
+                        return;
+                      } else {
+                        setState(() {
+                          date = newDate;
+                        });
+                      }
+                    },
+                    child: Text(
+                      'Date : ${date.year}/${date.month}/${date.day}',
+                      style: const TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  )),
             ),
             //time picker
             // Center(
@@ -254,7 +250,7 @@ class _AddEventState extends State<AddEvent> {
             //         child: Text(
             //           _selectedTime.format(context), // Display selected time
             //           style: const TextStyle(
-            //             color: Colors.white, 
+            //             color: Colors.white,
             //             fontSize: 24,
             //           ),
             //         ),
@@ -262,7 +258,7 @@ class _AddEventState extends State<AddEvent> {
             //     ),
             //   ),
             // ),
-    
+
             //time picker end
             Row(
               children: [
@@ -271,7 +267,10 @@ class _AddEventState extends State<AddEvent> {
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).pop(
-                          MaterialPageRoute(builder: (context) =>   ListScreen(),),);
+                        MaterialPageRoute(
+                          builder: (context) => ListScreen(),
+                        ),
+                      );
                     },
                     child: Container(
                       width: 120,
@@ -291,11 +290,11 @@ class _AddEventState extends State<AddEvent> {
                   padding: const EdgeInsets.only(top: 30, left: 70),
                   child: GestureDetector(
                     onTap: () {
-                        if (formKey.currentState!.validate()) {
-                         onAddEventButton(context);
-                        }else{
-                           submitform();
-                        } 
+                      if (formKey.currentState!.validate()) {
+                        onAddEventButton(context);
+                      } else {
+                        submitform();
+                      }
                     },
                     child: Container(
                       width: 120,
@@ -304,10 +303,11 @@ class _AddEventState extends State<AddEvent> {
                           borderRadius: BorderRadius.circular(30),
                           color: Colors.cyan),
                       child: const Center(
-                          child: Text(
-                        "Ok",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),),
+                        child: Text(
+                          "Ok",
+                          style: TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -316,10 +316,11 @@ class _AddEventState extends State<AddEvent> {
           ],
         ),
       ),
-    ); 
+    );
   }
+
 //var deletevent = EventsDB();
-  Future <void>onAddEventButton(BuildContext context) async{
+  Future<void> onAddEventButton(BuildContext context) async {
     final model = EventModel(
       title: _titleController.text,
       //timeOfDay: _selectedTime,
@@ -327,28 +328,10 @@ class _AddEventState extends State<AddEvent> {
       catogory: _option!,
     );
     addEvent(model);
-    //deletevent.addEvent(model);
-    
-
-    
-   Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const EventScreen()));
-  //   if (_title.isEmpty) {
-  //     return print('');
-  //   }
-  //   print('$_title');
-  //   final _category = _categoryController.text.trim();
-  //   final _datetime = _datetimeController.text.trim();
-  //   final _timeofday = _timeController.text.trim();
-
-  //  final listScreenn = EventModel(title: _title, catogory: _option!,  timeOfDay: _selectedTime,  dateTime: date);
-
-  //   AddEvent(listScreenn);
-
-  //   Navigation.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> ListScreen(
-  //     Title:_title,
-  //     TimeOfDay: _timeofday,
-  //     datetime: _dateTime, 
-  //   )));
-
-  }   
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const EventScreen(),
+      ),
+    );
+  }
 }

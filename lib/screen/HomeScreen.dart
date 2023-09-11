@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:one_clock/one_clock.dart';
-import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homedisplayscreen.dart';
 
 class HomeScreen extends StatelessWidget {
-   HomeScreen({super.key});
+   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>   EventScreen(),
+                          builder: (context) =>   const EventScreen(),
                         ),
                       );
                     },
