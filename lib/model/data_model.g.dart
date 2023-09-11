@@ -20,22 +20,19 @@ class EventModelAdapter extends TypeAdapter<EventModel> {
       title: fields[0] as String,
       catogory: fields[1] as String,
       dateTime: fields[2] as DateTime,
-      timeOfDay: fields[3] as dynamic,
     );
   }
 
   @override
   void write(BinaryWriter writer, EventModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.catogory)
       ..writeByte(2)
-      ..write(obj.dateTime)
-      ..writeByte(3)
-      ..write(obj.timeOfDay);
+      ..write(obj.dateTime);
   }
 
   @override

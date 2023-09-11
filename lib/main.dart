@@ -7,8 +7,12 @@ import 'package:reminder/widgets/bottomBar.dart';
 
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await  Hive.initFlutter();
-  Hive.registerAdapter(EventModelAdapter());
+   if (!Hive.isAdapterRegistered(EventModelAdapter().typeId)) {
+    Hive.registerAdapter(EventModelAdapter());
+  }
+ 
   await Hive.openBox<EventModel>("data"); 
   runApp(const MyApp());
 }
