@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/AddEvent.dart';
 import 'package:reminder/screen/ListScreen.dart';
+import 'package:reminder/widgets/searchfield.dart';
 
 //list screen search vere
 class EventScreen extends StatefulWidget {
@@ -107,33 +108,35 @@ class _EventScreenState extends State<EventScreen> {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              Container(
-                height: 55,
-                width: 360,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: TextFormField(
-                        decoration: const InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(fontSize: 20),
-                          border: InputBorder.none,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.search_rounded),
-                    ),
-                  ],
-                ),
-              ),
+              //SearchField(),
+              // Container(
+              //   height: 55,
+              //   width: 360,
+              //   decoration: BoxDecoration(
+              //     border: Border.all(color: Colors.white),
+              //     borderRadius: BorderRadius.circular(20),
+              //     color: Colors.white,
+              //   ),
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //         child:
+              //          TextFormField(
+              //           decoration: const InputDecoration(
+              //             hintText: 'Search',
+              //             hintStyle: TextStyle(fontSize: 20),
+              //             border: InputBorder.none,
+              //             contentPadding: EdgeInsets.symmetric(horizontal: 10),
+              //           ),
+              //         ),
+              //       ),
+              //       IconButton(
+              //         onPressed: () {},
+              //         icon: const Icon(Icons.search_rounded),
+              //       ),
+              //     ],
+              //   ),
+              // ),
                Expanded(
                 child: ListScreen(),
               ),

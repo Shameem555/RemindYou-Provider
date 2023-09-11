@@ -1,71 +1,78 @@
+import 'package:flutter/material.dart';
+import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/model/data_model.dart';
 
-// import 'package:flutter/material.dart';
-// import 'package:reminder/functions/events_db.dart';
-// import 'package:reminder/screen/listScreen.dart';
+class SearchField extends StatefulWidget {
+  const SearchField({super.key});
 
-// class SearchField extends StatefulWidget {
-//   const SearchField({super.key});
+  @override
+  State<SearchField> createState() => _SearchFieldState();
+}
 
-//   @override
-//   State<SearchField> createState() => _SearchFieldState();
-// }
+class _SearchFieldState extends State<SearchField> {
+  TextEditingController searchController = TextEditingController();
+  List<EventModel> filteredLists = [];
+  bool isSearching = false;
 
-// class _SearchFieldState extends State<SearchField> {
-//   TextEditingController searchQueryController = TextEditingController();
+  @override
+  initState() {
+    super.initState();
+    searchController.addListener(_onSearchChanged);
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-//       child: Card(
-//         elevation: 9,
-//         shape: RoundedRectangleBorder(
-//           borderRadius: BorderRadius.circular(20),
-//         ),
-//         child: Padding(
-//           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-//           child: TextField(
-//             controller: searchQueryController,
-//             onChanged: (query) {
-//               searchResult(query);
-//             },
-//             decoration: InputDecoration(
-//                 hintText: 'Search..',
-//                 border: InputBorder.none,
-//                 icon: const Icon(
-//                   Icons.search,
-//                   // color: textClr,
-//                 ),
-//                 suffixIcon: IconButton(
-//                     onPressed: () {
-//                       overViewListNotifier.value =
-//                           EventsDB.instance.eventListNotifier.value;
-//                       searchQueryController.clear();
-//                     },
-//                     icon: const Icon(
-//                       Icons.close,
-//                       // color: Colors.black,
-//                     ),),),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
+  void _onSearchChanged() {
+    setState(() {
+      if (searchController.text.isEmpty) {
+        isSearching = false;
+        filteredLists = [];
+      } else {
+        isSearching = true;
+        filteredLists = eventListNotifier.value
+            .where((task) => task.title
+                .toLowerCase()
+                .contains(searchController.text.toLowerCase()))
+            .toList();
+      }
+    });
+  }
 
-//   searchResult(String query) {
-//     if (query.isEmpty || query == '') {
-//       debugPrint(query);
-
-//       overViewListNotifier.value =
-//           EventsDB.instance.eventListNotifier.value;
-//     } else {
-//       overViewListNotifier.value = overViewListNotifier.value
-//           .where((element) =>
-//               element.title
-//                   .toLowerCase()
-//                   .contains(query.trim().toLowerCase()) ||
-//               element.catogory.contains(query.trim().toLowerCase()))
-//           .toList();
-//     }
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    eventListNotifier.notifyListeners();
+    return Container(
+      height: 60,
+      width: 360,
+      decoration: BoxDecoration(
+        //border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.white,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: TextField(
+                controller: searchController,
+                decoration: const InputDecoration(
+                  hintText: 'Search',
+                  prefixIcon: Icon(Icons.search_rounded),
+                  filled: true,
+                  hintStyle: TextStyle(fontSize: 20),
+                  border: InputBorder.none,
+                  //contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                ),
+              ),
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              searchController.clear();
+            },
+            icon: const Icon(Icons.clear),
+          ),
+        ],
+      ),
+    );
+  }
+}
