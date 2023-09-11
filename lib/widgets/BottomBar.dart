@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:reminder/screen/chart.dart';
 import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homeScreen.dart';
-//import 'package:reminder/screen/EventScreen.dart';
-//import 'package:reminder/screen/listedscreen.dart';
 import 'package:reminder/screen/settings.dart';
 
 class BottomBar extends StatefulWidget {
@@ -18,7 +16,7 @@ class _BottomBarState extends State<BottomBar> {
   int _currentIndex = 0; 
   final tabs =[
       HomeScreen(),
-      EventScreen(),
+     const EventScreen(),
      const Chart(),
      const Settings(),
   ];
