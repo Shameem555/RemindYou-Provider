@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:one_clock/one_clock.dart';
 import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
+import 'package:reminder/screen/homedisplayscreen.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
@@ -86,7 +87,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
              Expanded(
-              child: ListScreen(),
+              child: DisplayScreen(),
             ),
           ],
         ),
