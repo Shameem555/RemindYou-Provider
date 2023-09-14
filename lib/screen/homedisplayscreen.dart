@@ -1,6 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:reminder/functions/events_db.dart';
+//import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/subscreen/editscreen.dart';
@@ -70,7 +69,7 @@ class EventListView extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                     EditScreen(name: data.title, select: data.catogory,dates: data.dateTime,),
+                                     EditScreen(name: data.title, select: data.catogory,dates: data.dateTime,index: index,),
                               ),
                             );
                           },

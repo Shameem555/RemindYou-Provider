@@ -65,10 +65,10 @@ class _DateFilterTransactionState extends State<DateFilter> {
             "All",
           ),
           onTap: () {
-            var s = 
+           // var s = 
             eventviewListNotifier.value =
                 EventsDB.instance.eventListNotifier.value;
-                print(s.toList().toString());
+                //print(s.toList().toString());
           },
         ),
         PopupMenuItem(
@@ -77,7 +77,7 @@ class _DateFilterTransactionState extends State<DateFilter> {
             "Today",
           ),
           onTap: () {
-            var t =
+          //  var t =
             eventviewListNotifier.value =
                 EventsDB.instance.eventListNotifier.value;
                 
@@ -87,7 +87,7 @@ class _DateFilterTransactionState extends State<DateFilter> {
                     element.dateTime.month == DateTime.now().month &&
                     element.dateTime.year == DateTime.now().year)
                 .toList();
-                print(t.length);
+               // print(t.length);
           },
         ),
         PopupMenuItem(
@@ -123,3 +123,5 @@ class _DateFilterTransactionState extends State<DateFilter> {
     );
   }
 }
+
+// another experiment 

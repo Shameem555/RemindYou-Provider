@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
@@ -9,8 +10,9 @@ class EditScreen extends StatefulWidget {
   var name;
   var select;
   var dates;
+  int index;
   
-   EditScreen({super.key,required this.name,required this.select,required this.dates});
+   EditScreen({super.key,required this.name,required this.select,required this.dates,required this.index});
 
   @override
   State<EditScreen> createState() => _EditScreenState();
@@ -19,7 +21,8 @@ class EditScreen extends StatefulWidget {
 class _EditScreenState extends State<EditScreen> {
   final box = Hive.box<EventModel>("data");
   dynamic tittleControl;
-  dynamic dates;
+  // dynamic dates;
+  String? select;
 
   DateTime date = DateTime.now();
 
@@ -27,12 +30,15 @@ class _EditScreenState extends State<EditScreen> {
   void initState() {
     // TODO: implement initState
     tittleControl = TextEditingController(text:widget.name);
+    select=widget.select;
+    date=widget.dates;
+
     
     super.initState();
   }
 
   //for catogory selection//
-  String? _option;
+  // String? _option;
 
   final List<Map> _myOption = [
     {
@@ -74,7 +80,7 @@ class _EditScreenState extends State<EditScreen> {
   ];
 
   // text controller//
-  final _titleController = TextEditingController();
+  // final _titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -137,18 +143,20 @@ class _EditScreenState extends State<EditScreen> {
                   border: Border.all(width: 1, color: Colors.purple),
                 ),
                 child: DropdownButtonHideUnderline(
+                  
                   child: ButtonTheme(
                     alignedDropdown: true,
                     child: DropdownButton(
                       hint: const Text(
                         'Select Category',
                         style: TextStyle(color: Colors.white, fontSize: 20),
+                        
                       ),
-                      value: _option,
+                      value:select,
                       onChanged: (newValue) {
                         setState(
                           () {
-                            _option = newValue!;
+                            select = newValue!;
                           },
                         );
                       },
@@ -240,6 +248,10 @@ class _EditScreenState extends State<EditScreen> {
                   child: GestureDetector(
                     onTap: () {
                       onAddEventButton(context);
+                      Navigator.of(context).pop();
+                    //   Navigator.of(context).pushReplacement(
+                    //  MaterialPageRoute(builder: (context) => const EventScreen()));
+
                     },
                     child: Container(
                       width: 120,
@@ -265,15 +277,16 @@ class _EditScreenState extends State<EditScreen> {
   }
   
   Future<void> onAddEventButton(BuildContext context) async {
-    final model = EventModel(
-      title: _titleController.text,
+    final updation= EventModel(
+      title:tittleControl.text,
       //timeOfDay: _selectedTime,
       dateTime: date,
-      catogory: _option!,
+      catogory: select!,
     );
-    //update(context,model);
+    EventsDB().update(widget.index, updation);
 
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const EventScreen()));
+    
   }
 }
+
+//some expeiment

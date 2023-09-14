@@ -36,6 +36,7 @@ class EventsDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.putAt(index, updation);
     eventListNotifier.value[index]=updation;
+     notifyListeners();
     //eventListNotifier.notifyListeners();
     getAllEvent();
     //overViewListNotifier.notifyListeners();
@@ -48,4 +49,6 @@ class EventsDB extends ChangeNotifier {
     getAllEvent();
    // overViewListNotifier.notifyListeners();
   }
+
+  // void updateEvent(EventModel eventModel, EventModel model) {}
 }

@@ -94,7 +94,10 @@ class ListScreenState extends State<ListScreen> {
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                      EditScreen(
-                                                      name: data.title, select: data.catogory, dates: data.dateTime,
+                                                      index: index,
+                                                      name: data.title, 
+                                                      select: data.catogory, 
+                                                      dates: data.dateTime,
                                                      ),
                                               ),
                                             );
@@ -169,7 +172,7 @@ class SearchField extends StatelessWidget {
               onChanged: onSearch,
               decoration: const InputDecoration(
                 hintText: 'Search',
-               // prefixIcon: Icon(Icons.search_rounded),
+                //prefixIcon: Icon(Icons.search_rounded),
                 hintStyle: TextStyle(fontSize: 20),
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(horizontal: 10),
