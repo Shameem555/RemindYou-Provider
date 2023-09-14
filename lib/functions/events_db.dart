@@ -2,6 +2,17 @@ import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:reminder/model/data_model.dart';
 
+class EventsDB extends ChangeNotifier {
+  EventsDB.internal();
+
+  static EventsDB instance = EventsDB.internal();
+
+  factory EventsDB(){
+    return instance;
+  }
+
+  //begans 
+
   ValueNotifier<List<EventModel>> eventListNotifier = ValueNotifier([]);
 
   Future<void> addEvent(EventModel value) async{
@@ -37,10 +48,4 @@ import 'package:reminder/model/data_model.dart';
     getAllEvent();
    // overViewListNotifier.notifyListeners();
   }
-
-//   Future<void> deleteEvent(int index) async {
-//   final eventDB = await Hive.openBox<EventModel>("event_DB");
-//   await eventDB.deleteAt(index);
-//   overViewListNotifier.notifyListeners();
-//   getAllEvent();
-// }
+}

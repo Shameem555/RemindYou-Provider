@@ -5,7 +5,12 @@ import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
 
 class EditScreen extends StatefulWidget {
-  const EditScreen({super.key});
+
+  var name;
+  var select;
+  var dates;
+  
+   EditScreen({super.key,required this.name,required this.select,required this.dates});
 
   @override
   State<EditScreen> createState() => _EditScreenState();
@@ -13,8 +18,18 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   final box = Hive.box<EventModel>("data");
+  dynamic tittleControl;
+  dynamic dates;
 
   DateTime date = DateTime.now();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    tittleControl = TextEditingController(text:widget.name);
+    
+    super.initState();
+  }
 
   //for catogory selection//
   String? _option;
@@ -99,7 +114,7 @@ class _EditScreenState extends State<EditScreen> {
                 width: 350,
                 height: 55,
                 child: TextFormField(
-                  controller: _titleController,
+                  controller: tittleControl,
                   decoration: InputDecoration(
                     hintText: "Title",
                     border: OutlineInputBorder(
@@ -202,7 +217,7 @@ class _EditScreenState extends State<EditScreen> {
                     onTap: () {
                       Navigator.of(context).pop(
                         MaterialPageRoute(
-                          builder: (context) =>  ListScreen(),
+                          builder: (context) =>  const ListScreen(),
                         ),
                       );
                     },
@@ -248,7 +263,7 @@ class _EditScreenState extends State<EditScreen> {
       ),
     );
   }
-
+  
   Future<void> onAddEventButton(BuildContext context) async {
     final model = EventModel(
       title: _titleController.text,

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
+
 import 'package:reminder/subscreen/editscreen.dart';
+
+ValueNotifier<List<EventModel>> eventviewListNotifier = 
+ValueNotifier(EventsDB.instance.eventListNotifier.value);
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -10,7 +15,19 @@ class ListScreen extends StatefulWidget {
   ListScreenState createState() => ListScreenState();
 }
 
+
+
+
 class ListScreenState extends State<ListScreen> {
+
+
+  @override
+  void initState() {
+    eventviewListNotifier.value =
+        EventsDB.instance.eventListNotifier.value;
+    super.initState();
+  }
+
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   List<EventModel> filteredLists = [];
@@ -18,7 +35,7 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    getAllEvent(); // You may need to load your events initially.
+    eventlist.getAllEvent(); // You may need to load your events initially.
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -37,11 +54,11 @@ class ListScreenState extends State<ListScreen> {
               const SizedBox(height: 10),
               Expanded(
                 child: ValueListenableBuilder(
-                  valueListenable: eventListNotifier,
-                  builder: (BuildContext ctx, List<EventModel> eventlist, Widget? child) {
+                  valueListenable: eventlist.eventListNotifier,
+                  builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) {
                     List<EventModel> eventList = isSearching
                         ? filteredLists
-                        : eventlist.where((event) {
+                        : eventlists.where((event) {
                             final title = event.title.toLowerCase();
                             return title.contains(_searchQuery.toLowerCase());
                           }).toList();
@@ -76,7 +93,9 @@ class ListScreenState extends State<ListScreen> {
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) =>
-                                                    const EditScreen(),
+                                                     EditScreen(
+                                                      name: data.title, select: data.catogory, dates: data.dateTime,
+                                                     ),
                                               ),
                                             );
                                           },
@@ -93,7 +112,7 @@ class ListScreenState extends State<ListScreen> {
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: TextButton(
                                           onPressed: () {
-                                            deleteEvents(index);
+                                            eventlist.deleteEvents(index);
                                             Navigator.of(context).pop();
                                           },
                                           child: const Text('Delete'),

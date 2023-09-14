@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/AddEvent.dart';
+import 'package:reminder/filter/date_filter.dart';
+import 'package:reminder/main.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 //list screen search vere
@@ -33,63 +35,64 @@ class _EventScreenState extends State<EventScreen> {
           ),
           centerTitle: true,
           actions: [
-            PopupMenuButton(
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Text("All"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Text("Today"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Text("Month"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                PopupMenuItem(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: const Text("Year"),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-              icon: const Icon(Icons.filter_list),
-            ),
+            DateFilter(),
+            // PopupMenuButton(
+            //   itemBuilder: (context) => [
+            //     PopupMenuItem(
+            //       child: Row(
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(left: 10.0),
+            //             child: TextButton(
+            //               onPressed: () {},
+            //               child: const Text("All"),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //     PopupMenuItem(
+            //       child: Row(
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(left: 10.0),
+            //             child: TextButton(
+            //               onPressed: () {},
+            //               child: const Text("Today"),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //     PopupMenuItem(
+            //       child: Row(
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(left: 10.0),
+            //             child: TextButton(
+            //               onPressed: () {},
+            //               child: const Text("Month"),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //     PopupMenuItem(
+            //       child: Row(
+            //         children: [
+            //           Padding(
+            //             padding: const EdgeInsets.only(left: 10.0),
+            //             child: TextButton(
+            //               onPressed: () {},
+            //               child: const Text("Year"),
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ],
+            //   icon: const Icon(Icons.filter_list),
+            // ),
           ],
         ),
         floatingActionButton: FloatingActionButton(

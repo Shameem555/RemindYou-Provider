@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
@@ -25,6 +26,7 @@ class _AddEventState extends State<AddEvent> {
 
   void submitform() {
     if (formKey.currentState!.validate()) {}
+    
   }
 
   final List<Map> _myOption = [
@@ -327,7 +329,8 @@ class _AddEventState extends State<AddEvent> {
       dateTime: date,
       catogory: _option!,
     );
-    addEvent(model);
+    //to add event
+    eventlist.addEvent(model);
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) => const EventScreen(),

@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/bottomBar.dart';
 
-
-
-void main() async{
+//object for db to access
+EventsDB eventlist = EventsDB();
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await  Hive.initFlutter();
-   if (!Hive.isAdapterRegistered(EventModelAdapter().typeId)) {
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(EventModelAdapter().typeId)) {
     Hive.registerAdapter(EventModelAdapter());
   }
- 
-  await Hive.openBox<EventModel>("data"); 
+
+  await Hive.openBox<EventModel>("data");
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application. 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Reminder',
       theme: ThemeData(
-        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
@@ -35,4 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

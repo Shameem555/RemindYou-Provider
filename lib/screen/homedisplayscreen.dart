@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/subscreen/editscreen.dart';
 
@@ -8,8 +10,7 @@ class DisplayScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getAllEvent(); // You may need to load your events initially.
-
+    eventlist.getAllEvent(); // You may need to load your events initially.
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
@@ -19,7 +20,7 @@ class DisplayScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Expanded(
               child: ValueListenableBuilder(
-                valueListenable: eventListNotifier,
+                valueListenable: eventlist.eventListNotifier,
                 builder: (BuildContext ctx, List<EventModel> eventlist, Widget? child) {
                   if (eventlist.isEmpty) {
                     return const Center(
@@ -69,7 +70,7 @@ class EventListView extends StatelessWidget {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    const EditScreen(),
+                                     EditScreen(name: data.title, select: data.catogory,dates: data.dateTime,),
                               ),
                             );
                           },
@@ -86,7 +87,7 @@ class EventListView extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10.0),
                         child: TextButton(
                           onPressed: () {
-                            deleteEvents(index);
+                            eventlist.deleteEvents(index);
                             Navigator.of(context).pop();
                           },
                           child: const Text('Delete'),
