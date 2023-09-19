@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
-
 import 'package:reminder/subscreen/editscreen.dart';
 
 ValueNotifier<List<EventModel>> eventviewListNotifier = 
-ValueNotifier(EventsDB.instance.eventListNotifier.value);
+ValueNotifier(EventDB.instance.eventListNotifier.value);
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -20,14 +19,16 @@ class ListScreen extends StatefulWidget {
 
 class ListScreenState extends State<ListScreen> {
 
+//just for an experiment, may be delete the code 
 
   @override
   void initState() {
     eventviewListNotifier.value =
-        EventsDB.instance.eventListNotifier.value;
+        EventDB.instance.eventListNotifier.value;
     super.initState();
   }
 
+  //this is for search bar 
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
   List<EventModel> filteredLists = [];
@@ -35,6 +36,8 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
+      // eventDB.close(); // Close the box after deleting the item.
+  eventviewListNotifier.notifyListeners();
     eventlist.getAllEvent(); // You may need to load your events initially.
     return SafeArea(
       child: Scaffold(
@@ -54,7 +57,7 @@ class ListScreenState extends State<ListScreen> {
               const SizedBox(height: 10),
               Expanded(
                 child: ValueListenableBuilder(
-                  valueListenable: eventlist.eventListNotifier,
+                  valueListenable: eventviewListNotifier,
                   builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) {
                     List<EventModel> eventList = isSearching
                         ? filteredLists
@@ -115,8 +118,13 @@ class ListScreenState extends State<ListScreen> {
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: TextButton(
                                           onPressed: () {
-                                            eventlist.deleteEvents(index);
+                                            setState(() {
+                                               eventlist.deleteEvents(index);
+                                            });
+                                           
+                                            
                                             Navigator.of(context).pop();
+                                            //to delete the listview item 
                                           },
                                           child: const Text('Delete'),
                                         ),
@@ -135,6 +143,7 @@ class ListScreenState extends State<ListScreen> {
                           height: 5,
                         );
                       },
+                      //the listview count .
                       itemCount: eventList.length,
                     );
                   },
@@ -148,6 +157,7 @@ class ListScreenState extends State<ListScreen> {
   }
 }
 
+//search field widget
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSearch;
@@ -167,6 +177,7 @@ class SearchField extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
+            //text form field widget 
             child: TextFormField(
               controller: controller,
               onChanged: onSearch,
@@ -179,6 +190,7 @@ class SearchField extends StatelessWidget {
               ),
             ),
           ),
+          //search icon 
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.search),
@@ -189,5 +201,91 @@ class SearchField extends StatelessWidget {
   }
 }
 
+void reload(){
+
+}
+
+// there is some experimental things
+// import 'package:flutter/material.dart';
+
+// class DateFilter extends StatefulWidget {
+//   const DateFilter({Key? key}) : super(key: key);
+
+//   @override
+//   State<DateFilter> createState() => _DateFilterTransactionState();
+// }
+
+// class _DateFilterTransactionState extends State<DateFilter> {
+//   // ... (other code)
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return PopupMenuButton<int>(
+//       // ... (other code)
+
+//       itemBuilder: (ctx) => [
+//         PopupMenuItem(
+//           value: 1,
+//           child: const Text("All"),
+//           onTap: () {
+//             // Filter for all events
+//             setState(() {
+//               isSearching = false;
+//             });
+//           },
+//         ),
+//         PopupMenuItem(
+//           value: 2,
+//           child: const Text("Today"),
+//           onTap: () {
+//             // Filter for events happening today
+//             setState(() {
+//               isSearching = true;
+//               filteredLists = eventlists.where((element) {
+//                 final date = element.dateTime;
+//                 final now = DateTime.now();
+//                 return date.year == now.year &&
+//                     date.month == now.month &&
+//                     date.day == now.day;
+//               }).toList();
+//             });
+//           },
+//         ),
+//         PopupMenuItem(
+//           value: 3,
+//           child: const Text("Yesterday"),
+//           onTap: () {
+//             // Filter for events happening yesterday
+//             setState(() {
+//               isSearching = true;
+//               filteredLists = eventlists.where((element) {
+//                 final date = element.dateTime;
+//                 final now = DateTime.now().subtract(Duration(days: 1));
+//                 return date.year == now.year &&
+//                     date.month == now.month &&
+//                     date.day == now.day;
+//               }).toList();
+//             });
+//           },
+//         ),
+//         PopupMenuItem(
+//           value: 4,
+//           child: const Text("Month"),
+//           onTap: () {
+//             // Filter for events happening this month
+//             setState(() {
+//               isSearching = true;
+//               filteredLists = eventlists.where((element) {
+//                 final date = element.dateTime;
+//                 final now = DateTime.now();
+//                 return date.year == now.year && date.month == now.month;
+//               }).toList();
+//             });
+//           },
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 

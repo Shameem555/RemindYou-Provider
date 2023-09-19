@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/bottomBar.dart';
 
 //object for db to access
-EventsDB eventlist = EventsDB();
+EventDB eventlist = EventDB();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -15,6 +14,7 @@ void main() async {
   }
 
   await Hive.openBox<EventModel>("data");
+  await EventDB.instance.getAllEvent();
   runApp(const MyApp());
 }
 

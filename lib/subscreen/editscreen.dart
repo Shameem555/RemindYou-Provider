@@ -251,7 +251,6 @@ class _EditScreenState extends State<EditScreen> {
                       Navigator.of(context).pop();
                     //   Navigator.of(context).pushReplacement(
                     //  MaterialPageRoute(builder: (context) => const EventScreen()));
-
                     },
                     child: Container(
                       width: 120,
@@ -277,15 +276,15 @@ class _EditScreenState extends State<EditScreen> {
   }
   
   Future<void> onAddEventButton(BuildContext context) async {
+    setState(() {
     final updation= EventModel(
       title:tittleControl.text,
       //timeOfDay: _selectedTime,
       dateTime: date,
       catogory: select!,
     );
-    EventsDB().update(widget.index, updation);
-
-    
+    EventDB().update(widget.index, updation);
+    });    
   }
 }
 

@@ -5,6 +5,7 @@ import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 import 'package:reminder/screen/eventscreen.dart';
+import 'package:reminder/widgets/bottomBar.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});
@@ -32,7 +33,7 @@ class _AddEventState extends State<AddEvent> {
   final List<Map> _myOption = [
     {
       'Category': '1',
-      'name': 'Select',
+      'name': 'Trip Planing',
     },
     {
       'Category': '2',
@@ -323,6 +324,7 @@ class _AddEventState extends State<AddEvent> {
 
 //var deletevent = EventsDB();
   Future<void> onAddEventButton(BuildContext context) async {
+    setState(() {
     final model = EventModel(
       title: _titleController.text,
       //timeOfDay: _selectedTime,
@@ -333,8 +335,10 @@ class _AddEventState extends State<AddEvent> {
     eventlist.addEvent(model);
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => const EventScreen(),
+        builder: (context) => const BottomBar(),
       ),
     );
+    });
   }
+  
 }

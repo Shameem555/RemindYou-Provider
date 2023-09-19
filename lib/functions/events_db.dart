@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/model/data_model.dart';
+import 'package:reminder/screen/listScreen.dart';
 
-class EventsDB extends ChangeNotifier {
-  EventsDB.internal();
+class EventDB extends ChangeNotifier {
+  EventDB.internal();
 
-  static EventsDB instance = EventsDB.internal();
+  static EventDB instance = EventDB.internal();
 
-  factory EventsDB(){
+  factory EventDB(){
     return instance;
   }
 
@@ -28,27 +29,32 @@ class EventsDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_db");
     eventListNotifier.value.clear();
     eventListNotifier.value.addAll(eventDB.values);
-    eventListNotifier.notifyListeners();
-    //overViewListNotifier.notifyListeners();
+    eventviewListNotifier.notifyListeners();
+    // overViewListNotifier.notifyListeners();
   }
-
+ 
   Future<void> update(index, updation)async{
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.putAt(index, updation);
     eventListNotifier.value[index]=updation;
      notifyListeners();
-    //eventListNotifier.notifyListeners();
+    eventListNotifier.notifyListeners();
     getAllEvent();
     //overViewListNotifier.notifyListeners();
   }
+  
+  Future<void> deleteEvents(int index) async {
+  final eventDB = await Hive.openBox<EventModel>("event_DB");
+    await eventDB.deleteAt(index);
+  eventDB.close(); // Close the box after deleting the item.
+  eventviewListNotifier.notifyListeners();
+  getAllEvent();
+}
 
-   deleteEvents(int index)async{
-    final eventDB = await Hive.openBox<EventModel>("event_DB");
-      await eventDB.deleteAt(index);
-      
-    getAllEvent();
-   // overViewListNotifier.notifyListeners();
-  }
-
-  // void updateEvent(EventModel eventModel, EventModel model) {}
+  //  deleteEvents(int index)async{
+  //   final eventDB = await Hive.openBox<EventModel>("event_DB");
+  //     await eventDB.delete(index);
+  //   eventviewListNotifier.notifyListeners();
+  //   getAllEvent();
+  // }
 }

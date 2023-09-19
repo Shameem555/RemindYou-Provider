@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/AddEvent.dart';
-import 'package:reminder/filter/date_filter.dart';
-import 'package:reminder/main.dart';
+import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/widgets/date_filter.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 //list screen search vere
@@ -13,9 +13,21 @@ class EventScreen extends StatefulWidget {
 }
 
 class _EventScreenState extends State<EventScreen> {
+
+  @override
+  void initState() {
+    eventviewListNotifier.value =
+        EventDB.instance.eventListNotifier.value;
+        setState(() {
+          
+        });
+    super.initState();
+  }
   
   @override
   Widget build(BuildContext context) {
+      // eventDB.close(); 
+  eventviewListNotifier.notifyListeners();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -34,7 +46,7 @@ class _EventScreenState extends State<EventScreen> {
             ),
           ),
           centerTitle: true,
-          actions: [
+          actions: const [
             DateFilter(),
             // PopupMenuButton(
             //   itemBuilder: (context) => [
@@ -93,6 +105,7 @@ class _EventScreenState extends State<EventScreen> {
             //   ],
             //   icon: const Icon(Icons.filter_list),
             // ),
+
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -106,8 +119,8 @@ class _EventScreenState extends State<EventScreen> {
           child: const Icon(Icons.add),
         ),
         body: 
-        Padding(
-          padding: const EdgeInsets.all(15.0),
+        const Padding(
+          padding: EdgeInsets.all(15.0),
           child: Column(
             children: [
               //SearchField(),
