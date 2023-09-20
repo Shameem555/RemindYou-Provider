@@ -52,9 +52,9 @@ class _DateFilterState extends State<DateFilter> {
           ),
           onTap: () {
             final now = DateTime.now();
-            final yesterday = now.subtract(Duration(days: 1));
+            final today = now.subtract(const Duration(days: 1));
             final startOfDay =
-                DateTime(yesterday.year, yesterday.month, yesterday.day);
+                DateTime(today.year, today.month, today.day);
             final endOfDay = DateTime(
                 now.year, now.month, now.day, 23, 59, 59); // End of yesterday
             filteration(startOfDay, endOfDay);
@@ -86,7 +86,7 @@ class _DateFilterState extends State<DateFilter> {
             final now = DateTime.now();
             final startOfMonth = DateTime(now.year, now.month, 1);
             final endOfMonth = DateTime(now.year, now.month + 1, 1)
-                .subtract(Duration(days: 1));
+                .subtract(const Duration(days: 1));
             filteration(startOfMonth, endOfMonth);
             print('Working 3');
           },
