@@ -48,7 +48,7 @@ class _BottomBarState extends State<BottomBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_applications),
-            label: 'Chart',
+            label: 'Settings',
             backgroundColor: Colors.blue,
           ),
       ],

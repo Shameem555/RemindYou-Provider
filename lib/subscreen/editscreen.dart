@@ -31,9 +31,7 @@ class _EditScreenState extends State<EditScreen> {
     // TODO: implement initState
     tittleControl = TextEditingController(text:widget.name);
     select=widget.select;
-    date=widget.dates;
-
-    
+    date=widget.dates;    
     super.initState();
   }
 
@@ -81,6 +79,9 @@ class _EditScreenState extends State<EditScreen> {
 
   // text controller//
   // final _titleController = TextEditingController();
+
+    
+
 
   @override
   Widget build(BuildContext context) {

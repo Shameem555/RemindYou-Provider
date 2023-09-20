@@ -18,9 +18,6 @@ class _EventScreenState extends State<EventScreen> {
   void initState() {
     eventviewListNotifier.value =
         EventDB.instance.eventListNotifier.value;
-        setState(() {
-          
-        });
     super.initState();
   }
   

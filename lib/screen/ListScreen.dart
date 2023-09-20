@@ -21,12 +21,12 @@ class ListScreenState extends State<ListScreen> {
 
 //just for an experiment, may be delete the code 
 
-  @override
-  void initState() {
-    eventviewListNotifier.value =
-        EventDB.instance.eventListNotifier.value;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   eventviewListNotifier.value =
+  //       EventDB.instance.eventListNotifier.value;
+  //   super.initState();
+  // }
 
   //this is for search bar 
   final TextEditingController _searchController = TextEditingController();
@@ -65,7 +65,6 @@ class ListScreenState extends State<ListScreen> {
                             final title = event.title.toLowerCase();
                             return title.contains(_searchQuery.toLowerCase());
                           }).toList();
-
                     if (eventList.isEmpty) {
                       return const Center(
                         child: Text(
@@ -206,6 +205,7 @@ void reload(){
 }
 
 // there is some experimental things
+
 // import 'package:flutter/material.dart';
 
 // class DateFilter extends StatefulWidget {
