@@ -15,18 +15,7 @@ class ListScreen extends StatefulWidget {
 }
 
 
-
-
 class ListScreenState extends State<ListScreen> {
-
-//just for an experiment, may be delete the code 
-
-  // @override
-  // void initState() {
-  //   eventviewListNotifier.value =
-  //       EventDB.instance.eventListNotifier.value;
-  //   super.initState();
-  // }
 
   //this is for search bar 
   final TextEditingController _searchController = TextEditingController();
@@ -36,9 +25,8 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-      // eventDB.close(); // Close the box after deleting the item.
   eventviewListNotifier.notifyListeners();
-    eventlist.getAllEvent(); // You may need to load your events initially.
+    EventDB.instance.getAllEvent(); // You may need to load your events initially.
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -199,93 +187,3 @@ class SearchField extends StatelessWidget {
     );
   }
 }
-
-void reload(){
-
-}
-
-// there is some experimental things
-
-// import 'package:flutter/material.dart';
-
-// class DateFilter extends StatefulWidget {
-//   const DateFilter({Key? key}) : super(key: key);
-
-//   @override
-//   State<DateFilter> createState() => _DateFilterTransactionState();
-// }
-
-// class _DateFilterTransactionState extends State<DateFilter> {
-//   // ... (other code)
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return PopupMenuButton<int>(
-//       // ... (other code)
-
-//       itemBuilder: (ctx) => [
-//         PopupMenuItem(
-//           value: 1,
-//           child: const Text("All"),
-//           onTap: () {
-//             // Filter for all events
-//             setState(() {
-//               isSearching = false;
-//             });
-//           },
-//         ),
-//         PopupMenuItem(
-//           value: 2,
-//           child: const Text("Today"),
-//           onTap: () {
-//             // Filter for events happening today
-//             setState(() {
-//               isSearching = true;
-//               filteredLists = eventlists.where((element) {
-//                 final date = element.dateTime;
-//                 final now = DateTime.now();
-//                 return date.year == now.year &&
-//                     date.month == now.month &&
-//                     date.day == now.day;
-//               }).toList();
-//             });
-//           },
-//         ),
-//         PopupMenuItem(
-//           value: 3,
-//           child: const Text("Yesterday"),
-//           onTap: () {
-//             // Filter for events happening yesterday
-//             setState(() {
-//               isSearching = true;
-//               filteredLists = eventlists.where((element) {
-//                 final date = element.dateTime;
-//                 final now = DateTime.now().subtract(Duration(days: 1));
-//                 return date.year == now.year &&
-//                     date.month == now.month &&
-//                     date.day == now.day;
-//               }).toList();
-//             });
-//           },
-//         ),
-//         PopupMenuItem(
-//           value: 4,
-//           child: const Text("Month"),
-//           onTap: () {
-//             // Filter for events happening this month
-//             setState(() {
-//               isSearching = true;
-//               filteredLists = eventlists.where((element) {
-//                 final date = element.dateTime;
-//                 final now = DateTime.now();
-//                 return date.year == now.year && date.month == now.month;
-//               }).toList();
-//             });
-//           },
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-
