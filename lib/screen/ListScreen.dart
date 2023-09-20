@@ -106,13 +106,25 @@ class ListScreenState extends State<ListScreen> {
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: TextButton(
                                           onPressed: () {
-                                            setState(() {
+                                            //alert will form in here !!
+                                            showDialog(context: context, builder: (BuildContext context){
+                                              return AlertDialog(
+                                                title: const Text("ഒരു സംശയം..!"),
+                                                content: const Text("ഒറപ്പന്നെ അല്ലേ, അപ്പൊ കളയട്ടേ..?"),
+                                                actions: [
+                                                  TextButton(onPressed: (){
+                                                    Navigator.of(context).pop();
+                                                  }, child: const Text("Cancel"),),
+                                                  TextButton(onPressed: (){
+                                                    setState(() {
                                                eventlist.deleteEvents(index);
                                             });
-                                           
-                                            
                                             Navigator.of(context).pop();
-                                            //to delete the listview item 
+                                                  }, child: const Text("Ok"),),
+                                                ],
+                                              );
+                                            });
+                                            // //to delete the listview item 
                                           },
                                           child: const Text('Delete'),
                                         ),
@@ -144,5 +156,3 @@ class ListScreenState extends State<ListScreen> {
     );
   }
 }
-
-//search field widget
