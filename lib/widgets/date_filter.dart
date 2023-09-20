@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/Screen/listScreen.dart';
 import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/screen/ListScreen.dart';
 
-//date filtering 
 class DateFilter extends StatefulWidget {
   const DateFilter({
     Key? key,
@@ -14,6 +13,15 @@ class DateFilter extends StatefulWidget {
 
 class _DateFilterState extends State<DateFilter> {
   DateTime? startDate, endDate;
+
+  void filteration(DateTime start, DateTime end) {
+    final filteredEvents = EventDB.instance.eventListNotifier.value
+        .where((element) =>
+            element.dateTime.isAfter(start) && element.dateTime.isBefore(end))
+        .toList();
+    eventviewListNotifier.value = filteredEvents;
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<int>(
@@ -34,7 +42,7 @@ class _DateFilterState extends State<DateFilter> {
           onTap: () {
             eventviewListNotifier.value =
                 EventDB.instance.eventListNotifier.value;
-                print('Working');
+            print('Working');
           },
         ),
         PopupMenuItem(
@@ -43,86 +51,39 @@ class _DateFilterState extends State<DateFilter> {
             "Today",
           ),
           onTap: () {
-            eventviewListNotifier.value =
-                EventDB.instance.eventListNotifier.value;
-            eventviewListNotifier.value = eventviewListNotifier.value
-                .where((element) =>
-                    element.dateTime.day == DateTime.now().day &&
-                    element.dateTime.month == DateTime.now().month &&
-                    element.dateTime.year == DateTime.now().year)
-                .toList();
-                print("working 1");
+            final today = DateTime.now();
+            final startOfDay = DateTime(today.year, today.month, today.day);
+            final endOfDay = startOfDay.add(Duration(days: 1));
+            filteration(startOfDay, endOfDay);
+            print("Working 1");
           },
         ),
         PopupMenuItem(
-            value: 2,
-            child: const Text(
-              "Yesterday",
-            ),
-            onTap: () {
-              eventviewListNotifier.value =
-                  EventDB.instance.eventListNotifier.value;
-              eventviewListNotifier.value = eventviewListNotifier.value
-                  .where((element) =>
-                      element.dateTime.day == DateTime.now().day - 1 &&
-                      element.dateTime.month == DateTime.now().month &&
-                      element.dateTime.year == DateTime.now().year)
-                  .toList();
-                  print('working 2');
-            }),
+          value: 3,
+          child: const Text(
+            "Yesterday",
+          ),
+          onTap: () {
+            final yesterday = DateTime.now().subtract(Duration(days: 1));
+            final startOfDay = DateTime(yesterday.year, yesterday.month, yesterday.day);
+            final endOfDay = startOfDay.add(Duration(days: 1));
+            filteration(startOfDay, endOfDay);
+            print('Working 2');
+          },
+        ),
         PopupMenuItem(
-            value: 2,
-            child: const Text(
-              "Month",
-            ),
-            onTap: () {
-              eventviewListNotifier.value =
-                  EventDB.instance.eventListNotifier.value;
-              eventviewListNotifier.value = eventviewListNotifier.value
-                  .where((element) =>
-                      element.dateTime.month == DateTime.now().month &&
-                      element.dateTime.year == DateTime.now().year)
-                  .toList();
-                  print('working 3');
-            }),
-            //this pop up menu item is priviesly used for ui  
-
-        // PopupMenuItem(
-        //     value: 2,
-        //     child: const Text(  
-        //       "Date Range",
-        //     ),
-        //     onTap: () {
-        //       showCustomDateRangePicker(context,
-        //           dismissible: true,
-        //           minimumDate: DateTime(2010),
-        //           maximumDate: DateTime(DateTime.now().year + 500),
-        //           endDate: endDate,
-        //           startDate: startDate, onApplyClick: (start, end) {
-        //         setState(() {
-        //           endDate = end.add(const Duration(days: 1));
-        //           startDate = start.subtract(const Duration(days: 1));
-        //         });
-
-        //         overViewListNotifier.value =
-        //             TransactionDB.instance.transactionListNotifier.value;
-        //         overViewListNotifier.value = overViewListNotifier.value
-        //             .where((element) =>
-        //                 element.datetime.isAfter(startDate!) &&
-        //                 element.datetime.isBefore(endDate!))
-        //             .toList();
-        //         startDate = null;
-        //         endDate = null;
-        //       }, onCancelClick: () {
-        //         setState(() {
-        //           endDate = null;
-        //           startDate = null;
-        //         });
-        //       },
-        //           backgroundColor: Colors.white,
-        //           primaryColor: const Color.fromARGB(255, 244, 98, 54));
-        //       //print('start date $startDate , end date $endDate');
-        //     }),
+          value: 4,
+          child: const Text(
+            "Month",
+          ),
+          onTap: () {
+            final now = DateTime.now();
+            final startOfMonth = DateTime(now.year, now.month, 1);
+            final endOfMonth = DateTime(now.year, now.month + 1, 1).subtract(Duration(days: 1));
+            filteration(startOfMonth, endOfMonth);
+            print('Working 3');
+          },
+        ),
       ],
     );
   }
