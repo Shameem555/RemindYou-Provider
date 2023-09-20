@@ -51,35 +51,42 @@ class _DateFilterState extends State<DateFilter> {
             "Today",
           ),
           onTap: () {
-            final today = DateTime.now();
-            final startOfDay = DateTime(today.year, today.month, today.day);
-            final endOfDay = startOfDay.add(Duration(days: 1));
-            filteration(startOfDay, endOfDay);
-            print("Working 1");
-          },
-        ),
-        PopupMenuItem(
-          value: 3,
-          child: const Text(
-            "Yesterday",
-          ),
-          onTap: () {
-            final yesterday = DateTime.now().subtract(Duration(days: 1));
-            final startOfDay = DateTime(yesterday.year, yesterday.month, yesterday.day);
-            final endOfDay = startOfDay.add(Duration(days: 1));
+            final now = DateTime.now();
+            final yesterday = now.subtract(Duration(days: 1));
+            final startOfDay =
+                DateTime(yesterday.year, yesterday.month, yesterday.day);
+            final endOfDay = DateTime(
+                now.year, now.month, now.day, 23, 59, 59); // End of yesterday
             filteration(startOfDay, endOfDay);
             print('Working 2');
           },
         ),
         PopupMenuItem(
-          value: 4,
+            value: 2,
+            child: const Text(
+              "Yesterday",
+            ),
+            onTap: () {
+              eventviewListNotifier.value =
+                  EventDB.instance.eventListNotifier.value;
+              eventviewListNotifier.value = eventviewListNotifier.value
+                  .where((element) =>
+                      element.dateTime.day == DateTime.now().day - 1 &&
+                      element.dateTime.month == DateTime.now().month &&
+                      element.dateTime.year == DateTime.now().year)
+                  .toList();
+              print('working 2');
+            }),
+        PopupMenuItem(
+          value: 3,
           child: const Text(
             "Month",
           ),
           onTap: () {
             final now = DateTime.now();
             final startOfMonth = DateTime(now.year, now.month, 1);
-            final endOfMonth = DateTime(now.year, now.month + 1, 1).subtract(Duration(days: 1));
+            final endOfMonth = DateTime(now.year, now.month + 1, 1)
+                .subtract(Duration(days: 1));
             filteration(startOfMonth, endOfMonth);
             print('Working 3');
           },

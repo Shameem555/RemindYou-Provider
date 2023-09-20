@@ -290,22 +290,22 @@
 //                 print("working 1");
 //           },
 //         ),
-//         PopupMenuItem(
-//             value: 2,
-//             child: const Text(
-//               "Yesterday",
-//             ),
-//             onTap: () {
-//               eventviewListNotifier.value =
-//                   EventDB.instance.eventListNotifier.value;
-//               eventviewListNotifier.value = eventviewListNotifier.value
-//                   .where((element) =>
-//                       element.dateTime.day == DateTime.now().day - 1 &&
-//                       element.dateTime.month == DateTime.now().month &&
-//                       element.dateTime.year == DateTime.now().year)
-//                   .toList();
-//                   print('working 2');
-//             }),
+        // PopupMenuItem(
+        //     value: 2,
+        //     child: const Text(
+        //       "Yesterday",
+        //     ),
+        //     onTap: () {
+        //       eventviewListNotifier.value =
+        //           EventDB.instance.eventListNotifier.value;
+        //       eventviewListNotifier.value = eventviewListNotifier.value
+        //           .where((element) =>
+        //               element.dateTime.day == DateTime.now().day - 1 &&
+        //               element.dateTime.month == DateTime.now().month &&
+        //               element.dateTime.year == DateTime.now().year)
+        //           .toList();
+        //           print('working 2');
+        //     }),
 //         PopupMenuItem(
 //             value: 2,
 //             child: const Text(
@@ -325,3 +325,34 @@
 //     );
 //   }
 // }
+
+//this is for today datefilteration
+ // PopupMenuItem(
+        //   value: 2,
+        //   child: const Text(
+        //     "Today",
+        //   ),
+        //   onTap: () {
+        //     final today = DateTime.now();
+        //     final startOfDay = DateTime(today.year, today.month, today.day);
+        //     final endOfDay = startOfDay.add(Duration(days: 1));
+        //     filteration(startOfDay, endOfDay);
+        //     print("Working 1");
+        //   },
+        // ),
+
+        //another one like yesterday
+        // PopupMenuItem(
+        //   value: 3,
+        //   child: const Text(
+        //     "Yesterday",
+        //   ),
+        //   onTap: () {
+        //     final yesterday = DateTime.now().subtract(Duration(days: 1));
+        //     final startOfDay = DateTime(yesterday.year, yesterday.month, yesterday.day);
+        //     final endOfDay = startOfDay.add(Duration(days: 1));
+        //     filteration(startOfDay, endOfDay);
+        //     print('Working 2');
+        //   },
+        // ),
+        
