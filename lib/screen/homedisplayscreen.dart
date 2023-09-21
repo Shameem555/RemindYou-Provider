@@ -40,16 +40,21 @@ class DisplayScreen extends StatelessWidget {
   }
 }
 
-class EventListView extends StatelessWidget {
+class EventListView extends StatefulWidget {
   final List<EventModel> eventList;
 
   const EventListView({super.key, required this.eventList});
 
   @override
+  State<EventListView> createState() => _EventListViewState();
+}
+
+class _EventListViewState extends State<EventListView> {
+  @override
   Widget build(BuildContext context) {
     return ListView.separated(
       itemBuilder: (ctx, index) {
-        final data = eventList[index];
+        final data = widget.eventList[index];
         return Card(
           elevation: 2,
           child: ListTile(
@@ -86,8 +91,24 @@ class EventListView extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 10.0),
                         child: TextButton(
                           onPressed: () {
-                            eventlist.deleteEvents(index);
-                            Navigator.of(context).pop();
+                            showDialog(context: context, builder: (BuildContext context){
+                              return AlertDialog(
+                                title: Text("Just for a conformation"),
+                                content: Text("Are you sure to delete the item"),
+                                actions: [
+                                  TextButton(onPressed: (){
+                                    Navigator.of(context).pop();
+                                  }, child: Text("Cancel"),),
+                                  TextButton(onPressed: (){
+                                    setState(() {
+                                      eventlist.deleteEvents(index);
+                                    });
+                                    Navigator.of(context).pop();
+                                  }, child: Text("Ok"),),
+                                ],
+                              );
+                            });
+                            // Navigator.of(context).pop();
                           },
                           child: const Text('Delete'),
                         ),
@@ -106,7 +127,7 @@ class EventListView extends StatelessWidget {
           height: 5,
         );
       },
-      itemCount: eventList.length > 4 ? 4: eventList.length,
+      itemCount: widget.eventList.length > 4 ? 4: widget.eventList.length,
     );
   }
 }
