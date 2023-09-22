@@ -93,18 +93,18 @@ class _EventListViewState extends State<EventListView> {
                           onPressed: () {
                             showDialog(context: context, builder: (BuildContext context){
                               return AlertDialog(
-                                title: Text("Just for a conformation"),
-                                content: Text("Are you sure to delete the item"),
+                                title: const Text("Just for a conformation"),
+                                content: const Text("Are you sure to delete the item"),
                                 actions: [
                                   TextButton(onPressed: (){
                                     Navigator.of(context).pop();
-                                  }, child: Text("Cancel"),),
+                                  }, child: const Text("Cancel"),),
                                   TextButton(onPressed: (){
                                     setState(() {
                                       eventlist.deleteEvents(index);
                                     });
                                     Navigator.of(context).pop();
-                                  }, child: Text("Ok"),),
+                                  }, child: const Text("Ok"),),
                                 ],
                               );
                             });
