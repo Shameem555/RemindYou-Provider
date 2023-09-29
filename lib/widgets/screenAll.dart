@@ -14,7 +14,7 @@ class ChartScreenAll extends StatelessWidget {
     ChartData('Inauguration', 1000),
   ];
 
-   
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(

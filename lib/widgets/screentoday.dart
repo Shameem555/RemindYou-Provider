@@ -3,7 +3,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 
 
 class ChartScreenToday extends StatelessWidget {
-   ChartScreenToday({super.key});
+  ChartScreenToday({super.key});
 
 final List<ChartData> chartData = [
     ChartData('Birthday', 3500),
@@ -12,7 +12,7 @@ final List<ChartData> chartData = [
     ChartData('Engagement', 2000),
     ChartData('Inauguration', 1000),
   ];
-  
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,8 @@ final List<ChartData> chartData = [
   }
 }
 
-
 class ChartData {
   ChartData(this.category, this.value);
   final String category;
   final int value;
 }
-
