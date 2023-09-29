@@ -85,6 +85,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:reminder/widgets/screenAll.dart';
+import 'package:reminder/widgets/screenYesterday.dart';
 import 'package:reminder/widgets/screentoday.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -123,7 +124,7 @@ class Chart extends StatelessWidget {
           children: [
             ChartScreenAll(),
             ChartScreenToday(),
-            const ChartScreenYesterday(),
+            ChartScreenYesterday(),
           ],
         ),
       ),
@@ -186,12 +187,12 @@ class Chart extends StatelessWidget {
 //   }
 // }
 
-class ChartScreenYesterday extends StatelessWidget {
-  const ChartScreenYesterday({super.key});
+// class ChartScreenYesterday extends StatelessWidget {
+//   const ChartScreenYesterday({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    // Add your chart data for "Yesterday" here
-    return Container();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     // Add your chart data for "Yesterday" here
+//     return Container();
+//   }
+// }
