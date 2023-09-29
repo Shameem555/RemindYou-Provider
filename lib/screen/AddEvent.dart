@@ -33,7 +33,7 @@ class _AddEventState extends State<AddEvent> {
   final List<Map> _myOption = [
     {
       'Category': '1',
-      'name': 'Trip Planing',
+      'name': 'Trip',
     },
     {
       'Category': '2',
