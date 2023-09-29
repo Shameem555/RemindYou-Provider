@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class ChartData {
-  ChartData(this.category, this.value);
-  final String category;
-  final int value;
-}
+
 
 class ChartScreenAll extends StatelessWidget {
   ChartScreenAll({super.key});
@@ -39,4 +35,10 @@ class ChartScreenAll extends StatelessWidget {
       ),
     );
   }
+}
+
+class ChartData {
+  ChartData(this.category, this.value);
+  final String category;
+  final int value;
 }

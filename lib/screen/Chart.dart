@@ -85,6 +85,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:reminder/widgets/screenAll.dart';
+import 'package:reminder/widgets/screentoday.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Chart extends StatelessWidget {
@@ -121,7 +122,7 @@ class Chart extends StatelessWidget {
         body:  TabBarView(
           children: [
             ChartScreenAll(),
-            const ChartScreenToday(),
+            ChartScreenToday(),
             const ChartScreenYesterday(),
           ],
         ),
@@ -175,15 +176,15 @@ class Chart extends StatelessWidget {
 //   }
 // }
 
-class ChartScreenToday extends StatelessWidget {
-  const ChartScreenToday({super.key});
+// class ChartScreenToday extends StatelessWidget {
+//   const ChartScreenToday({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    // Add your chart data for "Today" here
-    return Container();
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     // Add your chart data for "Today" here
+//     return Container();
+//   }
+// }
 
 class ChartScreenYesterday extends StatelessWidget {
   const ChartScreenYesterday({super.key});
