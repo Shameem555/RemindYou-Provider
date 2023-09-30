@@ -63,6 +63,7 @@ class ListScreenState extends State<ListScreen> {
                       );
                     }
                     return ListView.separated(
+                      reverse: true,
                       itemBuilder: (ctx, index) {
                         final data = eventList[index];
                         return Card(
@@ -87,7 +88,7 @@ class ListScreenState extends State<ListScreen> {
                                                      EditScreen(
                                                       index: index,
                                                       name: data.title, 
-                                                      select: data.catogory, 
+                                                      select: data.catogory,
                                                       dates: data.dateTime,
                                                      ),
                                               ),

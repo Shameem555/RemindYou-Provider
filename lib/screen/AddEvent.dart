@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
-import 'package:reminder/screen/ListScreen.dart';
-import 'package:reminder/screen/eventscreen.dart';
+import 'package:reminder/screen/ListScreen.dart'; 
 import 'package:reminder/widgets/bottomBar.dart';
 
 class AddEvent extends StatefulWidget {
@@ -33,39 +31,27 @@ class _AddEventState extends State<AddEvent> {
   final List<Map> _myOption = [
     {
       'Category': '1',
-      'name': 'Trip',
-    },
-    {
-      'Category': '2',
       'name': 'Birthday',
     },
     {
-      'Category': '3',
+      'Category': '2',
       'name': 'Wedding',
     },
     {
-      'Category': '4',
-      'name': 'Inaguration',
-    },
-    {
-      'Category': '5',
+      'Category': '3',
       'name': 'Engagement',
     },
     {
-      'Category': '6',
-      'name': 'Farewell',
-    },
-    {
-      'Category': '7',
+      'Category': '4',
       'name': 'House Warming',
     },
     {
-      'Category': '8',
-      'name': 'wedding Anniversary',
+      'Category': '5',
+      'name': 'Anniversary',
     },
     {
-      'Category': '9',
-      'name': 'others',
+      'Category': '6',
+      'name': 'Others',
     },
   ];
 

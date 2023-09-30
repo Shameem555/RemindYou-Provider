@@ -53,6 +53,7 @@ class _EventListViewState extends State<EventListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      reverse: true,
       itemBuilder: (ctx, index) {
         final data = widget.eventList[index];
         return Card(

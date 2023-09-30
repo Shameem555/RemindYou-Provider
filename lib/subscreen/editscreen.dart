@@ -41,39 +41,27 @@ class _EditScreenState extends State<EditScreen> {
   final List<Map> _myOption = [
     {
       'Category': '1',
-      'name': 'Select',
-    },
-    {
-      'Category': '2',
       'name': 'Birthday',
     },
     {
-      'Category': '3',
+      'Category': '2',
       'name': 'Wedding',
     },
     {
-      'Category': '4',
-      'name': 'Inaguration',
-    },
-    {
-      'Category': '5',
+      'Category': '3',
       'name': 'Engagement',
     },
     {
-      'Category': '6',
-      'name': 'Farewell',
-    },
-    {
-      'Category': '7',
+      'Category': '4',
       'name': 'House Warming',
     },
     {
-      'Category': '8',
-      'name': 'wedding Anniversary',
+      'Category': '5',
+      'name': 'Anniversary',
     },
     {
-      'Category': '9',
-      'name': 'others',
+      'Category': '6',
+      'name': 'Others',
     },
   ];
 
