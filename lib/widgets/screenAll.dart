@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:reminder/model/data_model.dart';
+import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
+final box = Hive.box<EventModel>('data');
+var chartHistory = box.values.toList();
+
+Map<String, int> birthdayCounts = count(chartHistory, 'birthday');
+Map<String, int> weddingCounts = count(chartHistory, 'wedding');
+Map<String, int> engagementCounts = count(chartHistory, 'engagement');
+Map<String, int> houseWarmingCound = count(chartHistory, 'houseWarming');
+Map<String, int> anniversaryCounts = count(chartHistory, 'anniversary');
+Map<String, int> othersCounts = count(chartHistory, 'others');
 
 class ChartScreenAll extends StatelessWidget {
   ChartScreenAll({super.key});
