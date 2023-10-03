@@ -11,7 +11,7 @@ var chartHistory = box.values.toList();
 Map<String, int> birthdayCounts = count(chartHistory, 'birthday');
 Map<String, int> weddingCounts = count(chartHistory, 'wedding');
 Map<String, int> engagementCounts = count(chartHistory, 'engagement');
-Map<String, int> houseWarmingCound = count(chartHistory, 'houseWarming');
+Map<String, int> houseWarmingCounts = count(chartHistory, 'houseWarming');
 Map<String, int> anniversaryCounts = count(chartHistory, 'anniversary');
 Map<String, int> othersCounts = count(chartHistory, 'others');
 
@@ -52,6 +52,17 @@ class ChartScreenAll extends StatelessWidget {
 
 class ChartData {
   ChartData(this.category, this.value);
-  final String category;
+  final String category ;
   final int value;
+}
+
+List<ChartData> updateChartData(List<EventModel> history, List<String> categories) {
+  List<ChartData> updatedData = [];
+
+  for (String category in categories) {
+    int count = history.where((event) => event.catogory == category).length;
+    updatedData.add(ChartData(category, count));
+  }
+
+  return updatedData;
 }
