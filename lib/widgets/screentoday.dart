@@ -6,11 +6,11 @@ class ChartScreenToday extends StatelessWidget {
   ChartScreenToday({super.key});
 
 final List<ChartData> chartData = [
-    ChartData('Birthday', 3500),
-    ChartData('Wedding', 1000),
-    ChartData('House Warming', 2000),
-    ChartData('Engagement', 2000),
-    ChartData('Inauguration', 1000),
+    ChartData('Birthday', 1),
+    ChartData('Wedding', 1),
+    ChartData('House Warming', 1),
+    ChartData('Engagement', 1),
+    ChartData('Inauguration', 1),
   ];
 
 

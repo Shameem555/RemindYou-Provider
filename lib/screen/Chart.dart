@@ -50,7 +50,7 @@ class Chart extends StatelessWidget {
             ),
             body:  TabBarView(
               children: [
-                ChartScreenAll(),
+                ChartScreenAll(chartHistory: eventlists,),
                 ChartScreenToday(),
                 ChartScreenYesterday(),
               ],

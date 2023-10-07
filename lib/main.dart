@@ -4,7 +4,7 @@ import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/bottomBar.dart';
 
-//object for db to access
+//object for db to accesss
 EventDB eventlist = EventDB();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

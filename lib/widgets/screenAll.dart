@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:reminder/model/data_model.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
 //import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -16,16 +17,23 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 // Map<String, int> othersCounts = count(chartHistory, 'others');
 
 class ChartScreenAll extends StatelessWidget {
-  ChartScreenAll({super.key});
+  ChartScreenAll({super.key,required this.chartHistory});
 
+List<dynamic>chartHistory;
 // int b;
 // int w;
-// var e;
-// var h;
-// var a;
-// var o;
+// int e;
+// int h;
+// int a;
+// int o;
 
   final List<ChartData> chartData = [
+    // allList(name: 'birthday', alldatalist: []),
+    // allList(name: 'wedding', alldatalist: []),
+    // allList(name: 'engagement', alldatalist: []),
+    // allList(name: 'anniversary', alldatalist: []),
+    // allList(name: 'houseWarming', alldatalist: []),
+    // allList(name: 'others', alldatalist: []),
     ChartData('Birthday', birthday.length.toInt()),
     ChartData('Wedding', wedding.length.toInt()),
     ChartData('Engagement', engagement.length.toInt()),
