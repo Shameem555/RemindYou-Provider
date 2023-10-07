@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/model/data_model.dart';
-// import 'package:hive_flutter/hive_flutter.dart';
-//import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -20,20 +17,15 @@ class ChartScreenAll extends StatelessWidget {
   ChartScreenAll({super.key,required this.chartHistory});
 
 List<dynamic>chartHistory;
-// int b;
-// int w;
-// int e;
-// int h;
-// int a;
-// int o;
+
+static List<dynamic> birthday = [];
+static List<dynamic> wedding = []; 
+static List<dynamic> engagement = [];
+static List<dynamic> anniversary = [];
+static List<dynamic> houseWarming = [];
+static List<dynamic> others = [];
 
   final List<ChartData> chartData = [
-    // allList(name: 'birthday', alldatalist: []),
-    // allList(name: 'wedding', alldatalist: []),
-    // allList(name: 'engagement', alldatalist: []),
-    // allList(name: 'anniversary', alldatalist: []),
-    // allList(name: 'houseWarming', alldatalist: []),
-    // allList(name: 'others', alldatalist: []),
     ChartData('Birthday', birthday.length.toInt()),
     ChartData('Wedding', wedding.length.toInt()),
     ChartData('Engagement', engagement.length.toInt()),

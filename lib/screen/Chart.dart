@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/ListScreen.dart';
-import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/screenAll.dart';
 import 'package:reminder/widgets/screenYesterday.dart';
