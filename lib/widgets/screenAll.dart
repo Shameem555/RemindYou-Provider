@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:reminder/model/data_model.dart';
+//import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
-final box = Hive.box<EventModel>('data');
-var chartHistory = box.values.toList();
+// final box = Hive.box<EventModel>('data');
+// var chartHistory = box.values.toList();
 
-Map<String, int> birthdayCounts = count(chartHistory, 'birthday');
-Map<String, int> weddingCounts = count(chartHistory, 'wedding');
-Map<String, int> engagementCounts = count(chartHistory, 'engagement');
-Map<String, int> houseWarmingCounts = count(chartHistory, 'houseWarming');
-Map<String, int> anniversaryCounts = count(chartHistory, 'anniversary');
-Map<String, int> othersCounts = count(chartHistory, 'others');
+// Map<String, int> birthdayCounts = count(chartHistory, 'birthday');
+// Map<String, int> weddingCounts = count(chartHistory, 'wedding');
+// Map<String, int> engagementCounts = count(chartHistory, 'engagement');
+// Map<String, int> houseWarmingCounts = count(chartHistory, 'houseWarming');
+// Map<String, int> anniversaryCounts = count(chartHistory, 'anniversary');
+// Map<String, int> othersCounts = count(chartHistory, 'others');
 
 class ChartScreenAll extends StatelessWidget {
   ChartScreenAll({super.key});
 
+// int b;
+// int w;
+// var e;
+// var h;
+// var a;
+// var o;
+
   final List<ChartData> chartData = [
-    ChartData('Birthday', 3000),
-    ChartData('Wedding', 1000),
-    ChartData('Engagement', 2000),
-    ChartData('House Warming', 2000),
-    ChartData('Anniversary', 1000),
-    ChartData('Others', 1000),
+    ChartData('Birthday', birthday.length.toInt()),
+    ChartData('Wedding', wedding.length.toInt()),
+    ChartData('Engagement', engagement.length.toInt()),
+    ChartData('House Warming', houseWarming.length.toInt()),
+    ChartData('Anniversary', anniversary.length.toInt()),
+    ChartData('Others', others.length.toInt()),
   ];
 
 
@@ -47,22 +54,11 @@ class ChartScreenAll extends StatelessWidget {
         ],
       ),
     );
-  }
+   }
 }
 
 class ChartData {
   ChartData(this.category, this.value);
   final String category ;
   final int value;
-}
-
-List<ChartData> updateChartData(List<EventModel> history, List<String> categories) {
-  List<ChartData> updatedData = [];
-
-  for (String category in categories) {
-    int count = history.where((event) => event.catogory == category).length;
-    updatedData.add(ChartData(category, count));
-  }
-
-  return updatedData;
 }

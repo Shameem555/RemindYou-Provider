@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/subscreen/editscreen.dart';
 import 'package:reminder/widgets/searchfield.dart';
-import 'package:reminder/widgets/utility.dart';
 
-ValueNotifier<List<EventModel>> eventviewListNotifier = 
+ValueNotifier<List<EventModel>> eventviewListNotifier =
 ValueNotifier(EventDB.instance.eventListNotifier.value);
 
 class ListScreen extends StatefulWidget {
