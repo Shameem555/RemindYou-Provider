@@ -23,7 +23,9 @@ class Chart extends StatelessWidget {
               bottom: TabBar(tabs: [
                 InkWell(child: const Tab(text: 'All'),onTap: () {
                   allList(alldatalist: eventlists);
-                  
+                  chartprint();
+                  final s = 
+                  Eventchart();s.histchart();
                 },),
                 InkWell(child: const Tab(text: 'Today'),onTap: (){
                   print("today's data clicked");
@@ -49,7 +51,7 @@ class Chart extends StatelessWidget {
             ),
             body:  TabBarView(
               children: [
-                ChartScreenAll(chartHistory: eventlists,),
+                ChartScreenAll(),
                 ChartScreenToday(),
                 ChartScreenYesterday(),
               ],

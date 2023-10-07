@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
@@ -14,9 +13,17 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 // Map<String, int> othersCounts = count(chartHistory, 'others');
 
 class ChartScreenAll extends StatelessWidget {
-  ChartScreenAll({super.key,required this.chartHistory});
+  dynamic bdy = 0;
+dynamic wdd;
+dynamic eng;
+dynamic ann;
+dynamic hw;
+dynamic or;
 
-List<dynamic>chartHistory;
+  ChartScreenAll({super.key,this.bdy,this.wdd,this.eng,this.ann,this.hw,this.or});
+
+// List<dynamic>chartHistory;
+
 
 static List<dynamic> birthday = [];
 static List<dynamic> wedding = []; 
@@ -25,8 +32,8 @@ static List<dynamic> anniversary = [];
 static List<dynamic> houseWarming = [];
 static List<dynamic> others = [];
 
-  final List<ChartData> chartData = [
-    ChartData('Birthday', birthday.length.toInt()),
+   List<ChartData> chartData = [
+    ChartData('Birthday', 0),
     ChartData('Wedding', wedding.length.toInt()),
     ChartData('Engagement', engagement.length.toInt()),
     ChartData('House Warming', houseWarming.length.toInt()),
@@ -62,3 +69,42 @@ class ChartData {
   final String category ;
   final int value;
 }
+
+class Eventchart {
+  var B;
+  var W;
+  var E;
+  var A;
+  var H;
+  var O;
+
+
+  Eventchart({ this.B, this.W, this.E, this.A, this.H, this.O});
+
+static List<dynamic> birthday = [];
+static List<dynamic> wedding = []; 
+static List<dynamic> engagement = [];
+static List<dynamic> anniversary = [];
+static List<dynamic> houseWarming = [];
+static List<dynamic> others = [];
+
+histchart(){
+
+birthday.add(B);
+print("birthday${B.toString()}");
+
+wedding.add(W);
+print("wedding${wedding}");
+engagement.add(E);
+print("engagement${engagement}");
+anniversary.add(A);
+print("anniversary${anniversary}");
+houseWarming.add(H);
+print("houseWarming${houseWarming}");
+others.add(O);
+print("others${others}");
+}
+}
+
+
+
