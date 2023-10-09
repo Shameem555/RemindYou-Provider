@@ -257,7 +257,7 @@ class _AddEventState extends State<AddEvent> {
                     onTap: () {
                       Navigator.of(context).pop(
                         MaterialPageRoute(
-                          builder: (context) => ListScreen(),
+                          builder: (context) => const ListScreen(),
                         ),
                       );
                     },
@@ -326,5 +326,4 @@ class _AddEventState extends State<AddEvent> {
     );
     });
   }
-  
 }
