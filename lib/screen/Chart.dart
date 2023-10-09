@@ -46,15 +46,25 @@ class _ChartState extends State<Chart> {
                       setState(() {
                         DateTime today = DateTime.now();
                         print(today.toString().substring(0, 11));
-                        //addaakanam...!
-                        //todayscreenchart tdy =todayscreenchart();
-                        
+                        // ignore: unused_local_variable
+                        todayscreenchart tdy =todayscreenchart();
+                        tdy.todayList(alldatalist: eventlists);
+                        tdy.checkconditions();
+                        tdy.historyoftoday();
                       });
                       print("today's data clicked");
                     }),
                 InkWell(
                   child: const Tab(text: "Yesterday"),
                   onTap: () {
+                    setState(() {
+                       DateTime yesterday =DateTime.now().subtract(const Duration(days: 1));
+                       print(yesterday.toString().substring(0, 11));
+                       yesterday_screenchart ydy = yesterday_screenchart();
+                      ydy.yesterdayList(alldatalist: eventlists);
+                      ydy.checkconditions();
+                      ydy.historyofyestarday();
+                    });
                     print("yesterday data printed");
                   },
                 ),
