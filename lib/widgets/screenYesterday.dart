@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ChartScreenYesterday extends StatelessWidget {
    ChartScreenYesterday({super.key});
 
    final List<ChartData> chartData = [
-    ChartData('Birthday', 1),
-    ChartData('Wedding', 1),
-    ChartData('House Warming', 1),
-    ChartData('Engagement', 1),
-    ChartData('Inauguration',1),
+    ChartData('Birthday', birthdayy.length.toInt()),
+    ChartData('Wedding', weddingy.length.toInt()),
+    ChartData('Engagement', weddingy.length.toInt()),
+    ChartData('House Warming', houseWarmingy.length.toInt()),
+    ChartData('Anniversary', anniversaryy.length.toInt()),
+    ChartData('Others',othersy.length.toInt()),
   ];
 
   @override
