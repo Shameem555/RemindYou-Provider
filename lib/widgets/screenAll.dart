@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
@@ -13,27 +14,26 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 // Map<String, int> othersCounts = count(chartHistory, 'others');
 
 class ChartScreenAll extends StatelessWidget {
-  dynamic bdy = 0;
-dynamic wdd;
-dynamic eng;
-dynamic ann;
-dynamic hw;
-dynamic or;
+  dynamic bdy;
+  dynamic wdd;
+  dynamic eng;
+  dynamic ann;
+  dynamic hw;
+  dynamic or;
 
   ChartScreenAll({super.key,this.bdy,this.wdd,this.eng,this.ann,this.hw,this.or});
 
 // List<dynamic>chartHistory;
 
-
-static List<dynamic> birthday = [];
-static List<dynamic> wedding = []; 
-static List<dynamic> engagement = [];
-static List<dynamic> anniversary = [];
-static List<dynamic> houseWarming = [];
-static List<dynamic> others = [];
+// static List<dynamic> birthday = [];
+// static List<dynamic> wedding = []; 
+// static List<dynamic> engagement = [];
+// static List<dynamic> anniversary = [];
+// static List<dynamic> houseWarming = [];
+// static List<dynamic> others = [];
 
    List<ChartData> chartData = [
-    ChartData('Birthday', 0),
+    ChartData('Birthday', birthday.length.toInt()),
     ChartData('Wedding', wedding.length.toInt()),
     ChartData('Engagement', engagement.length.toInt()),
     ChartData('House Warming', houseWarming.length.toInt()),
@@ -66,8 +66,8 @@ static List<dynamic> others = [];
 
 class ChartData {
   ChartData(this.category, this.value);
-  final String category ;
-  final int value;
+  final String category;
+  final dynamic value;
 }
 
 class Eventchart {
@@ -88,22 +88,22 @@ static List<dynamic> anniversary = [];
 static List<dynamic> houseWarming = [];
 static List<dynamic> others = [];
 
+//removable item//
 histchart(){
-
-birthday.add(B);
-print("birthday${B.toString()}");
-
-wedding.add(W);
-print("wedding${wedding}");
-engagement.add(E);
-print("engagement${engagement}");
-anniversary.add(A);
-print("anniversary${anniversary}");
-houseWarming.add(H);
-print("houseWarming${houseWarming}");
-others.add(O);
-print("others${others}");
+// birthday.add(B);
+// print("birthday${B  .toString()}");
+// wedding.add(W);
+// print("wedding${wedding}");
+// engagement.add(E);
+// print("engagement${engagement}");
+// anniversary.add(A);
+// print("anniversary${anniversary}");
+// houseWarming.add(H);
+// print("houseWarming${houseWarming}");
+// others.add(O);
+// print("others${others}");
 }
+//end with that//
 }
 
 
