@@ -4,7 +4,6 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/screenAll.dart';
 import 'package:reminder/widgets/screenYesterday.dart';
 import 'package:reminder/widgets/screentoday.dart';
-import 'package:reminder/widgets/utility.dart';
 
 class Chart extends StatefulWidget {
   const Chart({super.key});
@@ -26,48 +25,10 @@ class _ChartState extends State<Chart> {
           return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
-              bottom: TabBar(tabs: [
-                InkWell(
-                  child: const Tab(text: 'All'),
-                  onTap: () {
-                    setState(() {
-                      allList(alldatalist: eventlists);
-                      //chartprint();
-                      print(eventlists.map((e) => e.dateTime.toString()));
-                      final s = Eventchart();
-
-                      s.histchart();
-                    });
-                  },
-                ),
-                InkWell(
-                    child: const Tab(text: 'Today'),
-                    onTap: () {
-                      setState(() {
-                        DateTime today = DateTime.now();
-                        print(today.toString().substring(0, 11));
-                        // ignore: unused_local_variable
-                        todayscreenchart tdy =todayscreenchart();
-                        tdy.todayList(alldatalist: eventlists);
-                        tdy.checkconditions();
-                        tdy.historyoftoday();
-                      });
-                      print("today's data clicked");
-                    }),
-                InkWell(
-                  child: const Tab(text: "Yesterday"),
-                  onTap: () {
-                    setState(() {
-                       DateTime yesterday =DateTime.now().subtract(const Duration(days: 1));
-                       print(yesterday.toString().substring(0, 11));
-                       yesterday_screenchart ydy = yesterday_screenchart();
-                      ydy.yesterdayList(alldatalist: eventlists);
-                      ydy.checkconditions();
-                      ydy.historyofyestarday();
-                    });
-                    print("yesterday data printed");
-                  },
-                ),
+              bottom: const TabBar(tabs: [
+                Tab(text: 'All'),
+                Tab(text: 'Today'),
+                Tab(text: "Yesterday"),
               ]),
               backgroundColor: Colors.blue[300],
               shape: const RoundedRectangleBorder(

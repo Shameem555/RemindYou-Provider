@@ -63,6 +63,15 @@ class _BottomBarState extends State<BottomBar> {
                 _currentIndex = index;
                 if (_currentIndex == 2) {
                   allList(alldatalist: eventlists);
+
+                   todayscreenchart tdy = todayscreenchart();
+                        tdy.todayList(alldatalist: eventlists);
+                        tdy.checkconditions();
+
+                        yesterday_screenchart ydy = yesterday_screenchart();
+                      ydy.yesterdayList(alldatalist: eventlists);
+                      ydy.checkconditions();
+
                   final s = Eventchart();
                   s.histchart();
                 }
