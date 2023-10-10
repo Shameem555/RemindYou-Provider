@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
-import 'package:reminder/screen/eventscreen.dart';
 
 class EditScreen extends StatefulWidget {
 
@@ -67,9 +66,6 @@ class _EditScreenState extends State<EditScreen> {
 
   // text controller//
   // final _titleController = TextEditingController();
-
-    
-
 
   @override
   Widget build(BuildContext context) {
@@ -265,7 +261,7 @@ class _EditScreenState extends State<EditScreen> {
   }
   
   Future<void> onAddEventButton(BuildContext context) async {
-    setState(() {
+   setState(() {
     final updation= EventModel(
       title:tittleControl.text,
       //timeOfDay: _selectedTime,
@@ -273,7 +269,7 @@ class _EditScreenState extends State<EditScreen> {
       catogory: select!,
     );
     EventDB().update(widget.index, updation);
-    });    
+   });    
   }
 }
 
