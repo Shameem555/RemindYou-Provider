@@ -22,6 +22,7 @@ allList({
 
   print(alldatalist.map((e) => e.catogory.toString()).toList());
 
+  // ignore: avoid_function_literals_in_foreach_calls
   alldatalist.forEach((e) {
     if ('1' == e.catogory.toString()) {
       One = 1;
@@ -105,6 +106,7 @@ class todayscreenchart {
     var name,
     required List<EventModel> alldatalist,
   }) {
+    // ignore: avoid_function_literals_in_foreach_calls
     alldatalist.forEach((e) {
       if (today.toString().substring(0, 11) ==
           e.dateTime.toString().substring(0, 11)) {
@@ -116,6 +118,7 @@ class todayscreenchart {
 
   checkconditions() {
     print("----------->${listsofdata.map((e) => e.toString()).toList()}");
+    // ignore: avoid_function_literals_in_foreach_calls
     listsofdata.forEach((e) {
       if ("1" == e.toString()) {
         Ones = 1;
@@ -197,6 +200,7 @@ class yesterday_screenchart {
     var name,
     required List<EventModel> alldatalist,
   }) {
+    // ignore: avoid_function_literals_in_foreach_calls
     alldatalist.forEach((e) {
       if (yesterday.toString().substring(0, 11) ==
           e.dateTime.toString().substring(0, 11)) {
