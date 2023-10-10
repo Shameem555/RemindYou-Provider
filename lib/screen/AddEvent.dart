@@ -71,14 +71,8 @@ class _AddEventState extends State<AddEvent> {
   // }
   //end time picker
 
-  //all text controller//
+  // text controller..!//
   final _titleController = TextEditingController();
-
-  //final _categoryController = TextEditingController();
-
-  //final _datetimeController = TextEditingController();
-
-  //final _timeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

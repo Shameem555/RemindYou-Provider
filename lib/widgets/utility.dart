@@ -90,6 +90,7 @@ List<dynamic> anniversarys = [];
 List<dynamic> houseWarmings = [];
 List<dynamic> otherss = [];
 
+// ignore: camel_case_types
 class todayscreenchart {
   DateTime today = DateTime.now();
 // datae  datetoday = today.toString().substring(0, 11);
