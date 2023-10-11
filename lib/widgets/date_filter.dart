@@ -42,7 +42,7 @@ class _DateFilterState extends State<DateFilter> {
           onTap: () {
             eventviewListNotifier.value =
                 EventDB.instance.eventListNotifier.value;
-            print('Working');
+            //print('Working');
           },
         ),
         PopupMenuItem(
@@ -58,7 +58,7 @@ class _DateFilterState extends State<DateFilter> {
             final endOfDay = DateTime(
                 now.year, now.month, now.day, 23, 59, 59); // End of yesterday
             filteration(startOfDay, endOfDay);
-            print('Working 2');
+            //print('Working 2');
           },
         ),
         PopupMenuItem(
@@ -75,7 +75,7 @@ class _DateFilterState extends State<DateFilter> {
                       element.dateTime.month == DateTime.now().month &&
                       element.dateTime.year == DateTime.now().year)
                   .toList();
-              print('working 2');
+              //print('working 2');
             }),
         PopupMenuItem(
           value: 3,
@@ -88,7 +88,7 @@ class _DateFilterState extends State<DateFilter> {
             final endOfMonth = DateTime(now.year, now.month + 1, 1)
                 .subtract(const Duration(days: 1));
             filteration(startOfMonth, endOfMonth);
-            print('Working 3');
+            //print('Working 3');
           },
         ),
       ],

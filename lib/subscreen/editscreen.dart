@@ -11,10 +11,10 @@ class EditScreen extends StatefulWidget {
   var dates;
   int index;
   
-   EditScreen({super.key,required this.name,required this.select,required this.dates,required this.index});
+  EditScreen({super.key,required this.name,required this.select,required this.dates,required this.index});
 
   @override
-  State<EditScreen> createState() => _EditScreenState();
+  State<EditScreen> createState() => _EditScreenState(); 
 }
 
 class _EditScreenState extends State<EditScreen> {
@@ -35,8 +35,6 @@ class _EditScreenState extends State<EditScreen> {
   }
 
   //for catogory selection//
-  // String? _option;
-
   final List<Map> _myOption = [
     {
       'Category': '1',
@@ -64,8 +62,6 @@ class _EditScreenState extends State<EditScreen> {
     },
   ];
 
-  // text controller//
-  // final _titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -234,8 +230,6 @@ class _EditScreenState extends State<EditScreen> {
                     onTap: () {
                       onAddEventButton(context);
                       Navigator.of(context).pop();
-                    //   Navigator.of(context).pushReplacement(
-                    //  MaterialPageRoute(builder: (context) => const EventScreen()));
                     },
                     child: Container(
                       width: 120,
@@ -272,5 +266,3 @@ class _EditScreenState extends State<EditScreen> {
    });    
   }
 }
-
-//some expeiment

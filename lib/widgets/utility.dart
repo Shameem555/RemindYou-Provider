@@ -1,107 +1,88 @@
- import 'package:reminder/model/data_model.dart';
+import 'package:reminder/model/data_model.dart';
 
-List<dynamic> birthday = [];
-List<dynamic> wedding = [];
-List<dynamic> engagement = [];
+List<dynamic> birthday    = [];
+List<dynamic> wedding     = [];
+List<dynamic> engagement  = [];
 List<dynamic> anniversary = [];
-List<dynamic> houseWarming = [];
-List<dynamic> others = [];
+List<dynamic> houseWarming= [];
+List<dynamic> others      = [];
 
-dynamic One = 0;
-dynamic Two = 0;
-dynamic Three = 0;
-dynamic Four = 0;
-dynamic Five = 0;
-dynamic Six = 0;
+dynamic one  = 0;
+dynamic two  = 0;
+dynamic three= 0;
+dynamic four = 0;
+dynamic five = 0;
+dynamic six  = 0;
 
-allList({
-  var name,
-  required List<EventModel> alldatalist,
-}) {
-//seperate variables ..
+allList({ var name, required List<EventModel> alldatalist}) {
 
+  // ignore: avoid_print
   print(alldatalist.map((e) => e.catogory.toString()).toList());
 
   // ignore: avoid_function_literals_in_foreach_calls
   alldatalist.forEach((e) {
     if ('1' == e.catogory.toString()) {
-      One = 1;
-      birthday.add(One.toString());
-      print('One${birthday.length.toString()}');
+      one = 1;
+      birthday.add(one.toString());
+      // ignore: avoid_print
+      print('one${birthday.length.toString()}');
 
     } else if ('2' == e.catogory.toString()) {
-      Two = 1;
-      wedding.add(One.toString());
-      print("Two${wedding.length.toString()}");
+      two = 1;
+      wedding.add(one.toString());
+      // ignore: avoid_print
+      print("two${wedding.length.toString()}");
 
     } else if ('3' == e.catogory.toString()) {
-      Three = 1;
-      engagement.add(One.toString());
-      print("Three${engagement.length.toString()}");
+      three = 1;
+      engagement.add(one.toString());
+      // ignore: avoid_print
+      print("three${engagement.length.toString()}");
 
     } else if ('4' == e.catogory.toString()) {
-      Four = 1;
-      anniversary.add(One.toString());
-      print("Four${anniversary.length.toString()}");
+      four = 1;
+      anniversary.add(one.toString());
+      // ignore: avoid_print
+      print("four${anniversary.length.toString()}");
 
     } else if ('5' == e.catogory.toString()) {
-      Five = 1;
-      houseWarming.add(One.toString());
-      print("Five${houseWarming.length.toString()}");
+      five = 1;
+      houseWarming.add(one.toString());
+      // ignore: avoid_print
+      print("five${houseWarming.length.toString()}");
 
     } else if ('6' == e.catogory.toString()) {
-      Six++;
-      others.add(One.toString());
-      print("Six${others.length.toString()}");
+      six++;
+      others.add(one.toString());
+      // ignore: avoid_print
+      print("six${others.length.toString()}");
 
     }
+    // ignore: avoid_print
     birthday.map((e) => print('name_all${e.toString()}'));
   });
 }
 
-// historyofall() {
-//   birthdays.clear();
-//   weddings.clear();
-//   engagements.clear();
-//   anniversarys.clear();
-//   houseWarmings.clear();
-//   otherss.clear();
-// ///////////////////////////
-//   birthdayy.clear();
-//   weddingy.clear();
-//   engagementy.clear();
-//   anniversaryy.clear();
-//   houseWarmingy.clear();
-//   othersy.clear();
-//   /////////////////////////////
-//    birthday.clear();
-//     wedding.clear();
-//     engagement.clear();
-//     anniversary.clear();
-//     houseWarming.clear();
-//     others.clear();
-// }
-
-///////////////////////////today data a/////////////////////////////////////////////////////////////////////////////////
-List<dynamic> birthdays = [];
-List<dynamic> weddings = [];
-List<dynamic> engagements = [];
-List<dynamic> anniversarys = [];
+//>>------------------------------->today data <----------------------------------------------<<\\
+List<dynamic> birthdays     = [];
+List<dynamic> weddings      = [];
+List<dynamic> engagements   = [];
+List<dynamic> anniversarys  = [];
 List<dynamic> houseWarmings = [];
-List<dynamic> otherss = [];
+List<dynamic> otherss       = [];
 
 // ignore: camel_case_types
 class todayscreenchart {
   DateTime today = DateTime.now();
-// datae  datetoday = today.toString().substring(0, 11);
+
   List<dynamic> listsofdata = [];
 
-  dynamic Ones = 0;
-  dynamic Twos = 0;
-  dynamic Threes = 0;
-  dynamic Fours = 0;
-  dynamic Fives = 0;
-  dynamic Sixs = 0;
+  dynamic ones   = 0;
+  dynamic twos   = 0;
+  dynamic threes = 0;
+  dynamic fours  = 0;
+  dynamic fives  = 0;
+  dynamic sixs   = 0;
 
   todayList({
     var name,
@@ -111,91 +92,76 @@ class todayscreenchart {
     alldatalist.forEach((e) {
       if (today.toString().substring(0, 11) ==
           e.dateTime.toString().substring(0, 11)) {
-        One = 1;
+        one = 1;
         listsofdata.add(e.catogory.toString());
       }
     });
   }
 
   checkconditions() {
-    print("----------->${listsofdata.map((e) => e.toString()).toList()}");
+    //print("----------->${listsofdata.map((e) => e.toString()).toList()}");
     // ignore: avoid_function_literals_in_foreach_calls
     listsofdata.forEach((e) {
       if ("1" == e.toString()) {
-        Ones = 1;
-        birthdays.add(Ones.toString());
-        print("one======${birthdays.length}");
+        ones = 1;
+        birthdays.add(ones.toString());
+        //print("one======${birthdays.length}");
         
       }
       if ("2" == e.toString()) {
-        Twos = 1;
-        weddings.add(Twos.toString());
-        print("two======${weddings.length}");
+        twos = 1;
+        weddings.add(twos.toString());
+        //print("two======${weddings.length}");
 
       }
       if ("3" == e.toString()) {
-        Threes = 1;
-        engagements.add(Threes.toString());
-        print("three======${engagements.length}");
+        threes = 1;
+        engagements.add(threes.toString());
+        //print("three======${engagements.length}");
 
       }
       if ("4" == e.toString()) {
-        Fours = 1;
-        anniversarys.add(Fours.toString());
-        print("four======${anniversary.length}");
+        fours = 1;
+        anniversarys.add(fours.toString());
+        //print("four======${anniversary.length}");
 
       }
       if ("5" == e.toString()) {
-        Fives = 1;
-        houseWarmings.add(Fives.toString());
-        print("five======${houseWarmings.length}");
+        fives = 1;
+        houseWarmings.add(fives.toString());
+        //print("five======${houseWarmings.length}");
 
       }
       if ("6" == e.toString()) {
-        Sixs = 1;
-        others.add(Sixs.toString());
-        print("six======${others.length}");
+        sixs = 1;
+        others.add(sixs.toString());
+        //print("six======${others.length}");
 
       }
     });
   }
-
-//   historyoftoday() {
-//     birthday.clear();
-//     wedding.clear();
-//     engagement.clear();
-//     anniversary.clear();
-//     houseWarming.clear();
-//     others.clear();
-// ///////////////////////////
-//     birthdayy.clear();
-//     weddingy.clear();
-//     engagementy.clear();
-//     anniversaryy.clear();
-//     houseWarmingy.clear();
-//     othersy.clear();
-//   }
 }
 
-//////////////////////////////////yesterday data ///////////////////////////////////////////////////////////////////////
+//<-------------------------------->yesterday data<---------------------------------------------->\\
 
-List<dynamic> birthdayy = [];
-List<dynamic> weddingy = [];
-List<dynamic> engagementy = [];
-List<dynamic> anniversaryy = [];
-List<dynamic> houseWarmingy = [];
-List<dynamic> othersy = [];
+List<dynamic> birthdayy    =[];
+List<dynamic> weddingy     =[];
+List<dynamic> engagementy  =[];
+List<dynamic> anniversaryy =[];
+List<dynamic> houseWarmingy=[];
+List<dynamic> othersy      =[];
 
+// ignore: camel_case_types
 class yesterday_screenchart {
-  DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
+  DateTime yesterday = DateTime.now().subtract(const Duration(days: 1));
   List<dynamic> listsofdatass = [];
 
-  dynamic Oney = 0;
-  dynamic Twoy = 0;
-  dynamic Threey = 0;
-  dynamic Foury = 0;
-  dynamic Fivey = 0;
-  dynamic Sixy = 0;
+  dynamic oney  =0;
+  dynamic twoy  =0;
+  dynamic threey=0;
+  dynamic foury =0;
+  dynamic fivey =0;
+  dynamic sixy  =0;
 
   yesterdayList({
     var name,
@@ -211,62 +177,46 @@ class yesterday_screenchart {
   }
 
   checkconditions() {
-    print("----------->${listsofdatass.map((e) => e.toString()).toList()}");
+    //print("----------->${listsofdatass.map((e) => e.toString()).toList()}");
     // ignore: avoid_function_literals_in_foreach_calls
     listsofdatass.forEach((e) {
       if ("1" == e.toString()) {
-        Oney = 1;
-        birthdayy.add(Oney.toString());
-        print("one======${birthdayy.length}");
-
+        oney = 1;
+        birthdayy.add(oney.toString());
+        //print("one======${birthdayy.length}");
       }
+
       if ("2" == e.toString()) {
-        Twoy = 1;
-        weddingy.add(Twoy.toString());
-        print("two======${weddingy.length}");
-
+        twoy = 1;
+        weddingy.add(twoy.toString());
+        //print("two======${weddingy.length}");
       }
+
       if ("3" == e.toString()) {
-        Threey = 1;
-        engagementy.add(Threey.toString());
-        print("three======${engagementy.length}");
-
+        threey = 1;
+        engagementy.add(threey.toString());
+        //print("three======${engagementy.length}");
       }
+
       if ("4" == e.toString()) {
-        Foury = 1;
-        anniversaryy.add(Foury.toString());
-        print("four======${anniversaryy.length}");
-
+        foury = 1;
+        anniversaryy.add(foury.toString());
+        //print("four======${anniversaryy.length}");
       }
+
       if ("5" == e.toString()) {
-        Fivey = 1;
-        houseWarmingy.add(Fivey.toString());
-        print("five======${houseWarmingy.length}");
+        fivey = 1;
+        houseWarmingy.add(fivey.toString());
+        //print("five======${houseWarmingy.length}");
 
       }
+
       if ("6" == e.toString()) {
-        Sixy = 1;
-        othersy.add(Sixy.toString());
-        print("six======${othersy.length}");
-        
+        sixy = 1;
+        othersy.add(sixy.toString());
+        //print("six======${othersy.length}");
       }
     });
   }
-
-//   historyofyesterday() {
-//     birthday.clear();
-//     weddingy.clear();
-//     engagement.clear();
-//     anniversary.clear();
-//     houseWarming.clear();
-//     others.clear();
-// ///////////////////////////
-//     birthdays.clear();
-//     weddings.clear();
-//     engagements.clear();
-//     anniversarys.clear();
-//     houseWarmings.clear();
-//     otherss.clear();
-//   }
 }
 

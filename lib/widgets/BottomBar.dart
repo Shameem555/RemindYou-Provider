@@ -5,7 +5,6 @@ import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/screen/listScreen.dart';
 import 'package:reminder/screen/settings.dart';
-import 'package:reminder/widgets/screenAll.dart';
 import 'package:reminder/widgets/utility.dart';
 
 class BottomBar extends StatefulWidget {
@@ -64,16 +63,13 @@ class _BottomBarState extends State<BottomBar> {
                 if (_currentIndex == 2) {
                   allList(alldatalist: eventlists);
                   //for today chart filter
-                   todayscreenchart tdy = todayscreenchart();
-                        tdy.todayList(alldatalist: eventlists);
-                        tdy.checkconditions();
-                        //for yersterday chart filter
-                        yesterday_screenchart ydy = yesterday_screenchart();
-                      ydy.yesterdayList(alldatalist: eventlists);
-                      ydy.checkconditions();
-
-                  final s = Eventchart();
-                  s.histchart();
+                  todayscreenchart tdy = todayscreenchart();
+                  tdy.todayList(alldatalist: eventlists);
+                  tdy.checkconditions();
+                  //for yersterday chart filter
+                  yesterday_screenchart ydy = yesterday_screenchart();
+                  ydy.yesterdayList(alldatalist: eventlists);
+                  ydy.checkconditions();
                 }
               });
             },
