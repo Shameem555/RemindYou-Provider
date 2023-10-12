@@ -12,7 +12,7 @@ dynamic two  = 0;
 dynamic three= 0;
 dynamic four = 0;
 dynamic five = 0;
-dynamic six  = 0;
+dynamic six  = 0; 
 
 allList({ var name, required List<EventModel> alldatalist}) {
 
