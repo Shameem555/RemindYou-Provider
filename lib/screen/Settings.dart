@@ -188,7 +188,9 @@ class Settings extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 10, left: 10),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  print("Ya it's Working");
+                },
                 child: Container(
                   height: 55,
                   width: 370,

@@ -3,6 +3,7 @@ import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
+// ignore: must_be_immutable
 class ChartScreenAll extends StatelessWidget {
   dynamic bdy;
   dynamic wdd;
@@ -73,8 +74,8 @@ class Eventchart {
     this.W,
     this.E,
     this.A,
-    this.H, 
-    this.O
+    this.H,
+    this.O,
     });
 
 static List<dynamic> birthday     = [];
