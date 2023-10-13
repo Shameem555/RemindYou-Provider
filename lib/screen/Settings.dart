@@ -189,6 +189,39 @@ class Settings extends StatelessWidget {
               padding: const EdgeInsets.only(top: 10, left: 10),
               child: GestureDetector(
                 onTap: () {
+                  //reset alert button//
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text(
+                            "Just a conformation!!",
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                          ),
+                          content: const Text("Are you Sure, The whole data will be gone!"),
+                          actions: [
+                            TextButton(onPressed: (){
+                              Navigator.of(context).pop();
+                            }, child:  const Text("Cancel",
+                              style: TextStyle(fontSize: 20),
+                            ),),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(context);
+                              },
+                              child: const Text(
+                                "Ok",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                            ),
+                          ],
+                        );
+                      });
                   print("Ya it's Working");
                 },
                 child: Container(
