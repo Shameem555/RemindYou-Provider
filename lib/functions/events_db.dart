@@ -20,9 +20,7 @@ class EventDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_db");
       await eventDB.add(value);
     eventListNotifier.value.add(value);
-    //eventListNotifier.notifyListeners();
     getAllEvent();
-    //overViewListNotifier.notifyListeners();
   }
 
   Future<void> getAllEvent()async{
@@ -30,7 +28,6 @@ class EventDB extends ChangeNotifier {
     eventListNotifier.value.clear();
     eventListNotifier.value.addAll(eventDB.values);
     eventviewListNotifier.notifyListeners();
-    // overViewListNotifier.notifyListeners();
   }
  
   Future<void> update(index, updation)async{
@@ -40,17 +37,20 @@ class EventDB extends ChangeNotifier {
      notifyListeners();
     eventListNotifier.notifyListeners();
     getAllEvent();
-    //overViewListNotifier.notifyListeners();
   }
   
   Future<void> deleteEvents(int index) async {
   final eventDB = await Hive.openBox<EventModel>("event_DB");
     await eventDB.deleteAt(index);
-  eventDB.close(); // Close the box after deleting the item.
+  eventDB.close();
   eventviewListNotifier.notifyListeners();
   getAllEvent();
 }
 
+clearappdata() async {
+  await Hive.openBox<EventModel>("data");
+  await EventDB.instance.getAllEvent();
+}
   //  deleteEvents(int index)async{
   //   final eventDB = await Hive.openBox<EventModel>("event_DB");
   //     await eventDB.delete(index);

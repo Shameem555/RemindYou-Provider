@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/model/data_model.dart';
 
-class Reset extends StatelessWidget {
-  const Reset({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
+clearappdata() async {
+  await Hive.openBox<EventModel>("data");
+  await EventDB.instance.getAllEvent();
 }
