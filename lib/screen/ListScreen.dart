@@ -32,7 +32,7 @@ class ListScreenState extends State<ListScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
-          padding: const EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 0),
           child: Column(
             children: [
               SearchField(
@@ -63,7 +63,7 @@ class ListScreenState extends State<ListScreen> {
                       );
                     }
                     return ListView.separated(
-                      reverse: true,
+                      reverse: false,
                       itemBuilder: (ctx, index) {
                         final data = eventList[index];
                         return Card(
@@ -117,9 +117,7 @@ class ListScreenState extends State<ListScreen> {
                                                     Navigator.of(context).pop();
                                                   }, child: const Text("Cancel"),),
                                                   TextButton(onPressed: (){
-                                                    setState(() {
                                                eventlist.deleteEvents(index);
-                                            });
                                             Navigator.of(context).pop();
                                                   }, child: const Text("Ok"),),
                                                 ],

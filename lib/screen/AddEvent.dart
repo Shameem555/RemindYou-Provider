@@ -304,7 +304,6 @@ class _AddEventState extends State<AddEvent> {
 
 //var deletevent = EventsDB();
   Future<void> onAddEventButton(BuildContext context) async {
-    setState(() {
     final model = EventModel(
       title: _titleController.text,
       //timeOfDay: _selectedTime,
@@ -318,6 +317,5 @@ class _AddEventState extends State<AddEvent> {
         builder: (context) => const BottomBar(),
       ),
     );
-    });
   }
 }

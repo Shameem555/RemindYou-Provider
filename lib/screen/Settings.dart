@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reminder/main.dart';
 import 'package:reminder/subscreen/Privacy.dart';
 import 'package:reminder/SubScreen/terms.dart';
 
@@ -211,7 +212,8 @@ class Settings extends StatelessWidget {
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop(context);
+                                eventlist.clearappdata(context);
+                                // Navigator.of(context).pop(context);
                               },
                               child: const Text(
                                 "Ok",
