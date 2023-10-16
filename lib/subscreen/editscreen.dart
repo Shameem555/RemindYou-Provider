@@ -22,6 +22,22 @@ class _EditScreenState extends State<EditScreen> {
   dynamic tittleControl;
   // dynamic dates;
   String? select;
+  //time start
+  // TimeOfDay _selectedTime = TimeOfDay.now();
+
+  // Future<void> _selectTime(BuildContext context) async {
+  //   final TimeOfDay? pickedTime = await showTimePicker(
+  //     context: context,
+  //     initialTime: _selectedTime,
+  //   );
+  //   if (pickedTime != null && pickedTime != _selectedTime) {
+  //     setState(() {
+  //       _selectedTime = pickedTime;
+  //     });
+  //   }
+  // }
+  //time end
+
 
   DateTime date = DateTime.now();
 
@@ -255,14 +271,13 @@ class _EditScreenState extends State<EditScreen> {
   }
   
   Future<void> onAddEventButton(BuildContext context) async {
-   setState(() {
+   
     final updation= EventModel(
       title:tittleControl.text,
       //timeOfDay: _selectedTime,
       dateTime: date,
       catogory: select!,
     );
-    EventDB().update(widget.index, updation);
-   });    
+    EventDB().update(widget.index, updation);   
   }
 }

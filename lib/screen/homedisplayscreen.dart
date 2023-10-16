@@ -13,7 +13,7 @@ class DisplayScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 1),
         child: Column(
           children: [
             const SizedBox(height: 10),

@@ -33,13 +33,13 @@ class _BottomBarState extends State<BottomBar> {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.blue[400],
+            backgroundColor: Colors.blue[200],
             iconSize: 25,
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: 'Home',
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.green,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.menu_book_sharp),

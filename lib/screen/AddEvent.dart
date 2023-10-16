@@ -56,19 +56,19 @@ class _AddEventState extends State<AddEvent> {
   ];
 
   //time picker
-  //TimeOfDay _selectedTime = TimeOfDay.now();
+  TimeOfDay _selectedTime = TimeOfDay.now();
 
-  // Future<void> _selectTime(BuildContext context) async {
-  //   final TimeOfDay? pickedTime = await showTimePicker(
-  //     context: context,
-  //     initialTime: _selectedTime,
-  //   );
-  //   if (pickedTime != null && pickedTime != _selectedTime) {
-  //     setState(() {
-  //       _selectedTime = pickedTime;
-  //     });
-  //   }
-  // }
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? pickedTime = await showTimePicker(
+      context: context,
+      initialTime: _selectedTime,
+    );
+    if (pickedTime != null && pickedTime != _selectedTime) {
+      setState(() {
+        _selectedTime = pickedTime;
+      });
+    }
+  }
   //end time picker
 
   // text controller..!//

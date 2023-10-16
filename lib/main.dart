@@ -11,8 +11,7 @@ void main() async {
   await Hive.initFlutter();
   if (!Hive.isAdapterRegistered(EventModelAdapter().typeId)) {
     Hive.registerAdapter(EventModelAdapter());
-  }
-
+  } 
   await Hive.openBox<EventModel>("data");
   await EventDB.instance.getAllEvent();
   runApp(const MyApp());

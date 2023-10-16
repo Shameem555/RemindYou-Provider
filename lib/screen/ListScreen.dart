@@ -15,7 +15,6 @@ class ListScreen extends StatefulWidget {
   ListScreenState createState() => ListScreenState();
 }
 
-
 class ListScreenState extends State<ListScreen> {
 
   //this is for search bar 
