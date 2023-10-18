@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
-import 'package:reminder/subscreen/Privacy.dart';
-import 'package:reminder/SubScreen/terms.dart';
+import 'package:reminder/settings/privacy.dart';
+import 'package:reminder/settings/terms.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -110,7 +110,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const Terms(),
+                      builder: (context) =>  Terms(),
                     ),
                   );
                 },
@@ -151,7 +151,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const Privacy(),
+                      builder: (context) =>  Privacy(),
                     ),
                   );
                 },

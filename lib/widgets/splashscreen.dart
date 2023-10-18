@@ -9,15 +9,17 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  // @override
-  // Void didChangeDependencies(){
-  //   super.didChangeDependencies();
-  // }
+  @override
+  void initState(){
+    super.initState();
+  } 
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(),
+    return  Scaffold(
+      body: Center(
+        child: Image.asset("assets/notification.gif",height: 300,),
+      ),
     );
   }
 }
