@@ -8,23 +8,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+    final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final width = MediaQuery.of(context).size.width;
+    final sheight = MediaQuery.of(context).size.height;
+    final swidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: height,
+          height: sheight,
           child:  Column(
             children: [
-              SizedBox(height: 100,),
+              const SizedBox(height: 100,),
               Center(
                 child: SizedBox(
                   height: 300,width: 300,
-                  child: Image.asset("assets/login_profile.jpeg"),
+                  child: Image.asset("assets/login_profile.jpeg",fit: BoxFit.fill,),
                 ),
               ),
+              Form(
+                key: _formKey,
+                child: SizedBox(
+                  height: sheight,
+                  width: swidth,
+                  child: TextFormField(),
+                )),
             ],
           ),
         ),
