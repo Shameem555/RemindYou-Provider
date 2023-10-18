@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/splashscreen.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Reminder',
-      home: SplashScreen(),
+      home: Login(),
     );
   }
 }
