@@ -2,8 +2,8 @@
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
-import 'package:reminder/subscreen/editscreen.dart';
-import 'package:reminder/widgets/searchfield.dart';
+import 'package:reminder/screen/editscreen.dart';
+import 'package:reminder/filter/searchfield.dart';
 
 ValueNotifier<List<EventModel>> eventviewListNotifier =
 ValueNotifier(EventDB.instance.eventListNotifier.value);

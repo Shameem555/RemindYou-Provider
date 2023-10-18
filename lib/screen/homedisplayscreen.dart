@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 //import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
-import 'package:reminder/subscreen/editscreen.dart';
+import 'package:reminder/screen/editscreen.dart';
 
 class DisplayScreen extends StatelessWidget {
   const DisplayScreen({super.key});

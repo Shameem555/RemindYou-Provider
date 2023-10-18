@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart'; 
-import 'package:reminder/widgets/bottomBar.dart';
+import 'package:reminder/intro_page/bottomBar.dart';
 
 class AddEvent extends StatefulWidget {
   const AddEvent({super.key});

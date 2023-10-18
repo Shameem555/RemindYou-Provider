@@ -4,7 +4,7 @@ import 'package:reminder/screen/chart.dart';
 import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/screen/listScreen.dart';
-import 'package:reminder/screen/settings.dart';
+import 'package:reminder/settings/settings.dart';
 import 'package:reminder/widgets/utility.dart';
 
 class BottomBar extends StatefulWidget {
