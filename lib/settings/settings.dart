@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/main.dart';
+import 'package:hive/hive.dart';
+import 'package:reminder/functions/events_db.dart';
+import 'package:reminder/intro_page/login.dart';
+import 'package:reminder/model/data_model.dart';
 import 'package:reminder/settings/privacy.dart';
 import 'package:reminder/settings/terms.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -110,7 +114,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>  Terms(),
+                      builder: (context) =>  const Terms(),
                     ),
                   );
                 },
@@ -151,7 +155,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>  Privacy(),
+                      builder: (context) =>  const Privacy(),
                     ),
                   );
                 },
@@ -191,40 +195,7 @@ class Settings extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   //reset alert button//
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text(
-                            "Just a conformation!!",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          content: const Text("Are you Sure, The whole data will be gone!"),
-                          actions: [
-                            TextButton(onPressed: (){
-                              Navigator.of(context).pop();
-                            }, child:  const Text("Cancel",
-                              style: TextStyle(fontSize: 20),
-                            ),),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                eventlist.clearappdata(context);
-                                // Navigator.of(context).pop(context);
-                              },
-                              child: const Text(
-                                "Ok",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20),
-                              ),
-                            ),
-                          ],
-                        );
-                      });
-                  print("Ya it's Working");
+                 clearappdata(context);
                 },
                 child: Container(
                   height: 55,
@@ -244,7 +215,7 @@ class Settings extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          "Rest",
+                          "Reset",
                           style: TextStyle(
                               fontSize: 23, fontWeight: FontWeight.bold),
                         ),
@@ -260,3 +231,56 @@ class Settings extends StatelessWidget {
     );
   }
 }
+
+
+clearappdata(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (ctx) {
+          return AlertDialog(
+            content: const Text(
+              'Do you want to Reset the app?',
+              style: TextStyle(color: Colors.black, fontSize: 18),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: (() async {
+                    Navigator.of(context).pop();
+
+                    final eventtDB =
+                        await Hive.openBox<EventModel>("event_db");
+
+                    eventtDB.clear();
+
+                    EventDB().eventListNotifier.value.clear();
+                    EventDB().eventListNotifier.notifyListeners();
+
+                    // ignore: use_build_context_synchronously
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => const Login(),
+                      ),
+                    );
+                    SharedPreferences pref =
+                        await SharedPreferences.getInstance();
+                    await pref.clear();
+                  }),
+                  child: const Text(
+                    'Yes',
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
+                  )),
+              TextButton(
+                onPressed: (() {
+                  Navigator.of(context).pop();
+                }),
+                child: const Text(
+                  'No',
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
+            ],
+          );
+        });
+  }

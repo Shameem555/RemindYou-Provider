@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/listScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EventDB extends ChangeNotifier {
   EventDB.internal();
@@ -48,15 +50,6 @@ class EventDB extends ChangeNotifier {
   getAllEvent();
 }
 
-clearappdata(BuildContext context) async {
-  final alldbonly = await Hive.openBox<EventModel>("data");
-  final eventDB = await Hive.openBox<EventModel>("event_db");
-  await EventDB.instance.getAllEvent();
-  eventDB.clear();
-  alldbonly.clear();
-  Navigator.of(context).pop();
-  eventviewListNotifier.notifyListeners();
-  getAllEvent();
 }
   //  deleteEvents(int index)async{
   //   final eventDB = await Hive.openBox<EventModel>("event_DB");
@@ -64,4 +57,3 @@ clearappdata(BuildContext context) async {
   //   eventviewListNotifier.notifyListeners();
   //   getAllEvent();
   // }
-}

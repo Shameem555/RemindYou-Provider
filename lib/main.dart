@@ -6,6 +6,7 @@ import 'package:reminder/widgets/splashscreen.dart';
 
 //object for db to accesss
 EventDB eventlist = EventDB();
+const saveKeyName = 'User logged in';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Reminder',
-      home: SplashScreen(),
+      home: ScreenSplash(),
     );
   }
 }
