@@ -228,7 +228,7 @@ class _LoginState extends State<Login> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 157, 151, 151),
+      //backgroundColor: const Color.fromARGB(255, 157, 151, 151),
       body: SingleChildScrollView(
         // ignore: sized_box_for_whitespace
         child: Container(
@@ -241,7 +241,7 @@ class _LoginState extends State<Login> {
                 height: 300,
                 width: 300,
                 child: Image.asset(
-                  'assets/login_profile.jpeg',
+                  'assets/empty_profile.jpeg',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -259,7 +259,9 @@ class _LoginState extends State<Login> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        hintText: 'Username',hintStyle: const TextStyle(color: Colors.white,fontSize: 20)),
+                        hintText: 'Username',
+                        //hintStyle: const TextStyle(color: Colors.white,fontSize: 20)
+                        ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Your Name Please!!';
