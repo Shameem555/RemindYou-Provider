@@ -56,7 +56,7 @@ class ListScreenState extends State<ListScreen> {
                     if (eventList.isEmpty) {
                       return const Center(
                         child: Text(
-                          "ഇതിൽ ഒന്നും ഇല്ല",
+                          "No data",
                           style: TextStyle(color: Colors.white, fontSize: 25),
                         ),
                       );
@@ -109,8 +109,8 @@ class ListScreenState extends State<ListScreen> {
                                             //alert will form in here !!
                                             showDialog(context: context, builder: (BuildContext context){
                                               return AlertDialog(
-                                                title: const Text("ഒരു സംശയം..!"),
-                                                content: const Text("ഒറപ്പന്നെ അല്ലേ, അപ്പൊ കളയട്ടേ..?"),
+                                                title: const Text("conformation!"),
+                                                content: const Text("Are you sure"),
                                                 actions: [
                                                   TextButton(onPressed: (){
                                                     Navigator.of(context).pop();

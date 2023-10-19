@@ -24,7 +24,7 @@ class DisplayScreen extends StatelessWidget {
                   if (eventlist.isEmpty) {
                     return const Center(
                       child: Text(
-                        "ഇതിൽ ഒന്നും ഇല്ല",
+                        "No data!",
                         style: TextStyle(color: Colors.white, fontSize: 25),
                       ),
                     );
