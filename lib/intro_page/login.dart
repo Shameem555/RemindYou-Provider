@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+final _usernameController = TextEditingController();
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -33,12 +35,44 @@ class _LoginState extends State<Login> {
                 child: SizedBox(
                   height: sheight,
                   width: swidth,
-                  child: TextFormField(),
-                )),
+                  child: TextFormField(
+                    controller: TextEditingController(),
+                    decoration: InputDecoration(
+                      isDense: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      hintText: "UserName"
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Required Name";
+                      }else{
+                        return null;
+                      }
+                    },
+                  ),
+                ),
+                ),
+                Padding(padding: const EdgeInsets.only(top: 15),
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Colors.blueAccent,
+                  ),
+                  width: swidth,
+                  height: sheight,
+                  child: const Text("Save",style: TextStyle(fontWeight: FontWeight.bold,fontFamily: 'f',color: Colors.white,fontSize: 17),),
+                ),
+                ),
             ],
           ),
         ),
       ),
     );
   }
+   void loginCheck(BuildContext ctx) async {
+    final username = _usernameController.text;
+   }
 }
