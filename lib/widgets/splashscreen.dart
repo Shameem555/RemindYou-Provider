@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/intro_page/bottomBar.dart';
 import 'package:reminder/intro_page/first.dart';
-import 'package:reminder/intro_page/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../main.dart';
 

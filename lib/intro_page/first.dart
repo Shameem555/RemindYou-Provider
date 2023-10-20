@@ -6,7 +6,6 @@ class FirstScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final Size size = MediaQuery.of(context).size;
     return  SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -32,7 +31,7 @@ class FirstScreen extends StatelessWidget {
                const SizedBox(height: 30,),
                const Text('"#Never Forget Again!! \n \n Get Started Now, \n \n Start Reminding"',textAlign: TextAlign.center,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown)),
                 Padding(padding: const EdgeInsets.only(top: 80,left: 10),
-                child: InkWell(
+                child: GestureDetector(
                   onTap: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const Login()));
                   },
