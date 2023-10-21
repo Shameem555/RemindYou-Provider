@@ -1,19 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:reminder/intro_page/bottomBar.dart';
-// import 'package:reminder/main.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
 
-// final _usernameController = TextEditingController();
-
-// class Login extends StatefulWidget {
-//   const Login({super.key});
-
-//   @override
-//   State<Login> createState() => _LoginState();
-// }
-
-// class _LoginState extends State<Login> {
-//   final _formKey = GlobalKey<FormState>();
 
 //   @override
 //   Widget build(BuildContext context) {
