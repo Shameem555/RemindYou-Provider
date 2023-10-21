@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/model/data_model.dart';
-import 'package:reminder/screen/listScreen.dart';
+import 'package:reminder/screen/ListScreen.dart';
 
 class EventDB extends ChangeNotifier {
   EventDB.internal();

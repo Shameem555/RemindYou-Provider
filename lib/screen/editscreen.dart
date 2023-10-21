@@ -38,7 +38,7 @@ class _EditScreenState extends State<EditScreen> {
   // }
   //time end
 
-
+ 
   DateTime date = DateTime.now();
 
   @override
@@ -147,7 +147,6 @@ class _EditScreenState extends State<EditScreen> {
                       hint: const Text(
                         'Select Category',
                         style: TextStyle(color: Colors.white, fontSize: 20),
-                        
                       ),
                       value:select,
                       onChanged: (newValue) {
