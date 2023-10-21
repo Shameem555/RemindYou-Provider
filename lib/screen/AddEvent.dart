@@ -190,7 +190,7 @@ class _AddEventState extends State<AddEvent> {
                   width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.purple,
+                    color: const Color.fromARGB(255, 10, 31, 40),
                     border: Border.all(width: 1, color: Colors.purple),
                   ),
                   child: TextButton(
