@@ -94,16 +94,6 @@
 //     );
 //   }
 
-//   void loginCheck(BuildContext ctx) async {
-//     final username = _usernameController.text;
-
-//     final sharedPref = await SharedPreferences.getInstance();
-//     await sharedPref.setBool(saveKeyName, true);
-//     await sharedPref.setString("username", username);
-//     Navigator.pushReplacement(ctx, MaterialPageRoute(builder: (ctx) => const BottomBar()));
-//   }
-// }
-
 
 
 import 'package:flutter/material.dart';
