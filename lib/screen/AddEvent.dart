@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart'; 
-import 'package:reminder/intro_page/bottomBar.dart';
 import 'package:reminder/screen/eventscreen.dart';
 
 class AddEvent extends StatefulWidget {
@@ -57,19 +56,19 @@ class _AddEventState extends State<AddEvent> {
   ];
 
   //time picker
-  TimeOfDay _selectedTime = TimeOfDay.now();
+  // TimeOfDay _selectedTime = TimeOfDay.now();
 
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? pickedTime = await showTimePicker(
-      context: context,
-      initialTime: _selectedTime,
-    );
-    if (pickedTime != null && pickedTime != _selectedTime) {
-      setState(() {
-        _selectedTime = pickedTime;
-      });
-    }
-  }
+  // Future<void> _selectTime(BuildContext context) async {
+  //   final TimeOfDay? pickedTime = await showTimePicker(
+  //     context: context,
+  //     initialTime: _selectedTime,
+  //   );
+  //   if (pickedTime != null && pickedTime != _selectedTime) {
+  //     setState(() {
+  //       _selectedTime = pickedTime;
+  //     });
+  //   }
+  // }
   //end time picker
 
   // text controller..!//
@@ -111,7 +110,7 @@ class _AddEventState extends State<AddEvent> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.purple),
+                      color: Colors.white),
                   width: 350,
                   height: 55,
                   child: TextFormField(
@@ -121,7 +120,7 @@ class _AddEventState extends State<AddEvent> {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20)),
                       hintStyle:
-                          const TextStyle(color: Colors.white, fontSize: 20),
+                          const TextStyle(color: Colors.brown, fontSize: 20),
                     ),
                     //title validation if it is empty.
                     validator: (value) {
@@ -142,8 +141,8 @@ class _AddEventState extends State<AddEvent> {
                 width: 350,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.purple,
-                  border: Border.all(width: 1, color: Colors.purple),
+                  color: Colors.white,
+                  border: Border.all(width: 1, color: Colors.blueAccent),
                 ),
                 child: DropdownButtonHideUnderline(
                   child: ButtonTheme(
@@ -151,7 +150,7 @@ class _AddEventState extends State<AddEvent> {
                     child: DropdownButton(
                       hint: const Text(
                         'Select Category',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.brown, fontSize: 20),
                       ),
                       value: _option,
                       onChanged: (newValue) {
@@ -190,8 +189,8 @@ class _AddEventState extends State<AddEvent> {
                   width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromARGB(255, 10, 31, 40),
-                    border: Border.all(width: 1, color: Colors.purple),
+                    color:  Colors.white,
+                    border: Border.all(width: 1, color: Colors.blueAccent),
                   ),
                   child: TextButton(
                     onPressed: () async {
@@ -213,7 +212,7 @@ class _AddEventState extends State<AddEvent> {
                       style: const TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.brown),
                     ),
                   )),
             ),
