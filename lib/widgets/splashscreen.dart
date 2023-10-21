@@ -22,7 +22,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 29, 29, 29),
+      backgroundColor: Color.fromARGB(255, 31, 31, 31),
         body: Center(
       child: Image.asset(
         'assets/daily notification.gif',
@@ -33,7 +33,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   
   Future<void> gotoLogin() async {
    await Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 1),
     );
     // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(

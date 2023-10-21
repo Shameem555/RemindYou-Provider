@@ -25,7 +25,7 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-  eventviewListNotifier.notifyListeners();
+  //eventviewListNotifier.notifyListeners();
     EventDB.instance.getAllEvent(); // You may need to load your events initially.
     return SafeArea(
       child: Scaffold(
@@ -113,11 +113,14 @@ class ListScreenState extends State<ListScreen> {
                                                 content: const Text("Are you sure"),
                                                 actions: [
                                                   TextButton(onPressed: (){
-                                                    Navigator.of(context).pop();
+                                                    Navigator.of(context).pop(false);
                                                   }, child: const Text("Cancel"),),
                                                   TextButton(onPressed: (){
-                                               eventlist.deleteEvents(index);
-                                            Navigator.of(context).pop();
+                                                    setState(() {
+                                                   eventlist.deleteEvents(index);
+
+                                                    });
+                                            Navigator.of(context).pop(true);
                                                   }, child: const Text("Ok"),),
                                                 ],
                                               );

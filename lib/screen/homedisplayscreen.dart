@@ -138,7 +138,7 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/editscreen.dart';
 
 class DisplayScreen extends StatefulWidget {
-  const DisplayScreen({Key? key});
+  const DisplayScreen({super.key});
 
   @override
   _DisplayScreenState createState() => _DisplayScreenState();
@@ -231,7 +231,9 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      eventlist.deleteEvents(index);
+                                                      setState(() {
+                                                        eventlist.deleteEvents(index);
+                                                      });
                                                       Navigator.of(context).pop();
                                                     },
                                                     child: const Text("Ok"),

@@ -43,8 +43,9 @@ class EventDB extends ChangeNotifier {
   Future<void> deleteEvents(int index) async {
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.deleteAt(index);
-    eventDB.close();
+   // eventDB.close();
     eventviewListNotifier.notifyListeners();
+  
     getAllEvent();
   }
 }

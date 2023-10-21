@@ -23,7 +23,7 @@ class _EventScreenState extends State<EventScreen> {
   
   @override
   Widget build(BuildContext context) {
-  eventviewListNotifier.notifyListeners();
+ // eventviewListNotifier.notifyListeners();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
