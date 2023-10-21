@@ -22,7 +22,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 31, 31, 31),
+      backgroundColor: const Color.fromARGB(255, 31, 31, 31),
         body: Center(
       child: Image.asset(
         'assets/daily notification.gif',
