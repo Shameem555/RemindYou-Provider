@@ -25,7 +25,6 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-  //eventviewListNotifier.notifyListeners();
     EventDB.instance.getAllEvent(); // You may need to load your events initially.
     return SafeArea(
       child: Scaffold(
@@ -80,7 +79,7 @@ class ListScreenState extends State<ListScreen> {
                                         padding: const EdgeInsets.only(left: 10.0),
                                         child: TextButton(
                                           onPressed: () {
-                                            // to edit
+                                            // To edit
                                             Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: (context) =>
