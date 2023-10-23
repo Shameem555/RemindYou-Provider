@@ -127,10 +127,6 @@
 //           height: 5,
 //         );
 //       },
-//       itemCount: widget.eventList.length > 4 ? 4: widget.eventList.length,
-//     );
-//   }
-// }
 
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
