@@ -118,15 +118,6 @@
 //                 ),
 //               ],
 //               icon: const Icon(Icons.more_vert_rounded),
-//             ),
-//           ),
-//         );
-//       },
-//       separatorBuilder: (ctx, index) {
-//         return const SizedBox(
-//           height: 5,
-//         );
-//       },
 
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';

@@ -4,6 +4,7 @@ import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
+// ignore: must_be_immutable
 class EditScreen extends StatefulWidget {
 
   var name;
