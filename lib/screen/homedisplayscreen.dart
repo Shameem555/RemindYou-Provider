@@ -104,10 +104,7 @@
 //                                       eventlist.deleteEvents(index);
 //                                     });
 //                                     Navigator.of(context).pop();
-//                                   }, child: const Text("Ok"),),
-//                                 ],
-//                               );
-//                             })
+//                                   }, child: const Text("Ok"),)
 
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
