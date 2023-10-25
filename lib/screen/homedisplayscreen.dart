@@ -107,10 +107,7 @@
 //                                   }, child: const Text("Ok"),),
 //                                 ],
 //                               );
-//                             });
-//                             // Navigator.of(context).pop();
-//                           },
-//                           child: const Text('Delete'),
+//                             })
 
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
