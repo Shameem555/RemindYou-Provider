@@ -97,12 +97,6 @@
 //                                 content: const Text("Are you sure to delete the item"),
 //                                 actions: [
 //                                   TextButton(onPressed: (){
-//                                     Navigator.of(context).pop();
-//                                   }, child: const Text("Cancel"),),
-//                                   TextButton(onPressed: (){
-//                                     setState(() {
-//                                       eventlist.deleteEvents(index);
-
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
