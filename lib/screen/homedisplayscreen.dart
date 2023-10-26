@@ -77,10 +77,6 @@
 //                                      EditScreen(name: data.title, select: data.catogory,dates: data.dateTime,index: index,),
 //                               ),
 //                             );
-//                           },
-//                           child: const Text("Edit"),
-//                         ),
-//                       ),
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
