@@ -93,10 +93,6 @@
 //                           onPressed: () {
 //                             showDialog(context: context, builder: (BuildContext context){
 //                               return AlertDialog(
-//                                 title: const Text("Just for a conformation"),
-//                                 content: const Text("Are you sure to delete the item"),
-//                                 actions: [
-//                                   TextButton(onPressed: (){
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
