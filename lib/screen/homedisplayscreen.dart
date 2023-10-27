@@ -47,14 +47,6 @@
 //   @override
 //   State<EventListView> createState() => _EventListViewState();
 // }
-
-// class _EventListViewState extends State<EventListView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.separated(
-//       reverse: false,
-//       itemBuilder: (ctx, index) {
-//         final data = widget.eventList[index];
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
