@@ -55,13 +55,6 @@
 //       reverse: false,
 //       itemBuilder: (ctx, index) {
 //         final data = widget.eventList[index];
-//         return Card(
-//           elevation: 2,
-//           child: ListTile(
-//             title: Text(data.title),
-//             subtitle: Text(
-//                 '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}'),
-//             trailing: PopupMenuButton(
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
