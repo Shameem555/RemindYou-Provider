@@ -68,7 +68,6 @@
 //                     children: [
 //                       Padding(
 //                         padding: const EdgeInsets.only(left: 10.0),
-//                         child: TextButton(
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
