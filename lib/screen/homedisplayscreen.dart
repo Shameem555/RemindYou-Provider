@@ -73,10 +73,6 @@
 //                             // to edit
 //                             Navigator.of(context).push(
 //                               MaterialPageRoute(
-//                                 builder: (context) =>
-//                                      EditScreen(name: data.title, select: data.catogory,dates: data.dateTime,index: index,),
-//                               ),
-//                             );
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
