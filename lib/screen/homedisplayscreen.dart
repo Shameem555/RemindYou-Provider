@@ -69,10 +69,6 @@
 //                       Padding(
 //                         padding: const EdgeInsets.only(left: 10.0),
 //                         child: TextButton(
-//                           onPressed: () {
-//                             // to edit
-//                             Navigator.of(context).push(
-//                               MaterialPageRoute(
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
