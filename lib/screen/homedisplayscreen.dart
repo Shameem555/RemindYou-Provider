@@ -39,14 +39,6 @@
 //   }
 // }
 
-// class EventListView extends StatefulWidget {
-//   final List<EventModel> eventList;
-
-//   const EventListView({super.key, required this.eventList});
-
-//   @override
-//   State<EventListView> createState() => _EventListViewState();
-// }
 import 'package:flutter/material.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
