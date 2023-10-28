@@ -319,3 +319,4 @@ class _AddEventState extends State<AddEvent> {
     );
   }
 }
+//this is not at all finished, after setting the time the app will be complete..
