@@ -88,7 +88,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
                         child: ListTile(
                           title: Text(data.title,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                           subtitle: Text(
-                              '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}'),
+                              '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}',style: const TextStyle(color: Colors.blueGrey),),
                           trailing: PopupMenuButton(
                             itemBuilder: (context) => [
                               PopupMenuItem(
