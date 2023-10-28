@@ -50,18 +50,18 @@ class Settings extends StatelessWidget {
                           ),
                           actions: [
                             const Text(
-                              """This is an app, where we can add our valuable or other event to remind, this will help you to remind the events that you added.""",
+                              """  This is an app, where we can add our valuable or other event to remind, this will help you to remind the events that you added.""",
                               style: TextStyle(fontSize: 20),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
                             const Text(
-                              "Developed By Techy_Shameem",
+                              "App Developed By \nTechy_Shameem",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
-                                  color: Colors.pink),
+                                  color: Colors.blue),
                             ),
                             TextButton(
                               onPressed: () {
@@ -253,7 +253,7 @@ clearappdata(BuildContext context) {
                     eventtDB.clear();
 
                     EventDB().eventListNotifier.value.clear();
-                    EventDB().eventListNotifier.notifyListeners();
+                    //EventDB().eventListNotifier.notifyListeners();
 
                     // ignore: use_build_context_synchronously
                     Navigator.of(context).pushReplacement(
