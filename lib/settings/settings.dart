@@ -57,7 +57,7 @@ class Settings extends StatelessWidget {
                               height: 10,
                             ),
                             const Text(
-                              "App Developed By \nTechy_Shameem",
+                              "App Developed By \nShameem Ali",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,

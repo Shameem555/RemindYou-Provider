@@ -67,7 +67,7 @@ class ListScreenState extends State<ListScreen> {
                         return Card(
                           elevation: 2,
                           child: ListTile(
-                            title: Text(data.title),
+                            title: Text(data.title,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
                             subtitle: Text(
                                 '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}'),
                             trailing: PopupMenuButton(
