@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
                         ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Your Name Please!!';
+                        return 'Required Name';
                       } else {
                         return null;
                       }
