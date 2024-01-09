@@ -4,17 +4,17 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 class EventDB extends ChangeNotifier {
+  //it is a private constructor,it is for specific purposes.
   EventDB.internal();
 
   static EventDB instance = EventDB.internal();
-  ///?????
 
   factory EventDB(){
     return instance;
   }
 
   //begans 
-
+ //to manage the eventmodel is eventlistnotifier
   ValueNotifier<List<EventModel>> eventListNotifier = ValueNotifier([]);
 
   Future<void> addEvent(EventModel value) async{
@@ -28,6 +28,7 @@ class EventDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_db");
     eventListNotifier.value.clear();
     eventListNotifier.value.addAll(eventDB.values);
+    // to build the items or list
     eventviewListNotifier.notifyListeners();
   }
  
@@ -45,7 +46,6 @@ class EventDB extends ChangeNotifier {
       await eventDB.deleteAt(index);
    // eventDB.close();
     eventviewListNotifier.notifyListeners();
-  
     getAllEvent();
   }
 }

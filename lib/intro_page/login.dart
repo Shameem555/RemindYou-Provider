@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        hintText: 'Username',
+                        hintText: 'Username',hintStyle: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25)
                         ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {

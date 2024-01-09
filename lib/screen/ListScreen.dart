@@ -7,7 +7,7 @@ import 'package:reminder/filter/searchfield.dart';
 
 ValueNotifier<List<EventModel>> eventviewListNotifier =
 ValueNotifier(EventDB.instance.eventListNotifier.value);
-
+  
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
 
@@ -45,7 +45,7 @@ class ListScreenState extends State<ListScreen> {
               Expanded(
                 child: ValueListenableBuilder(
                   valueListenable: eventviewListNotifier,
-                  builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) {
+                  builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) { 
                     List<EventModel> eventList = isSearching
                         ? filteredLists
                         : eventlists.where((event) {
