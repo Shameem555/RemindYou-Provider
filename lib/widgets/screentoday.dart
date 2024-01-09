@@ -3,6 +3,7 @@ import 'package:reminder/widgets/utility.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 
+// ignore: must_be_immutable
 class ChartScreenToday extends StatelessWidget {
   ChartScreenToday({super.key});
   todayscreenchart tdyval = todayscreenchart();
