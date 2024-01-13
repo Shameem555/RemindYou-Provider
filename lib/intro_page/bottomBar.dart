@@ -65,8 +65,9 @@ class _BottomBarState extends State<BottomBar> {
                 ),
               ],
               onTap: (index) {
-                setState(() {
-                  provider.currentIndex = index;
+                //setstate starting
+                // setState(() {
+                  provider.currentIndex = index; 
                   if (provider.currentIndex == 2) {
                     allList(alldatalist: provider.eventModel);
                     //for today chart filter
@@ -78,7 +79,8 @@ class _BottomBarState extends State<BottomBar> {
                     ydy.yesterdayList(alldatalist: provider.eventModel);
                     ydy.checkconditions();
                   }
-                });
+                // });
+                //setstate
               },
             ),
           );

@@ -14,10 +14,12 @@ class BottomProvider extends ChangeNotifier{
   ];
 
 List<EventModel> eventModel = [];
-  int currentIndex = 0;
+  int _currentIndex = 0;
 
-  void indexColors(int NewIndexColor){
-    currentIndex = NewIndexColor;
+  int get currentIndex => _currentIndex ;
+
+  set currentIndex(int index){
+    _currentIndex = index;
     notifyListeners();
   }
 
