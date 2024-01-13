@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/controller/bottombar-provider.dart';
+import 'package:reminder/controller/login-provider.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/splashscreen.dart';
@@ -23,10 +26,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Reminder',
-      home: ScreenSplash(),
+    return MultiProvider(
+      providers:  [
+        ChangeNotifierProvider(create: (context) => BottomProvider()),
+        ChangeNotifierProvider(create: (context) => LoginProvider()),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Reminder',
+        home: ScreenSplash(),
+      ),
     );
   }
 }
