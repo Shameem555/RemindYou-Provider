@@ -5,14 +5,9 @@ import 'package:reminder/widgets/screenAll.dart';
 import 'package:reminder/widgets/screenYesterday.dart';
 import 'package:reminder/widgets/screentoday.dart';
 
-class Chart extends StatefulWidget {
+class Chart extends StatelessWidget {
   const Chart({super.key});
 
-  @override
-  State<Chart> createState() => _ChartState();
-}
-
-class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

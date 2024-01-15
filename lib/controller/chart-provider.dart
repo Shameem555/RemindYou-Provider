@@ -1,3 +1,5 @@
 import 'package:flutter/material.dart';
 
-class ChartProvider extends ChangeNotifier{}
+class ChartProvider extends ChangeNotifier{
+  
+}

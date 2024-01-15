@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/controller/list_screen.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
@@ -18,138 +20,140 @@ class ListScreen extends StatefulWidget {
 class ListScreenState extends State<ListScreen> {
 
   //this is for search bar 
-  final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
-  List<EventModel> filteredLists = [];
-  bool isSearching = false;
+
 
   @override
   Widget build(BuildContext context) {
-    EventDB.instance.getAllEvent(); // You may need to load your events initially.
+    EventDB.instance.getAllEvent();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Padding(
           padding: const EdgeInsets.only(top: 0),
-          child: Column(
-            children: [
-              SearchField(
-                controller: _searchController,
-                onSearch: (value) {
-                  setState(() {
-                    _searchQuery = value;
-                  });
-                },
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: ValueListenableBuilder(
-                  valueListenable: eventviewListNotifier,
-                  builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) { 
-                    List<EventModel> eventList = isSearching
-                        ? filteredLists
-                        : eventlists.where((event) {
-                            final title = event.title.toLowerCase();
-                            return title.contains(_searchQuery.toLowerCase());
-                          }).toList();
-                    if (eventList.isEmpty) {
-                      return const Center(
-                        child: Text(
-                          "No data",
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                        ),
-                      );
-                    }
-                    return ListView.separated(
-                      reverse: false,
-                      itemBuilder: (ctx, index) {
-                        final data = eventList[index];
-                        return Card(
-                          elevation: 2,
-                          child: ListTile(
-                            title: Text(data.title,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
-                            subtitle: Text(
-                                '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}'),
-                            trailing: PopupMenuButton(
-                              itemBuilder: (context) => [
-                                PopupMenuItem(
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 10.0),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            // To edit
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                     EditScreen(
-                                                      index: index,
-                                                      name: data.title, 
-                                                      select: data.catogory,
-                                                      dates: data.dateTime,
-                                                     ),
-                                              ),
-                                            );
-                                          },
-                                          child: const Text("Edit"),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                PopupMenuItem(
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 10.0),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            //alert will form in here !!
-                                            showDialog(context: context, builder: (BuildContext context){
-                                              return AlertDialog(
-                                                title: const Text("conformation!"),
-                                                content: const Text("Are you sure"),
-                                                actions: [
-                                                  TextButton(onPressed: (){
-                                                    Navigator.of(context).pop(false);
-                                                  }, child: const Text("Cancel"),),
-                                                  TextButton(onPressed: (){
-                                                    setState(() {
-                                                   eventlist.deleteEvents(index);
-
-                                                    });
-                                            Navigator.of(context).pop(true);
-                                                  }, child: const Text("Ok"),),
-                                                ],
-                                              );
-                                            });
-                                            // //to delete the listview item 
-                                          },
-                                          child: const Text('Delete'),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                              icon: const Icon(Icons.more_vert_rounded),
-                            ),
-                          ),
-                        );
-                      },
-                      separatorBuilder: (ctx, index) {
-                        return const SizedBox(
-                          height: 5,
-                        );
-                      },
-                      //the listview count .
-                      itemCount: eventList.length,
-                    );
+          child: Consumer<ListProvider>(
+            builder: (context, provider, child) {
+              return 
+             Column(
+              children: [
+                SearchField(
+                  controller: provider.searchController,
+                  onSearch: (value) {
+                    setState(() {
+                      provider.searchQuery = value;
+                    });
                   },
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ValueListenableBuilder(
+                    valueListenable: eventviewListNotifier,
+                    builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) { 
+                      List<EventModel> eventList = provider.isSearching
+                          ? provider.filteredLists
+                          : eventlists.where((event) {
+                              final title = event.title.toLowerCase();
+                              return title.contains(provider.searchQuery.toLowerCase());
+                            }).toList();
+                      if (eventList.isEmpty) {
+                        return const Center(
+                          child: Text(
+                            "No data",
+                            style: TextStyle(color: Colors.white, fontSize: 25),
+                          ),
+                        );
+                      }
+                      return ListView.separated(
+                        reverse: false,
+                        itemBuilder: (ctx, index) {
+                          final data = eventList[index];
+                          return Card(
+                            elevation: 2,
+                            child: ListTile(
+                              title: Text(data.title,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                              subtitle: Text(
+                                  '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}'),
+                              trailing: PopupMenuButton(
+                                itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 10.0),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              // To edit
+                                              Navigator.of(context).push(
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                       EditScreen(
+                                                        index: index,
+                                                        name: data.title, 
+                                                        select: data.catogory,
+                                                        dates: data.dateTime,
+                                                       ),
+                                                ),
+                                              );
+                                            },
+                                            child: const Text("Edit"),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  PopupMenuItem(
+                                    child: Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 10.0),
+                                          child: TextButton(
+                                            onPressed: () {
+                                              //alert will form in here !!
+                                              showDialog(context: context, builder: (BuildContext context){
+                                                return AlertDialog(
+                                                  title: const Text("conformation!"),
+                                                  content: const Text("Are you sure"),
+                                                  actions: [
+                                                    TextButton(onPressed: (){
+                                                      Navigator.of(context).pop(false);
+                                                    }, child: const Text("Cancel"),),
+                                                    TextButton(onPressed: (){
+                                                      setState(() {
+                                                     eventlist.deleteEvents(index);
+          
+                                                      });
+                                              Navigator.of(context).pop(true);
+                                                    }, child: const Text("Ok"),),
+                                                  ],
+                                                );
+                                              });
+                                              // //to delete the listview item 
+                                            },
+                                            child: const Text('Delete'),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                icon: const Icon(Icons.more_vert_rounded),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (ctx, index) {
+                          return const SizedBox(
+                            height: 5,
+                          );
+                        },
+                        //the listview count .
+                        itemCount: eventList.length,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            );
+            },
           ),
         ),
       ),
