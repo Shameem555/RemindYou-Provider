@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/model/data_model.dart';
 
-class UtiilityProvider extends ChangeNotifier{
-  
-}
+class UtiilityProvider extends ChangeNotifier{}
 
 List<dynamic> birthday    = [];
 List<dynamic> wedding     = [];

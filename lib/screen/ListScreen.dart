@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reminder/controller/list_screen.dart';
+import 'package:reminder/controller/list-screen.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
@@ -19,8 +19,6 @@ class ListScreen extends StatefulWidget {
 
 class ListScreenState extends State<ListScreen> {
 
-  //this is for search bar 
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +36,9 @@ class ListScreenState extends State<ListScreen> {
                 SearchField(
                   controller: provider.searchController,
                   onSearch: (value) {
-                    setState(() {
+                    // setState(() {
                       provider.searchQuery = value;
-                    });
+                    // });
                   },
                 ),
                 const SizedBox(height: 10),
