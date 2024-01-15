@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/bottombar-provider.dart';
+import 'package:reminder/controller/event-provider.dart';
+import 'package:reminder/controller/list-screen.dart';
 import 'package:reminder/controller/login-provider.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
       providers:  [
         ChangeNotifierProvider(create: (context) => BottomProvider()),
         ChangeNotifierProvider(create: (context) => LoginProvider()),
+        ChangeNotifierProvider(create: (context) => EventProvider()),
+        ChangeNotifierProvider(create: (context) => ListProvider()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
