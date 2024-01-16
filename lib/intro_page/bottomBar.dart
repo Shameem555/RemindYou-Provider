@@ -67,18 +67,7 @@ class _BottomBarState extends State<BottomBar> {
               onTap: (index) {
                 //setstate starting
                 // setState(() {
-                  provider.currentIndex = index; 
-                  if (provider.currentIndex == 2) {
-                    allList(alldatalist: provider.eventModel);
-                    //for today chart filter
-                    todayscreenchart tdy = todayscreenchart();
-                    tdy.todayList(alldatalist: provider.eventModel);
-                    tdy.checkconditions();
-                    //for yersterday chart filter
-                    yesterday_screenchart ydy = yesterday_screenchart();
-                    ydy.yesterdayList(alldatalist: provider.eventModel);
-                    ydy.checkconditions();
-                  }
+                  provider.updateChart(index, provider.eventModel);
                 // });
                 //setstate
               },
