@@ -5,9 +5,6 @@ import 'package:reminder/model/data_model.dart';
 
 class EditProvider extends ChangeNotifier{
   
- EditProvider(){
-  
- }
 
   final box = Hive.box<EventModel>("data");
   dynamic tittleControl;

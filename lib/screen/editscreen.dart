@@ -45,7 +45,7 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   void initState() {
-    final provider = Provider.of(context, listen: false);
+    final provider = Provider.of<EditProvider>(context, listen: false);
     provider.tittleControl = TextEditingController(text:widget.name);
     provider.select=widget.select;
     provider.date=widget.dates;    
