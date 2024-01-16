@@ -40,6 +40,14 @@ class EditProvider extends ChangeNotifier{
     },
   ];
 
+  void updateDate(DateTime newDate) {
+    date = newDate;
+    notifyListeners();
+  }
 
+  void updateCatogory(String newValue){
+    select = newValue;
+    notifyListeners();
+  }
 
-}
+} 

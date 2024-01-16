@@ -128,11 +128,12 @@ class _EditScreenState extends State<EditScreen> {
                         ),
                         value:provider.select,
                         onChanged: (newValue) {
-                          setState(
-                            () {
-                              provider.select = newValue!;
-                            },
-                          );
+                          provider.updateCatogory(newValue!);
+                          // setState(
+                            // () {
+                              // provider.select = newValue!;
+                            // },
+                          // );
                         },
                         items: provider.myOption.map(
                           (addCategory) {
@@ -176,9 +177,11 @@ class _EditScreenState extends State<EditScreen> {
                       if (newDate == null) {
                         return;
                       } else {
-                        setState(() {
-                          provider.date = newDate;
-                        });
+                         provider.updateDate(newDate);
+                        // provider.updated(newDate as String?);
+                        // setState(() {
+                          // provider.date = newDate;
+                        // });
                       }
                     },
                     child: Text(
