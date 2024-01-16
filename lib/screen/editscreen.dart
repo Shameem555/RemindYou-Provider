@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+// import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/controller/edit-provider.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
 // ignore: must_be_immutable
 class EditScreen extends StatefulWidget {
-
   var name;
   var select;
   var dates;
   int index;
+  
   
   EditScreen({super.key,required this.name,required this.select,required this.dates,required this.index});
 
@@ -19,10 +21,9 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-  final box = Hive.box<EventModel>("data");
-  dynamic tittleControl;
+  
   // dynamic dates;
-  String? select;
+ 
   //time start
   // TimeOfDay _selectedTime = TimeOfDay.now();
 
@@ -40,43 +41,18 @@ class _EditScreenState extends State<EditScreen> {
   //time end
 
  
-  DateTime date = DateTime.now();
+  
 
   @override
   void initState() {
-    tittleControl = TextEditingController(text:widget.name);
-    select=widget.select;
-    date=widget.dates;    
+    final provider = Provider.of(context, listen: false);
+    provider.tittleControl = TextEditingController(text:widget.name);
+    provider.select=widget.select;
+    provider.date=widget.dates;    
     super.initState();
   }
 
-  //for catogory selection//
-  final List<Map> _myOption = [
-    {
-      'Category': '1',
-      'name': 'Birthday',
-    },
-    {
-      'Category': '2',
-      'name': 'Wedding',
-    },
-    {
-      'Category': '3',
-      'name': 'Engagement',
-    },
-    {
-      'Category': '4',
-      'name': 'House Warming',
-    },
-    {
-      'Category': '5',
-      'name': 'Anniversary',
-    },
-    {
-      'Category': '6',
-      'name': 'Others',
-    },
-  ];
+  
 
 
   @override
@@ -106,176 +82,180 @@ class _EditScreenState extends State<EditScreen> {
           ],
           backgroundColor: Colors.blue[300],
         ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
-              child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.purple),
-                width: 350,
-                height: 55,
-                child: TextFormField(
-                  controller: tittleControl,
-                  decoration: InputDecoration(
-                    hintText: "Title",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    hintStyle:
-                        const TextStyle(color: Colors.white, fontSize: 20),
+        body: Consumer<EditProvider>(
+          builder: (context, provider, child) {
+            return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.purple),
+                  width: 350,
+                  height: 55,
+                  child: TextFormField(
+                    controller: provider.tittleControl,
+                    decoration: InputDecoration(
+                      hintText: "Title",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      hintStyle:
+                          const TextStyle(color: Colors.white, fontSize: 20),
+                    ),
                   ),
                 ),
               ),
-            ),
-            //Category selection
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
-              child: Container(
-                height: 57,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.purple,
-                  border: Border.all(width: 1, color: Colors.purple),
-                ),
-                child: DropdownButtonHideUnderline(
-                  
-                  child: ButtonTheme(
-                    alignedDropdown: true,
-                    child: DropdownButton(
-                      hint: const Text(
-                        'Select Category',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                      value:select,
-                      onChanged: (newValue) {
-                        setState(
-                          () {
-                            select = newValue!;
-                          },
-                        );
-                      },
-                      items: _myOption.map(
-                        (addCategory) {
-                          return DropdownMenuItem(
-                            value: addCategory['Category'].toString(),
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: const EdgeInsets.only(left: 10),
-                                  child: Text(addCategory['name']),
-                                ),
-                              ],
-                            ),
+              //Category selection
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                child: Container(
+                  height: 57,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.purple,
+                    border: Border.all(width: 1, color: Colors.purple),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    
+                    child: ButtonTheme(
+                      alignedDropdown: true,
+                      child: DropdownButton(
+                        hint: const Text(
+                          'Select Category',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        value:provider.select,
+                        onChanged: (newValue) {
+                          setState(
+                            () {
+                              provider.select = newValue!;
+                            },
                           );
                         },
-                      ).toList(),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            //date demo
-            Padding(
-              padding: const EdgeInsets.only(top: 20, left: 10),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                height: 57,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.purple,
-                  border: Border.all(width: 1, color: Colors.purple),
-                ),
-                child: TextButton(
-                  onPressed: () async {
-                    DateTime? newDate = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2020),
-                        lastDate: DateTime(2100));
-                    if (newDate == null) {
-                      return;
-                    } else {
-                      setState(() {
-                        date = newDate;
-                      });
-                    }
-                  },
-                  child: Text(
-                    'Date : ${date.year}/${date.month}/${date.day}',
-                    style: const TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 40),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pop(
-                        MaterialPageRoute(
-                          builder: (context) =>  const ListScreen(),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      width: 120,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.cyan),
-                      child: const Center(
-                          child: Text(
-                        "Cancel",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      )),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 70),
-                  child: GestureDetector(
-                    onTap: () {
-                      onAddEventButton(context);
-                      Navigator.of(context).pop();
-                    },
-                    child: Container(
-                      width: 120,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.cyan),
-                      child: const Center(
-                        child: Text(
-                          "Ok",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        ),
+                        items: provider.myOption.map(
+                          (addCategory) {
+                            return DropdownMenuItem(
+                              value: addCategory['Category'].toString(),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    margin: const EdgeInsets.only(left: 10),
+                                    child: Text(addCategory['name']),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ).toList(),
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+              //date demo
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 10),
+                child: Container(
+                  alignment: Alignment.bottomLeft,
+                  height: 57,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.purple,
+                    border: Border.all(width: 1, color: Colors.purple),
+                  ),
+                  child: TextButton(
+                    onPressed: () async {
+                      DateTime? newDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2100));
+                      if (newDate == null) {
+                        return;
+                      } else {
+                        setState(() {
+                          provider.date = newDate;
+                        });
+                      }
+                    },
+                    child: Text(
+                      'Date : ${provider.date.year}/${provider.date.month}/${provider.date.day}',
+                      style: const TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, left: 40),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).pop(
+                          MaterialPageRoute(
+                            builder: (context) =>  const ListScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.cyan),
+                        child: const Center(
+                            child: Text(
+                          "Cancel",
+                          style: TextStyle(fontSize: 18, color: Colors.white),
+                        )),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, left: 70),
+                    child: GestureDetector(
+                      onTap: () {
+                        onAddEventButton(context);
+                        Navigator.of(context).pop();
+                      },
+                      child: Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.cyan),
+                        child: const Center(
+                          child: Text(
+                            "Ok",
+                            style: TextStyle(fontSize: 18, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+          }, 
         ),
       ),
     );
   }
   
   Future<void> onAddEventButton(BuildContext context) async {
-   
+   final provider = Provider.of<EditProvider>(context ,listen: false);
     final updation= EventModel(
-      title:tittleControl.text,
+      title:provider.tittleControl.text,
       //timeOfDay: _selectedTime,
-      dateTime: date,
-      catogory: select!,
+      dateTime: provider.date,
+      catogory: provider.select!,
     );
     EventDB().update(widget.index, updation);   
   }

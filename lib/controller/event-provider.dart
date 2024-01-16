@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/eventscreen.dart';
-import 'package:reminder/screen/listScreen.dart';
+// import 'package:reminder/screen/listScreen.dart';
 
 class EventProvider extends ChangeNotifier{
   final box = Hive.box<EventModel>("data");
