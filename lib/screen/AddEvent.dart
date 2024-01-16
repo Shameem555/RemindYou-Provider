@@ -118,11 +118,9 @@ class _AddEventState extends State<AddEvent> {
                         ),
                         value: provider.option,
                         onChanged: (newValue) {
-                          // setState(
-                            () {
-                              provider.option = newValue!;
-                            };
-                          // );
+                    
+                       provider.updateSelectedOption(newValue);
+          
                         },
                         items: provider.myOption.map(
                           (addCategory) {
@@ -238,7 +236,7 @@ class _AddEventState extends State<AddEvent> {
                     child: GestureDetector(
                       onTap: () {
                         if (provider.formKey.currentState!.validate()) {
-                          onAddEventButton(context);
+                         provider.onAddEventButton(context);
                         } else {
                           provider.submitform();
                         }
@@ -270,21 +268,5 @@ class _AddEventState extends State<AddEvent> {
   }
 
 //var deletevent = EventsDB();
-  Future<void> onAddEventButton(BuildContext context) async {
-    final provider = Provider.of<EventProvider>(context,listen: false);
-    final model = EventModel(
-      title: provider.titleController.text,
-      //timeOfDay: _selectedTime,
-      dateTime: provider.date,
-      catogory: provider.option!,
-    );
-    //to add event
-    eventlist.addEvent(model);
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (context) => const EventScreen(),
-      ),
-    );
-  }
 }
 //this is not at all finished, after setting the time the app will be complete..
