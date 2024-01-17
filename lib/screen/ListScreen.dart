@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reminder/controller/list-screen.dart';
+import 'package:reminder/controller/listscreen-provider.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';

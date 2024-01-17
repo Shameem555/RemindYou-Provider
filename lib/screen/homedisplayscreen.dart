@@ -14,7 +14,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
   @override
   void initState() {
     super.initState();
-    eventlist.getAllEvent(); // You may need to load your events initially.
+    eventlist.getAllEvent();
   }
 
   @override
