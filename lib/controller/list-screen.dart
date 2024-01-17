@@ -6,4 +6,9 @@ class ListProvider extends ChangeNotifier{
   String searchQuery = '';
   List<EventModel> filteredLists = [];
   bool isSearching = false;
+
+  void updateSearch(String value) {
+    searchQuery = value;
+    notifyListeners();
+  }
 }

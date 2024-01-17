@@ -36,8 +36,9 @@ class ListScreenState extends State<ListScreen> {
                 SearchField(
                   controller: provider.searchController,
                   onSearch: (value) {
+                    provider.updateSearch(value);
                     // setState(() {
-                      provider.searchQuery = value;
+                      // provider.searchQuery = value;
                     // });
                   },
                 ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/main.dart';
@@ -77,4 +76,37 @@ class EventProvider extends ChangeNotifier{
     option = newValue;
     notifyListeners();
   }
+
+  //----for utility----//
+
+  List<EventModel> _eventModel = [];
+
+  List<EventModel> get eventModel => _eventModel;
+
+  void setEventModel(List<EventModel> eventModel) {
+    _eventModel = eventModel;
+    notifyListeners();
+  }
+
+//old one
+  // void updateTodayData() {
+  //   todayList();
+  //   checkTodayConditions();
+  // }
+
+  // void updateYesterdayData() {
+  //   yesterdayList();
+  //   checkYesterdayConditions();
+  // }
+
+//i wana check who is correct
+  //  void todayscreenchart() {
+  //   todayList();
+  //   checkconditions();
+  // }
+
+  // void yesterday_screenchart() {
+  //   yesterdayList();
+  //   checkconditions();
+  // }
 }
