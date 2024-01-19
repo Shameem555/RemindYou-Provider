@@ -80,12 +80,15 @@ class _AddEventState extends State<AddEvent> {
                     child: TextFormField(
                       controller: provider.titleController,
                       decoration: InputDecoration(
-                        hintText: " Title",
+                        hintText: " Type The Event  ",
+                        labelText: "Title",
+                        labelStyle: const TextStyle(color: Colors.blueAccent,fontWeight: FontWeight.bold,fontSize: 20,),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                         hintStyle:
                             const TextStyle(color: Colors.blueAccent, fontSize: 20,fontWeight: FontWeight.bold),
                       ),
+              
                       //title validation if it is empty.
                       validator: (value) {
                         if (value!.isEmpty) {

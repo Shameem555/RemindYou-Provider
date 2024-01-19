@@ -92,7 +92,7 @@ class _EditScreenState extends State<EditScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.purple),
+                      color: Colors.white),
                   width: 350,
                   height: 55,
                   child: TextFormField(
@@ -115,7 +115,7 @@ class _EditScreenState extends State<EditScreen> {
                   width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.purple,
+                    color: Colors.white,
                     border: Border.all(width: 1, color: Colors.purple),
                   ),
                   child: DropdownButtonHideUnderline(
@@ -125,7 +125,7 @@ class _EditScreenState extends State<EditScreen> {
                       child: DropdownButton(
                         hint: const Text(
                           'Select Category',
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                          style: TextStyle(color: Colors.blueAccent, fontSize: 20),
                         ),
                         value:provider.select,
                         onChanged: (newValue) {
@@ -165,7 +165,7 @@ class _EditScreenState extends State<EditScreen> {
                   width: 350,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Colors.purple,
+                    color: Colors.white,
                     border: Border.all(width: 1, color: Colors.purple),
                   ),
                   child: TextButton(
@@ -190,7 +190,7 @@ class _EditScreenState extends State<EditScreen> {
                       style: const TextStyle(
                           fontSize: 19,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                   ),
                 ),

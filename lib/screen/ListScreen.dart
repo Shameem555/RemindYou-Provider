@@ -62,7 +62,7 @@ class ListScreenState extends State<ListScreen> {
                         );
                       }
                       return ListView.separated(
-                        reverse: false,
+                        //reverse: false,
                         itemBuilder: (ctx, index) {
                           final data = eventList[index];
                           return Card(
