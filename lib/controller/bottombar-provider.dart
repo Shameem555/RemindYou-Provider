@@ -25,7 +25,7 @@ class BottomProvider extends ChangeNotifier{
   }
 
 
-  void handleBottomBarTap(int index,eventList) {
+  void chartupdation(int index,eventList) {
     _currentIndex = index;
     notifyListeners();
 

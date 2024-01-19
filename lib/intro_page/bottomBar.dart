@@ -80,13 +80,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/bottombar-provider.dart';
 import 'package:reminder/controller/events_db.dart';
-import 'package:reminder/model/data_model.dart';
-import 'package:reminder/screen/ListScreen.dart';
-import 'package:reminder/screen/chart.dart';
-import 'package:reminder/screen/eventscreen.dart';
-import 'package:reminder/screen/homeScreen.dart';
-import 'package:reminder/settings/settings.dart';
-import 'package:reminder/widgets/utility.dart';
+// import 'package:reminder/model/data_model.dart';
+// import 'package:reminder/screen/ListScreen.dart';
+// import 'package:reminder/screen/chart.dart';
+// import 'package:reminder/screen/eventscreen.dart';
+// import 'package:reminder/screen/homeScreen.dart';
+// import 'package:reminder/settings/settings.dart';
+// import 'package:reminder/widgets/utility.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -133,7 +133,7 @@ class _BottomBarState extends State<BottomBar> {
             ],
             onTap: (index) {
               final eventdbprovider=Provider.of<EventDB>(context,listen: false);
-          bottomprovider.handleBottomBarTap(index,eventdbprovider.eventList);
+          bottomprovider.chartupdation(index,eventdbprovider.eventList);
             },
           ),
         );
