@@ -12,7 +12,6 @@
 // class BottomBar extends StatefulWidget {
 //   const BottomBar({super.key});
 
-
 //   @override
 //   State<BottomBar> createState() => _BottomBarState();
 // }
@@ -25,7 +24,6 @@
 //   //   const Chart(),
 //   //   const Settings(),
 //   // ];
-
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -96,10 +94,8 @@ class BottomBar extends StatefulWidget {
 }
 
 class _BottomBarState extends State<BottomBar> {
-
   @override
   Widget build(BuildContext context) {
-  
     return Consumer<BottomProvider>(
       builder: (BuildContext ctx, bottomprovider, Widget? child) {
         return Scaffold(
@@ -132,8 +128,9 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ],
             onTap: (index) {
-              final eventdbprovider=Provider.of<EventDB>(context,listen: false);
-          bottomprovider.chartupdation(index,eventdbprovider.eventList);
+              final eventdbprovider =
+                  Provider.of<EventDB>(context, listen: false);
+              bottomprovider.chartupdation(index, eventdbprovider.eventList);
             },
           ),
         );
@@ -141,4 +138,3 @@ class _BottomBarState extends State<BottomBar> {
     );
   }
 }
-
