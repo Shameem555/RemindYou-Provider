@@ -24,18 +24,21 @@ class BottomProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-   void updateChart(int index, List<EventModel> eventModel) {
-    currentIndex = index;
-    if (currentIndex == 2) {
-      allList(alldatalist: eventModel);
+
+  void handleBottomBarTap(int index,eventList) {
+    _currentIndex = index;
+    notifyListeners();
+
+    if (_currentIndex == 2) {
+      allList(alldatalist: eventList);
       todayscreenchart tdy = todayscreenchart();
-      tdy.todayList(alldatalist: eventModel);
+      tdy.todayList(alldatalist: eventList);
       tdy.checkconditions();
       yesterday_screenchart ydy = yesterday_screenchart();
-      ydy.yesterdayList(alldatalist: eventModel);
+      ydy.yesterdayList(alldatalist: eventList);
       ydy.checkconditions();
     }
-    notifyListeners();
   }
+  
 
 }

@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/model/data_model.dart';
+import 'package:reminder/screen/chart.dart';
+import 'package:reminder/screen/eventscreen.dart';
+import 'package:reminder/screen/homeScreen.dart';
+import 'package:reminder/settings/settings.dart';
+import 'package:reminder/widgets/utility.dart';
 //import 'package:reminder/screen/ListScreen.dart';
 
 class EventDB extends ChangeNotifier {
-  // //it is a private constructor,it is for specific purposes.
-  // EventDB.internal();
-
-  // static EventDB instance = EventDB.internal();
-
-  // factory EventDB(){
-  //   return instance;
-  // }
-
-  //begans 
- //to manage the eventmodel is eventlistnotifier
-  // ValueNotifier<List<EventModel>> eventListNotifier = ValueNotifier([]);
+ 
   List<EventModel> eventList=[];
   List<EventModel> filtereventList=[];
+ 
 
     void filteration(DateTime start, DateTime end) {
     final filteredEvents = eventList
@@ -59,5 +54,8 @@ class EventDB extends ChangeNotifier {
  notifyListeners();
     getAllEvent();
   }
+
+   
+
   
 }
