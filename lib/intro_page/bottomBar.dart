@@ -7,7 +7,7 @@ import 'package:reminder/controller/bottombar-provider.dart';
 // import 'package:reminder/screen/eventscreen.dart';
 // import 'package:reminder/screen/homeScreen.dart';
 // import 'package:reminder/settings/settings.dart';
-import 'package:reminder/widgets/utility.dart';
+//import 'package:reminder/widgets/utility.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});

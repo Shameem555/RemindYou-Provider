@@ -1,7 +1,5 @@
 import 'package:reminder/model/data_model.dart';
 
-class UtilityProvider{}
-
   List<dynamic> birthday    = [];
   List<dynamic> wedding     = [];
   List<dynamic> engagement  = [];

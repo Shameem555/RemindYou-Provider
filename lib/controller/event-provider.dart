@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/eventscreen.dart';
@@ -58,7 +60,7 @@ class EventProvider extends ChangeNotifier{
       catogory: option!,
     );
     //to add event
-    eventlist.addEvent(model);
+    Provider.of<EventDB>(context,listen: false).addEvent(model);
     Navigator.of(context).pushReplacement(  
       MaterialPageRoute(
         builder: (context) =>  const EventScreen(),

@@ -11,7 +11,7 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/splashscreen.dart';
 
 //object for db to accesss
-EventDB eventlist = EventDB();
+// EventDB eventlist = EventDB();
 const saveKeyName = 'User logged in';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,7 @@ void main() async {
     Hive.registerAdapter(EventModelAdapter());
   } 
   await Hive.openBox<EventModel>("data");
-  await EventDB.instance.getAllEvent();
+  // await EventDB.instance.getAllEvent();
   runApp(const MyApp());
 }
 
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => EventProvider()),
         ChangeNotifierProvider(create: (context) => ListProvider()),
         ChangeNotifierProvider(create: (context) => EditProvider()),
+         ChangeNotifierProvider(create: (context) => EventDB()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

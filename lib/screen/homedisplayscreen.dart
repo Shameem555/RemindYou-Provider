@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/main.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/editscreen.dart';
@@ -14,7 +16,8 @@ class _DisplayScreenState extends State<DisplayScreen> {
   @override
   void initState() {
     super.initState();
-    eventlist.getAllEvent();
+    Provider.of<EventDB>(context,listen: false).getAllEvent();
+    // eventlist.getAllEvent();
   }
 
   @override
@@ -27,10 +30,10 @@ class _DisplayScreenState extends State<DisplayScreen> {
           children: [
             const SizedBox(height: 10),
             Expanded(
-              child: ValueListenableBuilder<List<EventModel>>(
-                valueListenable: eventlist.eventListNotifier,
-                builder: (BuildContext ctx, List<EventModel> eventList, Widget? child) {
-                  if (eventList.isEmpty) {
+              child: Consumer<EventDB>(
+            
+                builder: (ctx,  evendbprovider,child) {
+                  if (evendbprovider.eventList.isEmpty) {
                     return const Center(
                       child: Text(
                         "No Such data!",
@@ -41,7 +44,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
                   return ListView.separated(
                     reverse: false,
                     itemBuilder: (ctx, index) {
-                      final data = eventList[index];
+                      final data =evendbprovider.eventList[index];
                       return Card(
                         elevation: 2,
                         child: ListTile(
@@ -97,9 +100,9 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      setState(() {
-                                                        eventlist.deleteEvents(index);
-                                                      });
+                                                      // setState(() {
+                                                        evendbprovider.deleteEvents(index);
+                                                      // });
                                                       Navigator.of(context).pop();
                                                     },
                                                     child: const Text("Ok"),
@@ -126,7 +129,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
                         height: 5,
                       );
                     },
-                    itemCount: eventList.length > 4 ? 4 : eventList.length,
+                    itemCount:evendbprovider.eventList.length > 4 ? 4 :evendbprovider.eventList.length,
                   );
                 },
               ),

@@ -14,12 +14,12 @@ class EventScreen extends StatefulWidget {
 
 class _EventScreenState extends State<EventScreen> {
 
-  @override
-  void initState() {
-    eventviewListNotifier.value =
-        EventDB.instance.eventListNotifier.value;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   eventviewListNotifier.value =
+  //       EventDB.instance.eventListNotifier.value;
+  //   super.initState();
+  // }
   
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _EventScreenState extends State<EventScreen> {
           ),
           centerTitle: true,
           actions: const [
-            DateFilter(),
+             DateFilter(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

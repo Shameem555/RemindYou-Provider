@@ -260,6 +260,6 @@ class _EditScreenState extends State<EditScreen> {
       dateTime: provider.date,
       catogory: provider.select!,
     );
-    EventDB().update(widget.index, updation);   
+    Provider.of<EventDB>(context,listen: false).update(widget.index, updation);   
   }
 }

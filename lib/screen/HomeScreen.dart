@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:one_clock/one_clock.dart';
+import 'package:provider/provider.dart';
+import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homedisplayscreen.dart';
 
@@ -8,6 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<EventDB>(context).getAllEvent();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,

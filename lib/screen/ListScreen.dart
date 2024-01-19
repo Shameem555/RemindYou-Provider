@@ -7,8 +7,8 @@ import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/editscreen.dart';
 import 'package:reminder/filter/searchfield.dart';
 
-ValueNotifier<List<EventModel>> eventviewListNotifier =
-ValueNotifier(EventDB.instance.eventListNotifier.value);
+// ValueNotifier<List<EventModel>> eventviewListNotifier =
+// ValueNotifier(EventDB.instance.eventListNotifier.value);
   
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -22,7 +22,7 @@ class ListScreenState extends State<ListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    EventDB.instance.getAllEvent();
+    Provider.of<EventDB>(context).getAllEvent();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -44,12 +44,11 @@ class ListScreenState extends State<ListScreen> {
                 ),
                 const SizedBox(height: 10),
                 Expanded(
-                  child: ValueListenableBuilder(
-                    valueListenable: eventviewListNotifier,
-                    builder: (BuildContext ctx, List<EventModel> eventlists, Widget? child) { 
+                  child: Consumer<EventDB>(
+                    builder: ( ctx,evntdbprovider, child) { 
                       List<EventModel> eventList = provider.isSearching
                           ? provider.filteredLists
-                          : eventlists.where((event) {
+                          :evntdbprovider.eventList.where((event) {
                               final title = event.title.toLowerCase();
                               return title.contains(provider.searchQuery.toLowerCase());
                             }).toList();
@@ -116,10 +115,10 @@ class ListScreenState extends State<ListScreen> {
                                                       Navigator.of(context).pop(false);
                                                     }, child: const Text("Cancel"),),
                                                     TextButton(onPressed: (){
-                                                      setState(() {
-                                                     eventlist.deleteEvents(index);
+                                                      // setState(() {
+                                                    evntdbprovider.deleteEvents(index);
           
-                                                      });
+                                                      // });
                                               Navigator.of(context).pop(true);
                                                     }, child: const Text("Ok"),),
                                                   ],

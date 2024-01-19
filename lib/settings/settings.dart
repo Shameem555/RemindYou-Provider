@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:provider/provider.dart';
 import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
@@ -251,8 +252,8 @@ clearappdata(BuildContext context) {
                         await Hive.openBox<EventModel>("event_db");
 
                     eventtDB.clear();
-
-                    EventDB().eventListNotifier.value.clear();
+                    Provider.of<EventDB>(context).eventList.clear();
+                    // EventDB().eventListNotifier.value.clear();
                     //EventDB().eventListNotifier.notifyListeners();
 
                     // ignore: use_build_context_synchronously

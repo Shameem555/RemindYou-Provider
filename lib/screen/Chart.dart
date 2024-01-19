@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reminder/Screen/ListScreen.dart';
-import 'package:reminder/model/data_model.dart';
+import 'package:provider/provider.dart';
+// import 'package:reminder/Screen/ListScreen.dart';
+import 'package:reminder/functions/events_db.dart';
+// import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/screenAll.dart';
 import 'package:reminder/widgets/screenYesterday.dart';
 import 'package:reminder/widgets/screentoday.dart';
@@ -13,10 +15,9 @@ class Chart extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       initialIndex: 0,
-      child: ValueListenableBuilder(
-        valueListenable: eventviewListNotifier,
+      child: Consumer<EventDB>(
         builder:
-            (BuildContext ctx, List<EventModel> eventlists, Widget? child) {
+            ( ctx, eventdbprovider, child) {
           return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
