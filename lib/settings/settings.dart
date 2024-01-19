@@ -247,10 +247,8 @@ clearappdata(BuildContext context) {
               TextButton(
                   onPressed: (() async {
                     Navigator.of(context).pop();
-
                     final eventtDB =
                         await Hive.openBox<EventModel>("event_db");
-
                     eventtDB.clear();
                     Provider.of<EventDB>(context).eventList.clear();
                     // EventDB().eventListNotifier.value.clear();

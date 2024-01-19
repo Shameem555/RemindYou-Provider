@@ -80,11 +80,11 @@ class _AddEventState extends State<AddEvent> {
                     child: TextFormField(
                       controller: provider.titleController,
                       decoration: InputDecoration(
-                        hintText: "Title",
+                        hintText: " Title",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                         hintStyle:
-                            const TextStyle(color: Colors.brown, fontSize: 20),
+                            const TextStyle(color: Colors.blueAccent, fontSize: 20,fontWeight: FontWeight.bold),
                       ),
                       //title validation if it is empty.
                       validator: (value) {
@@ -114,7 +114,7 @@ class _AddEventState extends State<AddEvent> {
                       child: DropdownButton(
                         hint: const Text(
                           'Select Category',
-                          style: TextStyle(color: Colors.brown, fontSize: 20),
+                          style: TextStyle(color: Colors.blueAccent, fontSize: 20,fontWeight: FontWeight.bold),
                         ),
                         value: provider.option,
                         onChanged: (newValue) {
@@ -174,7 +174,7 @@ class _AddEventState extends State<AddEvent> {
                         style: const TextStyle(
                             fontSize: 19,
                             fontWeight: FontWeight.bold,
-                            color: Colors.brown),
+                            color: Colors.blueAccent),
                       ),
                     )),
               ),
@@ -226,7 +226,7 @@ class _AddEventState extends State<AddEvent> {
                         child: const Center(
                             child: Text(
                           "Cancel",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          style: TextStyle(fontSize: 18, color: Colors.white,fontWeight: FontWeight.bold),
                         )),
                       ),
                     ),
@@ -250,7 +250,7 @@ class _AddEventState extends State<AddEvent> {
                         child: const Center(
                           child: Text(
                             "Ok",
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                            style: TextStyle(fontSize: 18, color: Colors.white,fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),

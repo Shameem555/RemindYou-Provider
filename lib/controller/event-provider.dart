@@ -80,8 +80,6 @@ class EventProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  //----for utility----//
-
   List<EventModel> _eventModel = [];
 
   List<EventModel> get eventModel => _eventModel;
@@ -90,26 +88,4 @@ class EventProvider extends ChangeNotifier{
     _eventModel = eventModel;
     notifyListeners();
   }
-
-//old one
-  // void updateTodayData() {
-  //   todayList();
-  //   checkTodayConditions();
-  // }
-
-  // void updateYesterdayData() {
-  //   yesterdayList();
-  //   checkYesterdayConditions();
-  // }
-
-//i wana check who is correct
-  //  void todayscreenchart() {
-  //   todayList();
-  //   checkconditions();
-  // }
-
-  // void yesterday_screenchart() {
-  //   yesterdayList();
-  //   checkconditions();
-  // }
 }

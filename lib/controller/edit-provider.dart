@@ -12,7 +12,6 @@ class EditProvider extends ChangeNotifier{
 
    DateTime date = DateTime.now();
 
-//for catogory selection//
   final List<Map> myOption = [
     {
       'Category': '1',

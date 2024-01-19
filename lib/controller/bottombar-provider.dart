@@ -24,7 +24,6 @@ class BottomProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-
   void chartupdation(int index,eventList) {
     _currentIndex = index;
     notifyListeners();
@@ -40,5 +39,4 @@ class BottomProvider extends ChangeNotifier{
     }
   }
   
-
 }
