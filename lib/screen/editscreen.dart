@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/edit-provider.dart';
 import 'package:reminder/controller/events_db.dart';
-// import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
@@ -23,27 +21,6 @@ class EditScreen extends StatefulWidget {
 
 class _EditScreenState extends State<EditScreen> {
   
-  // dynamic dates;
- 
-  //time start
-  // TimeOfDay _selectedTime = TimeOfDay.now();
-
-  // Future<void> _selectTime(BuildContext context) async {
-  //   final TimeOfDay? pickedTime = await showTimePicker(
-  //     context: context,
-  //     initialTime: _selectedTime,
-  //   );
-  //   if (pickedTime != null && pickedTime != _selectedTime) {
-  //     setState(() {
-  //       _selectedTime = pickedTime;
-  //     });
-  //   }
-  // }
-  //time end
-
- 
-  
-
   @override
   void initState() {
     final provider = Provider.of<EditProvider>(context, listen: false);
