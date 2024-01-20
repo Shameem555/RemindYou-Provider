@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reminder/Screen/AddEvent.dart';
-// import 'package:reminder/controller/events_db.dart';
 import 'package:reminder/filter/date_filter.dart';
 import 'package:reminder/screen/ListScreen.dart';
 
@@ -14,16 +13,10 @@ class EventScreen extends StatefulWidget {
 
 class _EventScreenState extends State<EventScreen> {
 
-  // @override
-  // void initState() {
-  //   eventviewListNotifier.value =
-  //       EventDB.instance.eventListNotifier.value;
-  //   super.initState();
-  // }
+  
   
   @override
   Widget build(BuildContext context) {
- // eventviewListNotifier.notifyListeners();
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,

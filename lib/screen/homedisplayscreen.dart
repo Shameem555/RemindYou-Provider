@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
-// import 'package:reminder/main.dart';
-// import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/editscreen.dart';
 
 class DisplayScreen extends StatefulWidget {
@@ -17,7 +15,6 @@ class _DisplayScreenState extends State<DisplayScreen> {
   void initState() {
     super.initState();
     Provider.of<EventDB>(context,listen: false).getAllEvent();
-    // eventlist.getAllEvent();
   }
 
   @override
