@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
 import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
+import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/settings/privacy.dart';
 import 'package:reminder/settings/terms.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -250,7 +251,7 @@ clearappdata(BuildContext context) {
                     final eventtDB =
                         await Hive.openBox<EventModel>("event_db");
                     eventtDB.clear();
-                    Provider.of<EventDB>(context).eventList.clear();
+                    Provider.of<EventDB>(context,listen: false).eventList.clear();
                     // EventDB().eventListNotifier.value.clear();
                     //EventDB().eventListNotifier.notifyListeners();
 

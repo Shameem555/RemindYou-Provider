@@ -33,9 +33,6 @@ class _AddEventState extends State<AddEvent> {
   // }
   //end time picker
 
-  // text controller..!//
-  
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -168,7 +165,7 @@ class _AddEventState extends State<AddEvent> {
                           return;
                         } else {
                           // setState(() {
-                            provider.date = newDate;
+                            provider.updateDate(newDate);
                           // });
                         }
                       },

@@ -88,4 +88,9 @@ class EventProvider extends ChangeNotifier{
     _eventModel = eventModel;
     notifyListeners();
   }
+
+  void updateDate(DateTime newDate) {
+    date = newDate;
+    notifyListeners();
+  }
 }

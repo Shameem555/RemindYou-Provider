@@ -52,7 +52,7 @@ class EventDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.deleteAt(index);
    // eventDB.close();
- notifyListeners();
+    notifyListeners();
     getAllEvent();
   }
 

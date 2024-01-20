@@ -42,7 +42,7 @@ class _EventScreenState extends State<EventScreen> {
             ),
           ),
           centerTitle: true,
-          actions: const [
+          actions:  [
              DateFilter(),
           ],
         ),

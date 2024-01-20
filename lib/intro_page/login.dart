@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
                   child: GestureDetector(
                     onTap: () {
                       if (provider.formKey.currentState!.validate()) {
-                        checkLogin(context);
+                       provider.checkLogin(context);
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => const BottomBar()),
@@ -107,17 +107,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  void checkLogin(BuildContext ctx) async {
-    final provider = Provider.of<LoginProvider>(context,listen: false);
-    final username = provider.usernameController.text;  
-
-    final sharedPref = await SharedPreferences.getInstance();
-    await sharedPref.setBool(saveKeyName, true);
-    await sharedPref.setString('username', username);
-    // ignore: use_build_context_synchronously
-    Navigator.pushReplacement(
-        ctx, MaterialPageRoute(builder: (ctx1) => const BottomBar()));
   }
 }

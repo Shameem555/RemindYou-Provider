@@ -3,26 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
 // import 'package:reminder/screen/ListScreen.dart';
 
-class DateFilter extends StatefulWidget {
-  const DateFilter({
+// ignore: must_be_immutable
+class DateFilter extends StatelessWidget {
+   DateFilter({
     Key? key,
   }) : super(key: key);
 
-  @override
-  State<DateFilter> createState() => _DateFilterState();
-}
-
-class _DateFilterState extends State<DateFilter> {
   DateTime? startDate, endDate;
 
-  // void filteration(DateTime start, DateTime end) {
-  //   final filteredEvents = EventDB.instance.eventListNotifier.value
-  //       .where((element) =>
-  //           element.dateTime.isAfter(start) && element.dateTime.isBefore(end))
-  //       .toList();
-  //   eventviewListNotifier.value = filteredEvents;
-  // }
+  // DateTime? startDate, endDate;
 
+  // void filteration(DateTime start, DateTime end) {
   @override
   Widget build(BuildContext context) {
     return Consumer<EventDB>(
