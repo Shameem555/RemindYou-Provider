@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/login-provider.dart';
 import 'package:reminder/intro_page/bottomBar.dart';
-import 'package:reminder/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-// final _usernameController = TextEditingController();
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -14,7 +10,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  // final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-// import 'package:reminder/functions/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 
 class EditProvider extends ChangeNotifier{

@@ -10,12 +10,12 @@ class LoginProvider extends ChangeNotifier{
   
 
     void checkLogin(BuildContext ctx) async {
-    // final provider = Provider.of<LoginProvider>(context,listen: false);
     final username = usernameController.text;  
 
     final sharedPref = await SharedPreferences.getInstance();
     await sharedPref.setBool(saveKeyName, true);
     await sharedPref.setString('username', username);
+
     // ignore: use_build_context_synchronously
     Navigator.pushReplacement(
         ctx, MaterialPageRoute(builder: (ctx1) => const BottomBar()));

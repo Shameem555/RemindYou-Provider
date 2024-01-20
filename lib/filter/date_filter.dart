@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
-// import 'package:reminder/screen/ListScreen.dart';
 
 // ignore: must_be_immutable
 class DateFilter extends StatelessWidget {
@@ -11,9 +10,6 @@ class DateFilter extends StatelessWidget {
 
   DateTime? startDate, endDate;
 
-  // DateTime? startDate, endDate;
-
-  // void filteration(DateTime start, DateTime end) {
   @override
   Widget build(BuildContext context) {
     return Consumer<EventDB>(

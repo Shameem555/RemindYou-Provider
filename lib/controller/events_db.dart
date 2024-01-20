@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reminder/model/data_model.dart';
-// import 'package:reminder/screen/chart.dart';
-// import 'package:reminder/screen/eventscreen.dart';
-// import 'package:reminder/screen/homeScreen.dart';
-// import 'package:reminder/settings/settings.dart';
-// import 'package:reminder/widgets/utility.dart';
-//import 'package:reminder/screen/ListScreen.dart';
+
 
 class EventDB extends ChangeNotifier {
  
@@ -43,15 +38,13 @@ class EventDB extends ChangeNotifier {
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.putAt(index, updation);
    eventList[index]=updation;
-     notifyListeners();
-
+    notifyListeners();
     getAllEvent();
   }
   
   Future<void> deleteEvents(int index) async {
     final eventDB = await Hive.openBox<EventModel>("event_DB");
       await eventDB.deleteAt(index);
-   // eventDB.close();
     notifyListeners();
     getAllEvent();
   }

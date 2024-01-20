@@ -164,9 +164,9 @@ class _AddEventState extends State<AddEvent> {
                         if (newDate == null) {
                           return;
                         } else {
-                          // setState(() {
+                          
                             provider.updateDate(newDate);
-                          // });
+                        
                         }
                       },
                       child: Text(
@@ -178,33 +178,7 @@ class _AddEventState extends State<AddEvent> {
                       ),
                     )),
               ),
-              //time picker
-              // Center(
-              //   child: GestureDetector(
-              //     onTap: () => _selectTime(context),
-              //     child: Padding(
-              //       padding: const EdgeInsets.only(top: 20, left: 15),
-              //       child: Container(
-              //         width: 350,
-              //         height: 60,
-              //         padding: const EdgeInsets.only(top: 10, left: 15),
-              //         decoration: BoxDecoration(
-              //             borderRadius: BorderRadius.circular(20),
-              //             color: Colors.purple),
-              //         //color: Colors.blue,
-              //         child: Text(
-              //           _selectedTime.format(context), // Display selected time
-              //           style: const TextStyle(
-              //             color: Colors.white,
-              //             fontSize: 24,
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
-        
-              //time picker end
+              
               Row(
                 children: [
                   Padding(
@@ -265,6 +239,5 @@ class _AddEventState extends State<AddEvent> {
       ),
     );
   }
-//var deletevent = EventsDB();
 }
-//this is not at all finished, after setting the time the app will be complete..
+
