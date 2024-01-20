@@ -108,29 +108,19 @@ class ListScreenState extends State<ListScreen> {
                                                     builder:
                                                         (BuildContext context) {
                                                       return AlertDialog(
-                                                        title: const Text(
-                                                            "conformation!"),
-                                                        content: const Text(
-                                                            "Are you sure"),
+                                                        title: const Text("conformation!"),
+                                                        content: const Text("Are you sure"),
                                                         actions: [
                                                           TextButton(
                                                             onPressed: () {
-                                                              Navigator.of(
-                                                                      context)
-                                                                  .pop(false);
+                                                              Navigator.of(context).pop(false);
                                                             },
-                                                            child: const Text(
-                                                                "Cancel"),
+                                                            child: const Text("Cancel"),
                                                           ),
                                                           TextButton(
                                                             onPressed: () {
-                                                              evntdbprovider
-                                                                  .deleteEvents(
-                                                                      index);
-
-                                                              Navigator.of(
-                                                                      context)
-                                                                  .pop(true);
+                                                              evntdbprovider.deleteEvents(index);
+                                                              Navigator.of(context).pop(true);
                                                             },
                                                             child: const Text(
                                                                 "Ok"),
