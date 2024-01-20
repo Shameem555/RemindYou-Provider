@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
 import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
-// import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/settings/privacy.dart';
 import 'package:reminder/settings/terms.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -117,7 +116,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>  const Terms(),
+                      builder: (context) => const Terms(),
                     ),
                   );
                 },
@@ -158,7 +157,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) =>  const Privacy(),
+                      builder: (context) => const Privacy(),
                     ),
                   );
                 },
@@ -198,7 +197,7 @@ class Settings extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   //reset alert button//
-                 clearappdata(context);
+                  clearappdata(context);
                 },
                 child: Container(
                   height: 55,
@@ -235,53 +234,50 @@ class Settings extends StatelessWidget {
   }
 }
 
-
 clearappdata(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (ctx) {
-          return AlertDialog(
-            content: const Text(
-              'Do you want to Reset the app?',
-              style: TextStyle(color: Colors.black, fontSize: 18),
-            ),
-            actions: [
-              TextButton(
-                  onPressed: (() async {
-                    Navigator.of(context).pop();
-                    final eventtDB =
-                        await Hive.openBox<EventModel>("event_db");
-                    eventtDB.clear();
-                    Provider.of<EventDB>(context,listen: false).eventList.clear();
-                    // EventDB().eventListNotifier.value.clear();
-                    //EventDB().eventListNotifier.notifyListeners();
-
-                    // ignore: use_build_context_synchronously
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const Login(),
-                      ),
-                    );
-                    SharedPreferences pref =
-                        await SharedPreferences.getInstance();
-                    await pref.clear();
-                  }),
-                  child: const Text(
-                    'Yes',
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
-                  )),
-              TextButton(
-                onPressed: (() {
+  showDialog(
+      context: context,
+      builder: (ctx) {
+        return AlertDialog(
+          content: const Text(
+            'Do you want to Reset the app?',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          ),
+          actions: [
+            TextButton(
+                onPressed: (() async {
                   Navigator.of(context).pop();
+                  final eventtDB = await Hive.openBox<EventModel>("event_db");
+                  eventtDB.clear();
+                  Provider.of<EventDB>(context, listen: false)
+                      .eventList
+                      .clear();
+
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ),
+                  );
+                  SharedPreferences pref =
+                      await SharedPreferences.getInstance();
+                  await pref.clear();
                 }),
                 child: const Text(
-                  'No',
-                  style: TextStyle(color: Colors.green),
-                ),
+                  'Yes',
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                )),
+            TextButton(
+              onPressed: (() {
+                Navigator.of(context).pop();
+              }),
+              child: const Text(
+                'No',
+                style: TextStyle(color: Colors.green),
               ),
-            ],
-          );
-        });
-  }
+            ),
+          ],
+        );
+      });
+}

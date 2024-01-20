@@ -6,7 +6,7 @@ import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/settings/settings.dart';
 import 'package:reminder/widgets/utility.dart';
 
-class BottomProvider extends ChangeNotifier{
+class BottomProvider extends ChangeNotifier {
   final List tabs = [
     const HomeScreen(),
     const EventScreen(),
@@ -17,14 +17,14 @@ class BottomProvider extends ChangeNotifier{
   List<EventModel> eventModel = [];
   int _currentIndex = 0;
 
-  int get currentIndex => _currentIndex ;
+  int get currentIndex => _currentIndex;
 
-  set currentIndex(int index){
+  set currentIndex(int index) {
     _currentIndex = index;
     notifyListeners();
   }
 
-  void chartupdation(int index,eventList) {
+  void chartupdation(int index, eventList) {
     _currentIndex = index;
     notifyListeners();
 
@@ -38,5 +38,4 @@ class BottomProvider extends ChangeNotifier{
       ydy.checkconditions();
     }
   }
-  
 }

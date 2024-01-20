@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class SearchField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSearch;
-  
-  const SearchField({super.key, required this.controller, required this.onSearch});
+
+  const SearchField(
+      {super.key, required this.controller, required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SearchField extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            //text form field widget 
+            //text form field widget
             child: TextFormField(
               controller: controller,
               onChanged: onSearch,
@@ -31,7 +32,7 @@ class SearchField extends StatelessWidget {
               ),
             ),
           ),
-          //search icon 
+          //search icon
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.search),

@@ -14,7 +14,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
   @override
   void initState() {
     super.initState();
-    Provider.of<EventDB>(context,listen: false).getAllEvent();
+    Provider.of<EventDB>(context, listen: false).getAllEvent();
   }
 
   @override
@@ -28,8 +28,7 @@ class _DisplayScreenState extends State<DisplayScreen> {
             const SizedBox(height: 10),
             Expanded(
               child: Consumer<EventDB>(
-            
-                builder: (ctx,  evendbprovider,child) {
+                builder: (ctx, evendbprovider, child) {
                   if (evendbprovider.eventList.isEmpty) {
                     return const Center(
                       child: Text(
@@ -41,20 +40,25 @@ class _DisplayScreenState extends State<DisplayScreen> {
                   return ListView.separated(
                     reverse: false,
                     itemBuilder: (ctx, index) {
-                      final data =evendbprovider.eventList[index];
+                      final data = evendbprovider.eventList[index];
                       return Card(
                         elevation: 2,
                         child: ListTile(
-                          title: Text(data.title,style: const TextStyle(fontWeight: FontWeight.bold,fontSize: 20)),
+                          title: Text(data.title,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20)),
                           subtitle: Text(
-                              '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}',style: const TextStyle(color: Colors.blueGrey),),
+                            '${data.dateTime.day}/${data.dateTime.month}/${data.dateTime.year}',
+                            style: const TextStyle(color: Colors.blueGrey),
+                          ),
                           trailing: PopupMenuButton(
                             itemBuilder: (context) => [
                               PopupMenuItem(
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 10.0),
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
                                       child: TextButton(
                                         onPressed: () {
                                           // to edit
@@ -79,28 +83,32 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                 child: Row(
                                   children: [
                                     Padding(
-                                      padding:const EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(left: 10),
                                       child: TextButton(
                                         onPressed: () {
                                           showDialog(
                                             context: context,
                                             builder: (BuildContext context) {
                                               return AlertDialog(
-                                                title: const Text("Just for a conformation"),
-                                                content: const Text("Are you sure to delete the item"),
+                                                title: const Text(
+                                                    "Just for a conformation"),
+                                                content: const Text(
+                                                    "Are you sure to delete the item"),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () {
-                                                      Navigator.of(context).pop();
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: const Text("Cancel"),
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      
-                                                        evendbprovider.deleteEvents(index);
-                                                    
-                                                      Navigator.of(context).pop();
+                                                      evendbprovider
+                                                          .deleteEvents(index);
+
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: const Text("Ok"),
                                                   ),
@@ -126,7 +134,9 @@ class _DisplayScreenState extends State<DisplayScreen> {
                         height: 5,
                       );
                     },
-                    itemCount:evendbprovider.eventList.length > 4 ? 4 :evendbprovider.eventList.length,
+                    itemCount: evendbprovider.eventList.length > 4
+                        ? 4
+                        : evendbprovider.eventList.length,
                   );
                 },
               ),

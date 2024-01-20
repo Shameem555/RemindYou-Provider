@@ -6,7 +6,7 @@ import 'package:reminder/screen/eventscreen.dart';
 import 'package:reminder/screen/homedisplayscreen.dart';
 
 class HomeScreen extends StatelessWidget {
-   const HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(20),
-            ),  
+            ),
           ),
           title: const Text(
             " Home",
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           children: [
             Padding(
-              padding:  const EdgeInsets.all(13.0),
+              padding: const EdgeInsets.all(13.0),
               child: SizedBox(
                 width: 210,
                 height: 210,
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>   const EventScreen(),
+                          builder: (context) => const EventScreen(),
                         ),
                       );
                     },
@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             const Expanded(
-            child: DisplayScreen(),
+              child: DisplayScreen(),
             ),
           ],
         ),

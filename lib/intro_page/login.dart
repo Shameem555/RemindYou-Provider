@@ -10,7 +10,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -18,7 +17,7 @@ class _LoginState extends State<Login> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor:Colors.white,
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         // ignore: sized_box_for_whitespace
         child: Container(
@@ -26,77 +25,81 @@ class _LoginState extends State<Login> {
           child: Consumer<LoginProvider>(
             builder: (context, provider, child) {
               return Column(
-              children: [
-                const SizedBox(height: 100),
-                Center(
+                children: [
+                  const SizedBox(height: 100),
+                  Center(
                     child: SizedBox(
-                  height: 300,
-                  width: 300,
-                  child: Image.asset(
-                    'assets/empty_profile.jpeg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                ),
-                const SizedBox(height: 30,),
-                Form(
-                  key: provider.formKey,
-                  child: SizedBox(
-                    width: screenWidth * .8,
-                    height: screenHeight * .08,
-                    child: TextFormField(
-                      controller: provider.usernameController,
-                      decoration: InputDecoration(
-                          isDense: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          hintText: 'Username',hintStyle: const TextStyle(fontWeight: FontWeight.bold,fontSize: 25)
-                          ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Required Name';
-                        } else {
-                          return null;
-                        }
-                      },
+                      height: 300,
+                      width: 300,
+                      child: Image.asset(
+                        'assets/empty_profile.jpeg',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15),
-                  child: GestureDetector(
-                    onTap: () {
-                      if (provider.formKey.currentState!.validate()) {
-                       provider.checkLogin(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const BottomBar()),
-                        );
-                      }
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color:  Colors.blue,
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Form(
+                    key: provider.formKey,
+                    child: SizedBox(
+                      width: screenWidth * .8,
+                      height: screenHeight * .08,
+                      child: TextFormField(
+                        controller: provider.usernameController,
+                        decoration: InputDecoration(
+                            isDense: true,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            hintText: 'Username',
+                            hintStyle: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 25)),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Required Name';
+                          } else {
+                            return null;
+                          }
+                        },
                       ),
-                      width: size.width * 0.3,
-                      height: size.height * 0.06,
-                      child: const Text(
-                        'Save',
-                        style: TextStyle(
-                          fontFamily: 'f',
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: 17,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: GestureDetector(
+                      onTap: () {
+                        if (provider.formKey.currentState!.validate()) {
+                          provider.checkLogin(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const BottomBar()),
+                          );
+                        }
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue,
+                        ),
+                        width: size.width * 0.3,
+                        height: size.height * 0.06,
+                        child: const Text(
+                          'Save',
+                          style: TextStyle(
+                            fontFamily: 'f',
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: 17,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
+                ],
+              );
             },
           ),
         ),

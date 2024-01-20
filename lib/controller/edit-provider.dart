@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:reminder/model/data_model.dart';
 
-class EditProvider extends ChangeNotifier{
-  
-
+class EditProvider extends ChangeNotifier {
   final box = Hive.box<EventModel>("data");
   dynamic tittleControl;
-   String? select;
+  String? select;
 
-   DateTime date = DateTime.now();
+  DateTime date = DateTime.now();
 
   final List<Map> myOption = [
     {
@@ -43,9 +41,8 @@ class EditProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void updateCatogory(String newValue){
+  void updateCatogory(String newValue) {
     select = newValue;
     notifyListeners();
   }
-
-} 
+}

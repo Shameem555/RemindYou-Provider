@@ -5,7 +5,7 @@ import 'package:reminder/controller/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/screen/eventscreen.dart';
 
-class EventProvider extends ChangeNotifier{
+class EventProvider extends ChangeNotifier {
   final box = Hive.box<EventModel>("data");
 
   DateTime date = DateTime.now();
@@ -48,30 +48,26 @@ class EventProvider extends ChangeNotifier{
     },
   ];
 
-
-    Future<void> onAddEventButton(BuildContext context) async {
-  
+  Future<void> onAddEventButton(BuildContext context) async {
     final model = EventModel(
-      title:titleController.text,  
+      title: titleController.text,
       dateTime: date,
       catogory: option!,
     );
     //to add event
-    Provider.of<EventDB>(context,listen: false).addEvent(model);
-    Navigator.of(context).pushReplacement(  
+    Provider.of<EventDB>(context, listen: false).addEvent(model);
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) =>  const EventScreen(),
+        builder: (context) => const EventScreen(),
       ),
-       
-       
-    
     );
     titleController.clear();
-   date= DateTime.now();
-   option = null;
-    notifyListeners();  
+    date = DateTime.now();
+    option = null;
+    notifyListeners();
   }
-    void updateSelection(String? newValue) {
+
+  void updateSelection(String? newValue) {
     option = newValue;
     notifyListeners();
   }

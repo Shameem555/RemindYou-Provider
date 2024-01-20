@@ -12,9 +12,6 @@ class EventScreen extends StatefulWidget {
 }
 
 class _EventScreenState extends State<EventScreen> {
-
-  
-  
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,8 +33,8 @@ class _EventScreenState extends State<EventScreen> {
             ),
           ),
           centerTitle: true,
-          actions:  [
-             DateFilter(),
+          actions: [
+            DateFilter(),
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -50,12 +47,11 @@ class _EventScreenState extends State<EventScreen> {
           },
           child: const Icon(Icons.add),
         ),
-        body: 
-        const Padding(
+        body: const Padding(
           padding: EdgeInsets.all(15.0),
           child: Column(
             children: [
-               Expanded(
+              Expanded(
                 child: ListScreen(),
               ),
             ],
