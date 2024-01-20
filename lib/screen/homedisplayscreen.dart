@@ -97,9 +97,9 @@ class _DisplayScreenState extends State<DisplayScreen> {
                                                   ),
                                                   TextButton(
                                                     onPressed: () {
-                                                      // setState(() {
+                                                      
                                                         evendbprovider.deleteEvents(index);
-                                                      // });
+                                                    
                                                       Navigator.of(context).pop();
                                                     },
                                                     child: const Text("Ok"),
