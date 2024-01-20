@@ -107,11 +107,6 @@ class _EditScreenState extends State<EditScreen> {
                         value:provider.select,
                         onChanged: (newValue) {
                           provider.updateCatogory(newValue!);
-                          // setState(
-                            // () {
-                              // provider.select = newValue!;
-                            // },
-                          // );
                         },
                         items: provider.myOption.map(
                           (addCategory) {
@@ -156,10 +151,6 @@ class _EditScreenState extends State<EditScreen> {
                         return;
                       } else {
                          provider.updateDate(newDate);
-                        // provider.updated(newDate as String?);
-                        // setState(() {
-                          // provider.date = newDate;
-                        // });
                       }
                     },
                     child: Text(
@@ -234,7 +225,6 @@ class _EditScreenState extends State<EditScreen> {
    final provider = Provider.of<EditProvider>(context ,listen: false);
     final updation= EventModel(
       title:provider.tittleControl.text,
-      //timeOfDay: _selectedTime,
       dateTime: provider.date,
       catogory: provider.select!,
     );
