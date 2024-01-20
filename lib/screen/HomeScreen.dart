@@ -15,10 +15,12 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          //to avoid the push routing
+          automaticallyImplyLeading: false,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(20),
-            ),
+            ),  
           ),
           title: const Text(
             " Home",

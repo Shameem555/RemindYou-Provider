@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:reminder/controller/events_db.dart';
 import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
-import 'package:reminder/screen/homeScreen.dart';
+// import 'package:reminder/screen/homeScreen.dart';
 import 'package:reminder/settings/privacy.dart';
 import 'package:reminder/settings/terms.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +18,7 @@ class Settings extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.blue[300],
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(

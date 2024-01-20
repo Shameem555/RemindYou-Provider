@@ -28,6 +28,7 @@ class _EventScreenState extends State<EventScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.blue[300],
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(

@@ -80,6 +80,7 @@ class _ChartState extends State<Chart> {
       child: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           bottom: const TabBar(tabs: [
             Tab(text: 'All'),
             Tab(text: 'Today'),
