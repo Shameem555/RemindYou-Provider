@@ -122,7 +122,7 @@ class _AddEventState extends State<AddEvent> {
                         value: provider.option,
                         onChanged: (newValue) {
                     
-                       provider.updateSelectedOption(newValue);
+                       provider.updateSelection(newValue);
           
                         },
                         items: provider.myOption.map(
@@ -264,12 +264,10 @@ class _AddEventState extends State<AddEvent> {
             ],
           );
           },
-         
         ),
       ),
     );
   }
-
 //var deletevent = EventsDB();
 }
 //this is not at all finished, after setting the time the app will be complete..
