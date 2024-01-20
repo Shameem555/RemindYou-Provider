@@ -35,9 +35,7 @@ class ListScreenState extends State<ListScreen> {
                   controller: provider.searchController,
                   onSearch: (value) {
                     provider.updateSearch(value);
-                    // setState(() {
-                      // provider.searchQuery = value;
-                    // });
+                    
                   },
                 ),
                 const SizedBox(height: 10),
@@ -113,10 +111,10 @@ class ListScreenState extends State<ListScreen> {
                                                       Navigator.of(context).pop(false);
                                                     }, child: const Text("Cancel"),),
                                                     TextButton(onPressed: (){
-                                                      // setState(() {
+                                                      
                                                     evntdbprovider.deleteEvents(index);
           
-                                                      // });
+                                                      
                                               Navigator.of(context).pop(true);
                                                     }, child: const Text("Ok"),),
                                                   ],
