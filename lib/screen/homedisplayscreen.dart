@@ -131,12 +131,9 @@ class _DisplayScreenState extends State<DisplayScreen> {
                     },
                     separatorBuilder: (ctx, index) {
                       return const SizedBox(
-                        height: 5,
-                      );
+                        height: 5,);
                     },
-                    itemCount: evendbprovider.eventList.length > 4
-                        ? 4
-                        : evendbprovider.eventList.length,
+                    itemCount: evendbprovider.eventList.length > 4 ? 4 : evendbprovider.eventList.length,
                   );
                 },
               ),
