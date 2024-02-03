@@ -4,6 +4,7 @@ import 'package:reminder/model/data_model.dart';
 
 class EditProvider extends ChangeNotifier {
   final box = Hive.box<EventModel>("data");
+  //change to service
   dynamic tittleControl;
   String? select;
 

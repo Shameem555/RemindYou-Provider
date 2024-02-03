@@ -13,7 +13,7 @@ import 'package:reminder/widgets/splashscreen.dart';
 const saveKeyName = 'User logged in';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
+  await Hive.initFlutter(); 
   if (!Hive.isAdapterRegistered(EventModelAdapter().typeId)) {
     Hive.registerAdapter(EventModelAdapter());
   } 

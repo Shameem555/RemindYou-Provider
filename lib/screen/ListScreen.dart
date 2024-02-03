@@ -45,9 +45,7 @@ class ListScreenState extends State<ListScreen> {
                               }).toList();
                         if (eventList.isEmpty) {
                           return const Center(
-                            child: Text(
-                              "No data",
-                              style:
+                            child: Text( "No data",style:
                                   TextStyle(color: Colors.white, fontSize: 25),
                             ),
                           );
