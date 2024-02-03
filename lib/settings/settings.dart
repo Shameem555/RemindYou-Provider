@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:reminder/controller/events_db.dart';
+import 'package:reminder/service/events_db.dart';
 import 'package:reminder/intro_page/login.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/settings/privacy.dart';

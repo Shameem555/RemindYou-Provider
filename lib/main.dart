@@ -6,7 +6,7 @@ import 'package:reminder/controller/edit-provider.dart';
 import 'package:reminder/controller/event-provider.dart';
 import 'package:reminder/controller/listscreen-provider.dart';
 import 'package:reminder/controller/login-provider.dart';
-import 'package:reminder/controller/events_db.dart';
+import 'package:reminder/service/events_db.dart';
 import 'package:reminder/model/data_model.dart';
 import 'package:reminder/widgets/splashscreen.dart';
 
